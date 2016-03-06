@@ -32,10 +32,15 @@ public class MealService {
 	}
 	
 	public static List<Meal> find(String search) {
+		ArrayList<Meal> meals = MealRepository.getMealList();
 		ArrayList<Meal> result = new ArrayList<>();
-		for (int i = 0; i < MealRepository.getMealList().size(); i++) {
-			if (MealRepository.getMealList().get(i).toString().contains(search)) {
-				result.add(new MealRepository().read(i));
+		for (int i = 0; i < meals.size(); i++) {
+			String[] values = meals.get(i).toString().split(" ");
+			for (String s : values) {
+				if (search.equals(s)) {
+					result.add(new MealRepository().read(i));
+					break;
+				}
 			}
 		}
 		return result;		
