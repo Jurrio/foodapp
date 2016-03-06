@@ -1,6 +1,8 @@
 package com.candylife.service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.candylife.dao.MealRepository;
 import com.candylife.model.Desert;
@@ -27,6 +29,16 @@ public class MealService {
 			break;
 		}
 		new MealRepository().create(meal);
+	}
+	
+	public static List<Meal> find(String search) {
+		ArrayList<Meal> result = new ArrayList<>();
+		for (int i = 0; i < MealRepository.getMealList().size(); i++) {
+			if (MealRepository.getMealList().get(i).toString().contains(search)) {
+				result.add(new MealRepository().read(i));
+			}
+		}
+		return result;		
 	}
 
 	public static void delete(String title, String description, String price) {
