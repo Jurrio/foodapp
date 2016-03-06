@@ -11,4 +11,8 @@ public class Desert extends Meal implements Desertable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Desert() {
+		// TODO Auto-generated constructor stub
+	}
+
 }

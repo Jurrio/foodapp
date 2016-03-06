@@ -11,4 +11,8 @@ public class MainCourse extends Meal implements MainCoursable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public MainCourse() {
+		// TODO Auto-generated constructor stub
+	}
+
 }

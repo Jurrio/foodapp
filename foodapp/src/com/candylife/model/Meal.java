@@ -18,6 +18,10 @@ public abstract class Meal {
 		this.owner = owner;
 		this.time = time;
 	}
+	
+	public Meal() {
+		
+	}
 
 	public String getTitle() {
 		return title;
