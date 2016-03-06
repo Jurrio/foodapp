@@ -14,7 +14,7 @@ public class MealRepository implements MealCRUD{
 	}
 
 	@Override
-	public Object read(int index) {
+	public Meal read(int index) {
 		return mealList.get(index);
 	}
 
