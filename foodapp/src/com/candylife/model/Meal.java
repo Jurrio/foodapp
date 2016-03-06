@@ -66,6 +66,11 @@ public class Meal {
 	public void setTime(Date time) {
 		this.time = time;
 	}
+
+	@Override
+	public String toString() {
+		return title + " " + description + " " + price + " " + owner + " " + time;
+	}	
 	
-		
+	
 }
