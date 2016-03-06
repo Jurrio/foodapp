@@ -19,5 +19,4 @@ public class FindMealController extends HttpServlet {
 		
 		MealService.find(search);
 	}
-
 }
