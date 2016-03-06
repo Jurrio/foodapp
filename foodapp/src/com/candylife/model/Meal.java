@@ -2,7 +2,7 @@ package com.candylife.model;
 
 import java.util.Date;
 
-public class Meal {
+public abstract class Meal {
 	private String title;
 	private String description;
 	private boolean available;
