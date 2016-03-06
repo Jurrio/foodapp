@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/table-style.css">
 	</head>
 	
 	<body>
@@ -12,24 +13,20 @@
 			<li class=header_menu_item><a href="add.html" class="menu_link">Add</a></li>
 			<li class=active_header_menu_item><a href="dashboard.html" class="menu_link">Dashboard</a></li>
 		</ul>
-		<form action="" method="get">
-			<input type="search" name="search" size=50 value="search field">
-			<input type="submit" value="search">	
+		<form action="mealFind" method="get">
+			<input class="search-input" type="search" name="search" size=50 value="search field">
+			<input class="search-button" type="submit" value="search">	
 		</form>
 		
-		<form action="" method="get">
 			<table class="dash_table">
 				<tr><td>#</td><td>Title</td><td>Description</td><td>Price</td><td></td></tr>
-				<tr><td>1</td><td>Product1</td><td></td><td>10</td><td>Delete</td></tr>
-				<tr><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr><form action="deleteMeal" method="get">
+					<td>1</td>
+					<td><input class="disabled" name="title" type="text" value="product1" disabled></td>
+					<td><input class="disabled" name="description" type="text" value="description" disabled></td>
+					<td><input class="disabled" name="price" type="text" value="10" disabled>
+					</td><td><input type="submit" value="Delete"></td>
+				</form></tr>
 			</table>
-		</form>
-
 	</body>
 </html>
