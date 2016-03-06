@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.candylife.service.MealService;
 
 @WebServlet("/deleteMeal")
-public class DeleteMeal extends HttpServlet {
+public class DeleteMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

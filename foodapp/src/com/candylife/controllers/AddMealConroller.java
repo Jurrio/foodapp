@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.candylife.service.MealService;
 
 @WebServlet ("/addMeal")
-public class AddMeal extends HttpServlet {
+public class AddMealConroller extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,6 +25,7 @@ public class AddMeal extends HttpServlet {
 		String time = req.getParameter("time");
 		
 		MealService.add(title, description, type, available, price, owner, time);
+		
 		
 	}	
 }
