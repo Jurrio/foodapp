@@ -1,15 +1,11 @@
 package com.candylife.service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.candylife.dao.MealRepository;
-import com.candylife.model.Desert;
-import com.candylife.model.MainCourse;
 import com.candylife.model.Meal;
-import com.candylife.model.Soup;
 import com.candylife.util.MealUtil;
 
 public class MealService {
