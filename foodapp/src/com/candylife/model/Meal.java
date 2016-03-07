@@ -9,15 +9,6 @@ public abstract class Meal {
 	private double price;
 	private String owner; //TODO: change to class Person after create it.
 	private Date time;
-
-	public Meal(String title, String description, boolean available, double price, String owner, Date time) {
-		this.title = title;
-		this.description = description;
-		this.available = available;
-		this.setPrice(price); 
-		this.owner = owner;
-		this.time = time;
-	}
 	
 	public Meal() {
 		

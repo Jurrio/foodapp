@@ -6,13 +6,8 @@ import com.candylife.interfaces.Desertable;
 
 public class Desert extends Meal implements Desertable {
 
-	public Desert(String title, String description, boolean available, double price, String owner, Date time) {
-		super(title, description, available, price, owner, time);
-		// TODO Auto-generated constructor stub
-	}
-
 	public Desert() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 }
