@@ -1,5 +1,7 @@
 package com.candylife.util;
 
+import java.util.Date;
+
 import com.candylife.constants.WebPage;
 import com.candylife.model.Desert;
 import com.candylife.model.MainCourse;
@@ -18,5 +20,15 @@ public class MealUtil {
 		default:
 			return null;
 		}
+	}
+
+	public static void init(Meal meal, String title, String description, boolean isAvailable, double dPrice,
+			String owner, Date date) {
+		meal.setTitle(title);
+		meal.setDescription(description);
+		meal.setAvailable(isAvailable);
+		meal.setPrice(dPrice);
+		meal.setOwner(owner);
+		meal.setTime(date);
 	}
 }
