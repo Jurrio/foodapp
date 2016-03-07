@@ -15,19 +15,19 @@
 		<p>Please add the product</p>
 		<form action="addMeal" method="get">
 			<table class="add_form">
-				<tr><td>Title</td><td><input type="text" name="title"></td>
-				<tr><td>Description</td><td><textarea name="description"></textarea></td><!-- TODO: сделать выше -->
+				<tr><td>Title</td><td><input type="text" name="title" required></td>
+				<tr><td>Description</td><td><textarea name="description" required></textarea></td><!-- TODO: сделать выше -->
 				<tr><td>Type</td><td>
-					<select name="type" >
+					<select name="type" required>
 						<option value="#">Select a type</option>
 						<option value="soup">Soup</option>
 						<option value="mainCourse">Main Course</option>
 						<option value="desert">Desert</option>
 					</select></td></tr>
 				<tr><td>Available</td><td><input type="checkbox" name="available"></td></tr>
-				<tr><td>Price</td><td><input type="number" name="price" min=0 step="0.01"></td></tr>
-				<tr><td>Owner</td><td><input type="text" name="owner"></td></tr>
-				<tr><td>Time</td><td><input type="time" name="time"></td></tr>
+				<tr><td>Price</td><td><input type="number" name="price" min=0 step="0.01" required></td></tr>
+				<tr><td>Owner</td><td><input type="text" name="owner" required></td></tr>
+				<tr><td>Time</td><td><input type="time" name="time" required></td></tr>
 			</table>
 			<input type="submit" value="OK" name="ok-button">
 		</form>	
