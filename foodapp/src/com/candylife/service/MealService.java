@@ -24,7 +24,7 @@ public class MealService {
 	}
 	
 	public static List<Meal> find(String search) {
-		ArrayList<Meal> meals = MealRepository.getMealList();
+		List<Meal> meals = new MealRepository().read();
 		ArrayList<Meal> result = new ArrayList<>();
 		for (int i = 0; i < meals.size(); i++) {
 			String[] values = meals.get(i).toString().split(" ");
@@ -40,7 +40,7 @@ public class MealService {
 
 	public static void delete(String title, String description, String price) {
 		double dPrice = Double.parseDouble(price);
-		for (Meal meal : MealRepository.getMealList()) {
+		for (Meal meal : new MealRepository().read()) {
 			if (meal.getTitle().equals(title) && meal.getDescription().equals(description) && meal.getPrice() == dPrice) {
 				new MealRepository().delete(meal);
 				break;
