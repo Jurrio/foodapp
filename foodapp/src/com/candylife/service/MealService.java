@@ -9,7 +9,7 @@ import com.candylife.model.Meal;
 import com.candylife.util.MealUtil;
 
 public class MealService {
-	public static void add(String title, String description, String type, String available, String price, String owner, String time){
+	public static boolean add(String title, String description, String type, String available, String price, String owner, String time){
 		boolean isAvailable = available != null;
 		double dPrice = 0;
 		try {
@@ -19,8 +19,12 @@ public class MealService {
 		}
 		Date date = new Date(); //TODO: date format in html
 		Meal meal = MealUtil.create(type);
-		MealUtil.init(meal, title, description, isAvailable, dPrice, owner, date);
-		new MealRepository().create(meal);
+		if (meal != null) {
+			MealUtil.init(meal, title, description, isAvailable, dPrice, owner, date);
+			new MealRepository().create(meal);
+			return true;
+		}
+		return false;
 	}
 	
 	public static List<Meal> find(String search) {

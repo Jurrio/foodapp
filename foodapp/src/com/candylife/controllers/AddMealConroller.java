@@ -1,6 +1,8 @@
 package com.candylife.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +25,16 @@ public class AddMealConroller extends HttpServlet {
 		String owner = req.getParameter(WebPage.OWNER) != null ? req.getParameter(WebPage.OWNER) : "no owner";
 		String time = req.getParameter(WebPage.TIME) != null ? req.getParameter(WebPage.TIME) : "no time";
 		
-		MealService.add(title, description, type, available, price, owner, time);
+		boolean isAdd = MealService.add(title, description, type, available, price, owner, time);
 		
+		PrintWriter out = resp.getWriter();
 		
+		if (isAdd) {
+			out.println("Meal addes sucsessfully!");
+			out.println("type: " + type + "title: " + title + "\ndescription: " + description + "\navailable: " + available + 
+					"\nprice: " + price + "\nowner: " + owner + "\ntime: " + time);
+		} else {
+			out.println("Error"); //TODO: add error message
+		}
 	}	
 }
