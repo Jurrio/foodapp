@@ -13,20 +13,34 @@
 			<li class=header_menu_item><a href="add.html" class="menu_link">Add</a></li>
 			<li class=active_header_menu_item><a href="dashboard.html" class="menu_link">Dashboard</a></li>
 		</ul>
-		<form action="mealFind" method="get">
+		<form action="findMeal" method="get">
 			<input class="search-input" type="search" name="search" size=50 value="search field">
 			<input class="search-button" type="submit" value="search">	
 		</form>
 		
 			<table class="dash_table">
-				<tr><td>#</td><td>Title</td><td>Description</td><td>Price</td><td></td></tr>
+				<tr><td>#</td><td>Title</td><td>Description</td><td>Available</td><td>Price</td><td>Owner</td><td>Time</td><td></td></tr>
 				<tr>
 					<td>1</td>
-					<td><input class="disabled" name="title" type="text" value="product1" disabled></td>
-					<td><input class="disabled" name="description" type="text" value="description" disabled></td>
-					<td><input class="disabled" name="price" type="text" value="10" disabled></td>
+					<td><input class="disabled" name="title" type="text" value="Fish with tomato" disabled></td>
+					<td><input class="disabled" name="description" type="text" value="no description" disabled></td>
+					<td><input class="disabled" name="available" type="text" value="Yes" disabled></td>
+					<td><input class="disabled" name="price" type="text" value="75" disabled></td>
+					<td><input class="disabled" name="owner" type="text" value="Kate W." disabled></td>
+					<td><input class="disabled" name="time" type="time" value="13:45" disabled></td>
 					<td><input type="submit" value="Delete"></td>
 				</tr>
+				<tr>
+					<td>2</td>
+					<td><input class="disabled" name="title" type="text" value="Strawberry salad" disabled></td>
+					<td><input class="disabled" name="description" type="text" value="Mmmmm!" disabled></td>
+					<td><input class="disabled" name="available" type="text" value="Yes" disabled></td>
+					<td><input class="disabled" name="price" type="text" value="32" disabled></td>
+					<td><input class="disabled" name="owner" type="text" value="Andy O." disabled></td>
+					<td><input class="disabled" name="time" type="time" value="12:00" disabled></td>
+					<td><input type="submit" value="Delete"></td>
+				</tr>
+				
 			</table>
 	</body>
 </html>
