@@ -39,12 +39,22 @@ public class MealService {
 				}
 			}
 		}
-		return result;		
+		return result;
 	}
 
 	public static void delete(String sId) {
 		int id = Integer.parseInt(sId);
 		Meal meal = new MealRepository().read(id);
 		new MealRepository().delete(meal);
+	}
+
+	public static String listAll() {
+		StringBuilder result = new StringBuilder("List of meals: ");
+		List<Meal> mealList = new MealRepository().read();
+		for (Meal meal : mealList) {
+			result.append(meal.toString());
+			result.append("\n");
+		}
+		return result.toString();
 	}
 }
