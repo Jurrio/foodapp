@@ -3,9 +3,9 @@ package com.candylife.model;
 import java.util.Date;
 
 public abstract class Meal {
-	private static long countId = 0;
+	private static int countId = 0;
 	
-	private long id;
+	private int id;
 	private String title;
 	private String description;
 	private boolean available;
@@ -17,7 +17,7 @@ public abstract class Meal {
 		this.id = nextId();
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -74,7 +74,7 @@ public abstract class Meal {
 		return title + " " + description + " " + price + " " + owner + " " + time;
 	}
 	
-	private long nextId() {
+	private int nextId() {
 		return countId++;
 	}
 	
