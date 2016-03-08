@@ -1,6 +1,7 @@
 package com.candylife.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +18,9 @@ public class FindMealController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String search = req.getParameter(WebPage.SEARCH);
+		String findResult = MealService.find(search);
 		
-		MealService.find(search);
+		PrintWriter writer = resp.getWriter();
+		writer.println(findResult);
 	}
 }

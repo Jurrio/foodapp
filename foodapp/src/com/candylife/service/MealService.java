@@ -1,6 +1,5 @@
 package com.candylife.service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,19 +26,13 @@ public class MealService {
 		return false;
 	}
 	
-	public static List<Meal> find(String search) {
-		List<Meal> meals = new MealRepository().read();
-		ArrayList<Meal> result = new ArrayList<>();
-		for (int i = 0; i < meals.size(); i++) {
-			String[] values = meals.get(i).toString().split(" ");
-			for (String s : values) {
-				if (search.equals(s)) {
-					result.add(new MealRepository().read(i));
-					break;
-				}
-			}
+	public static String find(String search) {
+		StringBuilder result = new StringBuilder("List of meals on request \"" + search + "\":\n");
+		List <Meal> resultList = new MealRepository().read(search);
+		for (Meal meal : resultList) {
+			result.append(meal.toString() + "\n");
 		}
-		return result;
+		return result.toString();
 	}
 
 	public static void delete(String sId) {
@@ -49,11 +42,10 @@ public class MealService {
 	}
 
 	public static String listAll() {
-		StringBuilder result = new StringBuilder("List of meals: ");
+		StringBuilder result = new StringBuilder("List of meals:\n");
 		List<Meal> mealList = new MealRepository().read();
 		for (Meal meal : mealList) {
-			result.append(meal.toString());
-			result.append("\n");
+			result.append(meal.toString() + "\n");
 		}
 		return result.toString();
 	}

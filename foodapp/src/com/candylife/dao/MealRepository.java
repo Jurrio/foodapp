@@ -23,6 +23,11 @@ public class MealRepository implements MealCRUD{
 	public List<Meal> read() {
 		return mealList;
 	}
+	
+	@Override
+	public List<Meal> read(String search) {
+		return find(search);
+	}
 
 	@Override
 	public void update(int index, Meal meal) {
@@ -39,12 +44,26 @@ public class MealRepository implements MealCRUD{
 		mealList.remove(selectById(id));		
 	}
 	
-	public static Meal selectById(int id) {
+	private Meal selectById(int id) {
 		for (Meal meal : mealList) {
 			if (id == meal.getId()) {
 				return meal;
 			}
 		}
 		return null;
+	}
+	
+	private List<Meal> find(String search) {
+		ArrayList<Meal> result = new ArrayList<>();
+		for (int i = 0; i < mealList.size(); i++) {
+			String[] values = mealList.get(i).toString().split(" ");
+			for (String s : values) {
+				if (search.equals(s)) {
+					result.add(new MealRepository().read(i));
+					break;
+				}
+			}
+		}
+		return result;
 	}
 }
