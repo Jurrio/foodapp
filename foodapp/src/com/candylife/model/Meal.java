@@ -3,6 +3,9 @@ package com.candylife.model;
 import java.util.Date;
 
 public abstract class Meal {
+	private static long countId = 0;
+	
+	private long id;
 	private String title;
 	private String description;
 	private boolean available;
@@ -11,7 +14,11 @@ public abstract class Meal {
 	private Date time;
 	
 	public Meal() {
-		
+		this.id = nextId();
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	public String getTitle() {
@@ -65,7 +72,10 @@ public abstract class Meal {
 	@Override
 	public String toString() {
 		return title + " " + description + " " + price + " " + owner + " " + time;
-	}	
+	}
 	
+	private long nextId() {
+		return countId++;
+	}
 	
 }
