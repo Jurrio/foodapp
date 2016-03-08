@@ -42,13 +42,9 @@ public class MealService {
 		return result;		
 	}
 
-	public static void delete(String title, String description, String price) {
-		double dPrice = Double.parseDouble(price);
-		for (Meal meal : new MealRepository().read()) {
-			if (meal.getTitle().equals(title) && meal.getDescription().equals(description) && meal.getPrice() == dPrice) {
-				new MealRepository().delete(meal);
-				break;
-			}
-		}
+	public static void delete(String sId) {
+		int id = Integer.parseInt(sId);
+		Meal meal = new MealRepository().read(id);
+		new MealRepository().delete(meal);
 	}
 }

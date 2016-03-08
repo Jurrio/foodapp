@@ -10,17 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.candylife.constants.WebPage;
 import com.candylife.service.MealService;
+import com.candylife.util.ControllerUtil;
 
 @WebServlet("/deleteMeal")
 public class DeleteMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String title = req.getParameter(WebPage.TITLE);
-		String description = req.getParameter(WebPage.DESCRIPTION);
-		String price = req.getParameter(WebPage.PRICE);
+		String id = ControllerUtil.checkId(WebPage.ID, WebPage.NO_ID);
 		
-		MealService.delete(title, description, price);
+		MealService.delete(id);
 	}
 
 }
