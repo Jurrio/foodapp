@@ -12,11 +12,11 @@ public class MealUtil {
 	public static Meal create(String type) {
 		switch (type) {
 		case WebPage.TYPE_SOUP:
-			return new Soup();//TODO: add setters
+			return new Soup();
 		case WebPage.TYPE_MAIN_COURSE:
-			return new MainCourse();//TODO: add setters
+			return new MainCourse();
 		case WebPage.TYPE_DESERT:
-			return new Desert();//TODO: add setters
+			return new Desert();
 		default:
 			return null;
 		}
