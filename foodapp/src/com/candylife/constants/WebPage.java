@@ -20,4 +20,5 @@ public class WebPage {
 	public static final String NO_PRICE = "0.0";
 	public static final String NO_OWNER = "no owner";
 	public static final String NO_TIME = "00:00";
+	public static final String NO_TYPE = "no type";
 }

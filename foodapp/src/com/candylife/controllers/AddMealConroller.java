@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.candylife.constants.WebPage;
 import com.candylife.service.MealService;
+import com.candylife.util.ControllerUtil;
 import com.sun.corba.se.impl.orbutil.closure.Constant;
 
 @WebServlet ("/addMeal")
@@ -18,13 +19,13 @@ public class AddMealConroller extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String title = req.getParameter(WebPage.TITLE) != null ? req.getParameter(WebPage.TITLE) : WebPage.NO_TITLE;
-		String description = req.getParameter(WebPage.DESCRIPTION) != null ? req.getParameter(WebPage.DESCRIPTION) : WebPage.NO_DESCRIPTION;
-		String type = req.getParameter(WebPage.TYPE) != null ? req.getParameter(WebPage.TYPE) : "";
+		String title = ControllerUtil.checkParam(req.getParameter(WebPage.TITLE), WebPage.NO_TITLE);
+		String description = ControllerUtil.checkParam(req.getParameter(WebPage.DESCRIPTION), WebPage.NO_DESCRIPTION);
+		String type = ControllerUtil.checkParam(req.getParameter(WebPage.TYPE), WebPage.NO_TYPE);
 		String available = req.getParameter(WebPage.AVAILABLE);
-		String price = req.getParameter(WebPage.PRICE) != null ? req.getParameter(WebPage.PRICE) : WebPage.NO_PRICE;
-		String owner = req.getParameter(WebPage.OWNER) != null ? req.getParameter(WebPage.OWNER) : WebPage.NO_OWNER;
-		String time = req.getParameter(WebPage.TIME) != null ? req.getParameter(WebPage.TIME) : WebPage.NO_TIME;
+		String price = ControllerUtil.checkParam(req.getParameter(WebPage.PRICE), WebPage.NO_PRICE);
+		String owner = ControllerUtil.checkParam(req.getParameter(WebPage.OWNER), WebPage.NO_OWNER);
+		String time = ControllerUtil.checkParam(req.getParameter(WebPage.TIME), WebPage.NO_TIME);
 		
 		boolean isAdd = MealService.add(title, description, type, available, price, owner, time);
 		
