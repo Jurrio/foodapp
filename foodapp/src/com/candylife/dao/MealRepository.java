@@ -15,8 +15,8 @@ public class MealRepository implements MealCRUD{
 	}
 
 	@Override
-	public Meal read(int index) {
-		return mealList.get(index);
+	public Meal read(int id) {
+		return selectById(id);
 	}
 
 	@Override
@@ -35,7 +35,16 @@ public class MealRepository implements MealCRUD{
 	}
 	
 	@Override
-	public void delete(int index) {
-		mealList.remove(index);		
+	public void delete(int id) {
+		mealList.remove(selectById(id));		
+	}
+	
+	public static Meal selectById(int id) {
+		for (Meal meal : mealList) {
+			if (id == meal.getId()) {
+				return meal;
+			}
+		}
+		return null;
 	}
 }
