@@ -8,7 +8,7 @@ public class ControllerUtil {
 
 	public static String checkId(String id, String noId) {
 		try {
-			int castedId = Integer.parseInt(id);
+			int casteId = Integer.parseInt(id);
 		} catch (NumberFormatException e) {
 			return noId;
 		} 
