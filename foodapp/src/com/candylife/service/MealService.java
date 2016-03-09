@@ -10,7 +10,7 @@ import com.candylife.util.MealUtil;
 
 public class MealService {
 	public static boolean add(String title, String description, String type, String available, String price, String owner, String time){
-		boolean isAvailable = available != null;
+		boolean isAvailable = CheckUtil.parseAvailable(available);
 		double dPrice = CheckUtil.parsePrice(price);
 		Date date = new Date(); //TODO: date format in html
 		Meal meal = MealUtil.create(type);

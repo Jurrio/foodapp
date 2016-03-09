@@ -12,4 +12,8 @@ public class CheckUtil {
 		return result;
 	}
 
+	public static boolean parseAvailable(String available) {
+		return available != null;
+	}
+
 }
