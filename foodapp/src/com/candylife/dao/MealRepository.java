@@ -10,8 +10,9 @@ public class MealRepository implements MealCRUD{
 	private static ArrayList<Meal> mealList = new ArrayList<>();
 
 	@Override
-	public void create(Meal meal) {
+	public boolean create(Meal meal) {
 		mealList.add(meal);
+		return true;
 	}
 
 	@Override

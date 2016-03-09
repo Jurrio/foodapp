@@ -9,17 +9,17 @@ import com.candylife.util.CheckUtil;
 import com.candylife.util.MealUtil;
 
 public class MealService {
-	public static boolean add(String title, String description, String type, String available, String price, String owner, String time){
+	public static String add(String title, String description, String type, String available, String price, String owner, String time){
+		String result = "";
 		boolean isAvailable = CheckUtil.parseAvailable(available);
 		double dPrice = CheckUtil.parsePrice(price);
 		Date date = new Date(); //TODO: date format in html
 		Meal meal = MealUtil.create(type);
-		if (meal != null) {
+		if (new MealRepository().create(meal)) {
 			MealUtil.init(meal, title, description, isAvailable, dPrice, owner, date);
-			new MealRepository().create(meal);
-			return true;
+			return "Meal added! " + meal.toString();
 		}
-		return false;
+		return "Fail!"; 
 	}
 	
 	public static String find(String search) {
