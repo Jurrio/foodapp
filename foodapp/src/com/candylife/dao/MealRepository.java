@@ -37,8 +37,11 @@ public class MealRepository implements MealCRUD{
 
 	@Override
 	public boolean delete(Meal meal) {
-		mealList.remove(meal);		
-		return true;
+		if (meal != null) {
+			mealList.remove(meal);		
+			return true;
+		}
+		return false;		
 	}
 	
 	@Override
