@@ -31,10 +31,14 @@ public class MealService {
 		return result.toString();
 	}
 
-	public static void delete(String sId) {
+	public static String delete(String sId) {
 		int id = Integer.parseInt(sId);
 		Meal meal = new MealRepository().read(id);
-		new MealRepository().delete(meal);
+		if (new MealRepository().delete(meal)) {
+			return "Sucsess delete!";
+		}
+		return "Fail delete!";
+		
 	}
 
 	public static String listAll() {

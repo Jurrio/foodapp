@@ -19,7 +19,7 @@ public class DeleteMealController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = ControllerUtil.checkId(WebPage.ID, WebPage.NO_ID);
 		
-		MealService.delete(id);
+		String result = MealService.delete(id);
 	}
 
 }
