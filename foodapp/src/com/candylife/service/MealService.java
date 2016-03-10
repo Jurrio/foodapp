@@ -24,7 +24,7 @@ public class MealService {
 	}
 	
 	public static String find(String search) {
-		StringBuilder result = new StringBuilder("List of meals on request \"" + search + "\":\n");
+		StringBuilder result = new StringBuilder(String.format(Servlet.SEARCH_RESPONSE, search));
 		List <Meal> resultList = new MealRepository().read(search);
 		for (Meal meal : resultList) {
 			result.append(meal.toString() + "\n");
@@ -36,14 +36,14 @@ public class MealService {
 		int id = Integer.parseInt(sId);
 		Meal meal = new MealRepository().read(id);
 		if (new MealRepository().delete(meal)) {
-			return "Sucsess delete!";
+			return Servlet.DELETE_SUCSEFULLY;
 		}
-		return "Fail delete!";
+		return Servlet.DELETE_ERROR;
 		
 	}
 
 	public static String listAll() {
-		StringBuilder result = new StringBuilder("List of meals:\n");
+		StringBuilder result = new StringBuilder(Servlet.LIST_OF_MEALS + "\n");
 		List<Meal> mealList = new MealRepository().read();
 		for (Meal meal : mealList) {
 			result.append(meal.toString() + "\n");
