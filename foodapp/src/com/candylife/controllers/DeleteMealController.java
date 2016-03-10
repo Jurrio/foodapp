@@ -1,6 +1,7 @@
 package com.candylife.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,9 +18,17 @@ public class DeleteMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = ControllerUtil.checkId(WebPage.ID, WebPage.NO_ID);
+		
+		//Maybe ControllerUtil.checkParam should be called from Service layer?
+		
+		//Does this even work? Where do you get parameter from request?
+		
+		String id = ControllerUtil.checkId(req.getParameter(WebPage.ID), WebPage.NO_ID);
 		
 		String result = MealService.delete(id);
+		
+		PrintWriter out = resp.getWriter();
+		out.println(result);
 	}
 
 }
