@@ -16,6 +16,8 @@ public class ListMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//Should get List
 		String allMeals = MealService.listAll();
 		
 		PrintWriter writer = resp.getWriter();
