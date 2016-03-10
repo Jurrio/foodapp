@@ -17,8 +17,12 @@ public class FindMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String search = req.getParameter(WebPage.SEARCH);
-		String findResult = MealService.find(search);
+		//maybe searchValue?
+		String searchValue = req.getParameter(WebPage.SEARCH);
+		
+		//should get list
+		//inform if nothing found
+		String findResult = MealService.find(searchValue);
 		
 		PrintWriter writer = resp.getWriter();
 		writer.println(findResult);

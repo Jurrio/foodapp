@@ -26,8 +26,12 @@ public class MealService {
 	public static String find(String search) {
 		StringBuilder result = new StringBuilder(String.format(Servlet.SEARCH_RESPONSE, search));
 		List <Meal> resultList = new MealRepository().read(search);
-		for (Meal meal : resultList) {
-			result.append(meal.toString() + "\n");
+		if (resultList.size() > 0) {
+			for (Meal meal : resultList) {
+				result.append(meal.toString() + "\n");
+			}
+		} else {
+			result.append(Servlet.SEARCH_NULL);
 		}
 		return result.toString();
 	}
