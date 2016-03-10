@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.candylife.constants.Servlet;
 import com.candylife.constants.WebPage;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
@@ -18,6 +19,9 @@ public class AddMealConroller extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//Maybe ControllerUtil.checkParam should be called from Service layer?
+		
 		String title = ControllerUtil.checkParam(req.getParameter(WebPage.TITLE), WebPage.NO_TITLE);
 		String description = ControllerUtil.checkParam(req.getParameter(WebPage.DESCRIPTION), WebPage.NO_DESCRIPTION);
 		String type = ControllerUtil.checkParam(req.getParameter(WebPage.TYPE), WebPage.NO_TYPE);
@@ -30,12 +34,18 @@ public class AddMealConroller extends HttpServlet {
 		
 		PrintWriter out = resp.getWriter();
 		
-		if (isAdd) {
-			out.println("Meal addes sucsessfully!");
-			out.println("type: " + type + "title: " + title + "\ndescription: " + description + "\navailable: " + available + 
-					"\nprice: " + price + "\nowner: " + owner + "\ntime: " + time);
-		} else {
-			out.println("Error"); //TODO: add error message
-		}
+		out.println(isAdd);
+		
+//		if (isAdd) {
+//			//Constant Done!
+//			out.println(Servlet.ADD_SUCSEFULLY);
+//			
+//			//Util class to convert to html
+//			out.println("type: " + type + "title: " + title + "\ndescription: " + description + "\navailable: " + available + 
+//					"\nprice: " + price + "\nowner: " + owner + "\ntime: " + time);
+//		} else {
+//			//constant Done!
+//			out.println(Servlet.ADD_ERROR); //TODO: add error message
+//		}
 	}	
 }

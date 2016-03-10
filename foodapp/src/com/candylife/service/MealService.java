@@ -3,6 +3,7 @@ package com.candylife.service;
 import java.util.Date;
 import java.util.List;
 
+import com.candylife.constants.Servlet;
 import com.candylife.dao.MealRepository;
 import com.candylife.model.Meal;
 import com.candylife.util.CheckUtil;
@@ -17,9 +18,9 @@ public class MealService {
 		Meal meal = MealUtil.create(type);
 		if (new MealRepository().create(meal)) {
 			MealUtil.init(meal, title, description, isAvailable, dPrice, owner, date);
-			return "Meal added! " + meal.toString();
+			return Servlet.ADD_SUCSEFULLY + "\n" + meal.toString();
 		}
-		return "Fail!"; 
+		return Servlet.ADD_ERROR; 
 	}
 	
 	public static String find(String search) {
