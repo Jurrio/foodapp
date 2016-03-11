@@ -11,7 +11,6 @@ import com.candylife.util.MealUtil;
 
 public class MealService {
 	public static String add(String title, String description, String type, String available, String price, String owner, String time){
-		String result = "";
 		boolean isAvailable = CheckUtil.parseAvailable(available);
 		double dPrice = CheckUtil.parsePrice(price);
 		Date date = new Date(); //TODO: date format in html
