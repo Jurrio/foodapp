@@ -13,7 +13,7 @@ import com.candylife.constants.WebPage;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
 
-@WebServlet("/deleteMeal")
+@WebServlet(name = "DeleteMealServlet", urlPatterns = "/deleteMeal")
 public class DeleteMealController extends HttpServlet {
 
 	@Override

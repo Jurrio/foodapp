@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.candylife.constants.WebPage;
 import com.candylife.service.MealService;
 
-@WebServlet("/findMeal")
+@WebServlet(name = "FindMealServtet", urlPatterns = "/findMeal")
 public class FindMealController extends HttpServlet {
 
 	@Override

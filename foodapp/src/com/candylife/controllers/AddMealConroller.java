@@ -14,7 +14,7 @@ import com.candylife.constants.WebPage;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
 
-@WebServlet ("/addMeal")
+@WebServlet (name = "AddMMealServlet", urlPatterns = "/addMeal")
 public class AddMealConroller extends HttpServlet {
 
 	@Override
