@@ -42,15 +42,16 @@ public class MealService {
 			return Servlet.DELETE_SUCSEFULLY;
 		}
 		return Servlet.DELETE_ERROR;
-		
 	}
 
 	public static String listAll() {
-		StringBuilder result = new StringBuilder(Servlet.LIST_OF_MEALS + "\n");
 		List<Meal> mealList = new MealRepository().read();
-		for (Meal meal : mealList) {
-			result.append(meal.toString() + "\n");
+		if (mealList.size() > 0) {
+			StringBuilder result = new StringBuilder(Servlet.LIST_OF_MEALS + "\n");
+			for (Meal meal : mealList) {
+				result.append(meal.toString() + "\n");
+			}
 		}
-		return result.toString();
+		return Servlet.SEARCH_NULL;
 	}
 }
