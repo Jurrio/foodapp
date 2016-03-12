@@ -59,7 +59,7 @@ public class MealRepository implements MealCRUD{
 	}
 	
 	private List<Meal> find(String search) {
-		ArrayList<Meal> result = new ArrayList<>();
+		List<Meal> result = new ArrayList<>();
 		for (int i = 0; i < mealList.size(); i++) {
 			String[] values = mealList.get(i).toString().split(" ");
 			for (String s : values) {
