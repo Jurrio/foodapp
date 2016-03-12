@@ -19,7 +19,7 @@ public class WebPage {
 	public static final String NO_ID = "-1";
 	public static final String NO_TITLE = "no title";
 	public static final String NO_DESCRIPTION = "no description";
-	public static final String NO_PRICE = "0.0";
+	public static final double NO_PRICE = 0.0;
 	public static final String NO_OWNER = "no owner";
 	public static final String NO_TIME = "00:00";
 	public static final String NO_TYPE = "no type";
