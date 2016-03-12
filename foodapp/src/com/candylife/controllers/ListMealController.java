@@ -28,7 +28,7 @@ public class ListMealController extends HttpServlet {
 		if (allMeals.size() > 0) {
 			writer.println(OutUtil.printList(allMeals));
 		} else {
-			writer.println(Servlet.SEARCH_NULL);
+			writer.println(Servlet.EMPTY_SET);
 		}
 	}
 }

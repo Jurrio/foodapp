@@ -31,7 +31,7 @@ public class FindMealController extends HttpServlet {
 		if (findResult.size() > 0) {
 			out.println(OutUtil.printList(findResult));
 		} else {
-			out.println(Servlet.SEARCH_NULL);
+			out.println(Servlet.EMPTY_SET);
 		}
 	}
 }
