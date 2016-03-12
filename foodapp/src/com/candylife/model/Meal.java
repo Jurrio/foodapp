@@ -2,7 +2,7 @@ package com.candylife.model;
 
 import com.candylife.util.MealBuilder;
 
-public abstract class Meal {
+public class Meal {
 	private static int countId = 0;
 	
 	private int id;
@@ -17,7 +17,7 @@ public abstract class Meal {
 	}
 	
 	public Meal(MealBuilder builder) {
-		this();
+		this.id = nextId();
 		this.title = builder.getTitle();
 		this.description = builder.getDescription();
 		this.available = builder.isAvailable();
