@@ -45,8 +45,8 @@ public class MealRepository implements MealCRUD{
 	}
 	
 	@Override
-	public void delete(int id) {
-		mealList.remove(selectById(id));		
+	public boolean delete(int id) {
+		return delete(selectById(id));		
 	}
 	
 	private Meal selectById(int id) {

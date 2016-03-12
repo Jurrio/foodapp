@@ -11,5 +11,5 @@ public interface MealCRUD {
 	List<Meal> read(String arg);
 	void update(int index, Meal meal);
 	boolean delete(Meal meal);
-	void delete(int index); //id
+	boolean delete(int index); //id
 }
