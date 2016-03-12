@@ -1,6 +1,6 @@
 package com.candylife.util;
 
-import com.candylife.constants.WebPage;
+import com.candylife.constants.Fields;
 import com.candylife.model.Desert;
 import com.candylife.model.MainCourse;
 import com.candylife.model.Meal;
@@ -9,11 +9,11 @@ import com.candylife.model.Soup;
 public class MealUtil {
 	public static Meal create(String type) {
 		switch (type) {
-		case WebPage.TYPE_SOUP:
+		case Fields.TYPE_SOUP:
 			return new Soup();
-		case WebPage.TYPE_MAIN_COURSE:
+		case Fields.TYPE_MAIN_COURSE:
 			return new MainCourse();
-		case WebPage.TYPE_DESERT:
+		case Fields.TYPE_DESERT:
 			return new Desert();
 		default:
 			return null;

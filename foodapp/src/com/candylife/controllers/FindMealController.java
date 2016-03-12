@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.candylife.constants.Servlet;
-import com.candylife.constants.WebPage;
+import com.candylife.constants.Fields;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.OutUtil;
@@ -21,7 +21,7 @@ public class FindMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String searchValue = req.getParameter(WebPage.SEARCH);
+		String searchValue = req.getParameter(Fields.SEARCH);
 		
 		List<Meal> findResult = MealService.find(searchValue);
 		

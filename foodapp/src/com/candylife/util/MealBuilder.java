@@ -1,14 +1,14 @@
 package com.candylife.util;
 
-import com.candylife.constants.WebPage;
+import com.candylife.constants.Fields;
 
 public class MealBuilder {
 	private final String title;
 	private final double price;
 	private final String type; //TODO: change to enum
-	private String description = WebPage.NO_DESCRIPTION;
+	private String description = Fields.NO_DESCRIPTION;
 	private boolean available = false;
-	private String owner = WebPage.NO_OWNER;
+	private String owner = Fields.NO_OWNER;
 	
 	public MealBuilder(String title, String type, double price) {
 		this.title = title;
