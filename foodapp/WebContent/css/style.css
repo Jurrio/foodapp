@@ -30,3 +30,7 @@ body {
 .menu_link:hover {
     background-color: #884192;
 }
+
+.search-input {
+	size: 50; 
+}
