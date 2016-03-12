@@ -13,10 +13,6 @@ public class Meal {
 	private double price;
 	private String owner; //TODO: change to class Person after create it.
 	
-	public Meal() {
-		this.id = nextId();
-	}
-	
 	public Meal(MealBuilder builder) {
 		this.id = nextId();
 		this.title = builder.getTitle();
@@ -80,7 +76,7 @@ public class Meal {
 
 	@Override
 	public String toString() {
-		return title + " " + description + " " + price + " " + owner + " ";
+		return id + " " + title + " " + description + " " + price + " " + owner + " ";
 	}
 	
 	private int nextId() {
