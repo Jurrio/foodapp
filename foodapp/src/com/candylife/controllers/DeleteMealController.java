@@ -20,10 +20,6 @@ public class DeleteMealController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//Maybe ControllerUtil.checkParam should be called from Service layer?
-		
-		//Does this even work? Where do you get parameter from request?
-		
 		int id = ControllerUtil.checkId(req.getParameter(WebPage.ID), WebPage.NO_ID);
 		
 		boolean isDelete = MealService.delete(id);
