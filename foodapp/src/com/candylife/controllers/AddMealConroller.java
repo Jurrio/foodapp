@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.candylife.constants.Servlet;
-import com.candylife.constants.WebPage;
+import com.candylife.constants.Fields;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
 import com.candylife.util.MealBuilder;
+import com.candylife.util.OutUtil;
 
 @WebServlet (name = "AddMMealServlet", urlPatterns = "/addMeal")
 public class AddMealConroller extends HttpServlet {
@@ -22,12 +23,12 @@ public class AddMealConroller extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 				
-		String title = ControllerUtil.checkParam(req.getParameter(WebPage.TITLE), WebPage.NO_TITLE);
-		String description = ControllerUtil.checkParam(req.getParameter(WebPage.DESCRIPTION), WebPage.NO_DESCRIPTION);
-		String type = ControllerUtil.checkParam(req.getParameter(WebPage.TYPE), WebPage.NO_TYPE);
-		boolean available = ControllerUtil.checkParam(req.getParameter(WebPage.AVAILABLE));
-		double price = ControllerUtil.checkParam(req.getParameter(WebPage.PRICE), WebPage.NO_PRICE);
-		String owner = ControllerUtil.checkParam(req.getParameter(WebPage.OWNER), WebPage.NO_OWNER);
+		String title = ControllerUtil.checkParam(req.getParameter(Fields.TITLE), Fields.NO_TITLE);
+		String description = ControllerUtil.checkParam(req.getParameter(Fields.DESCRIPTION), Fields.NO_DESCRIPTION);
+		String type = ControllerUtil.checkParam(req.getParameter(Fields.TYPE), Fields.NO_TYPE);
+		boolean available = ControllerUtil.checkParam(req.getParameter(Fields.AVAILABLE));
+		double price = ControllerUtil.checkParam(req.getParameter(Fields.PRICE), Fields.NO_PRICE);
+		String owner = ControllerUtil.checkParam(req.getParameter(Fields.OWNER), Fields.NO_OWNER);
 		
 		Meal meal = new Meal(new MealBuilder(title, type, price).available(available).owner(owner).description(description));
 		
@@ -36,9 +37,7 @@ public class AddMealConroller extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		
 		if (isAdd) {
-			out.println(Servlet.ADD_SUCSEFULLY);
-			
-			out.println(meal.toString());
+			out.println(OutUtil.printMeal(meal));
 		} else {
 			out.println(Servlet.ADD_ERROR); //TODO: add error message
 		}
