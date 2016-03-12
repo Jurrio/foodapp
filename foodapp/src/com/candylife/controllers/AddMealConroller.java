@@ -24,14 +24,14 @@ public class AddMealConroller extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 				
 		String title = ControllerUtil.checkParam(req.getParameter(Fields.TITLE), Fields.NO_TITLE);
-//		String description = ControllerUtil.checkParam(req.getParameter(Fields.DESCRIPTION), Fields.NO_DESCRIPTION);
+		String description = ControllerUtil.checkParam(req.getParameter(Fields.DESCRIPTION), Fields.NO_DESCRIPTION);
 		String type = ControllerUtil.checkParam(req.getParameter(Fields.TYPE), Fields.NO_TYPE);
 		boolean available = ControllerUtil.checkParam(req.getParameter(Fields.AVAILABLE));
 		double price = ControllerUtil.checkParam(req.getParameter(Fields.PRICE), Fields.NO_PRICE);
 		String owner = ControllerUtil.checkParam(req.getParameter(Fields.OWNER), Fields.NO_OWNER);
 		
-		Meal meal = new Meal(new MealBuilder(title, type, price).available(available).owner(owner).description(Fields.NO_DESCRIPTION));
-		
+		Meal meal = new Meal(new MealBuilder(title, type, price).available(available).owner(owner).description(description));
+
 		boolean isAdd = MealService.add(meal);
 		
 		PrintWriter out = resp.getWriter();
