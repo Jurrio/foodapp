@@ -10,15 +10,6 @@ public class ControllerUtil {
 		return param != null;
 	}
 
-	public static String checkId(String id, String noId) {
-		try {
-			int casteId = Integer.parseInt(id);
-		} catch (NumberFormatException e) {
-			return noId;
-		} 
-		return id;
-	}
-
 	public static double checkParam(String parameter, double noPrice) {
 		double d;
 		try {
@@ -27,5 +18,15 @@ public class ControllerUtil {
 			d = 0.0;
 		}
 		return d;
+	}
+	
+	public static int checkId(String sId, int noId) {
+		int id;
+		try {
+			id = Integer.parseInt(sId);
+		} catch (NumberFormatException e) {
+			return noId;
+		} 
+		return id;
 	}
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.candylife.constants.Servlet;
 import com.candylife.constants.WebPage;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
@@ -23,12 +24,16 @@ public class DeleteMealController extends HttpServlet {
 		
 		//Does this even work? Where do you get parameter from request?
 		
-		String id = ControllerUtil.checkId(req.getParameter(WebPage.ID), WebPage.NO_ID);
+		int id = ControllerUtil.checkId(req.getParameter(WebPage.ID), WebPage.NO_ID);
 		
-		String result = MealService.delete(id);
+		boolean isDelete = MealService.delete(id);
 		
 		PrintWriter out = resp.getWriter();
-		out.println(result);
+		if (isDelete) {
+			out.println(Servlet.DELETE_SUCSEFULLY);
+		} else {
+			out.println(Servlet.DELETE_ERROR);
+		}
 	}
 
 }
