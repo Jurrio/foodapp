@@ -11,7 +11,6 @@ public abstract class Meal {
 	private boolean available;
 	private double price;
 	private String owner; //TODO: change to class Person after create it.
-	private Date time;
 	
 	public Meal() {
 		this.id = nextId();
@@ -41,10 +40,6 @@ public abstract class Meal {
 		return owner;
 	}
 
-	public Date getTime() {
-		return time;
-	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -65,13 +60,9 @@ public abstract class Meal {
 		this.owner = owner;
 	}
 
-	public void setTime(Date time) {
-		this.time = time;
-	}
-
 	@Override
 	public String toString() {
-		return title + " " + description + " " + price + " " + owner + " " + time;
+		return title + " " + description + " " + price + " " + owner + " ";
 	}
 	
 	private int nextId() {
