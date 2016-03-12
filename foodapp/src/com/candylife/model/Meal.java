@@ -8,6 +8,7 @@ public class Meal {
 	private int id;
 	private String title;
 	private String description;
+	private String type; //TODO: make enum for this field
 	private boolean available;
 	private double price;
 	private String owner; //TODO: change to class Person after create it.
@@ -37,6 +38,10 @@ public class Meal {
 		return description;
 	}
 
+	public String getType() {
+		return type;
+	}
+
 	public boolean isAvailable() {
 		return available;
 	}
@@ -57,6 +62,10 @@ public class Meal {
 		this.description = description;
 	}
 
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
