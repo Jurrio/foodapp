@@ -7,7 +7,8 @@ public class Servlet {
 	public static final String DELETE_SUCSEFULLY = "Meal has been deleted";
 	public static final String DELETE_ERROR = "Meal has not been deleted!";
 	public static final String LIST_OF_MEALS = "List of meals:";
-	public static final String SEARCH_RESPONSE = String.format("List of meals on request \" %s \":\n");
+	public static final String SEARCH_RESPONSE = "List of meals on request \" %s \":\n";
 	public static final String SEARCH_NULL = "Empty set";
+	public static final String SIZE_OF_LIST = "Total size of list: %d meals";
 
 }
