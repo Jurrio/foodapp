@@ -28,9 +28,8 @@ public class AddMealConroller extends HttpServlet {
 		String available = ControllerUtil.checkParam(req.getParameter(WebPage.AVAILABLE), null);
 		String price = ControllerUtil.checkParam(req.getParameter(WebPage.PRICE), WebPage.NO_PRICE);
 		String owner = ControllerUtil.checkParam(req.getParameter(WebPage.OWNER), WebPage.NO_OWNER);
-		String time = ControllerUtil.checkParam(req.getParameter(WebPage.TIME), WebPage.NO_TIME);
 		
-		String isAdd = MealService.add(title, description, type, available, price, owner, time);
+		String isAdd = MealService.add(title, description, type, available, price, owner);
 		
 		PrintWriter out = resp.getWriter();
 		

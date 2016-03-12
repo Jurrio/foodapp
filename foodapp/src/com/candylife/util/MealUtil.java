@@ -23,12 +23,11 @@ public class MealUtil {
 	}
 
 	public static void init(Meal meal, String title, String description, boolean isAvailable, double dPrice,
-			String owner, Date date) {
+			String owner) {
 		meal.setTitle(title);
 		meal.setDescription(description);
 		meal.setAvailable(isAvailable);
 		meal.setPrice(dPrice);
 		meal.setOwner(owner);
-		meal.setTime(date);
 	}
 }

@@ -10,13 +10,12 @@ import com.candylife.util.CheckUtil;
 import com.candylife.util.MealUtil;
 
 public class MealService {
-	public static String add(String title, String description, String type, String available, String price, String owner, String time){
+	public static String add(String title, String description, String type, String available, String price, String owner){
 		boolean isAvailable = CheckUtil.parseAvailable(available);
 		double dPrice = CheckUtil.parsePrice(price);
-		Date date = new Date(); //TODO: date format in html
 		Meal meal = MealUtil.create(type);
 		if (new MealRepository().create(meal)) {
-			MealUtil.init(meal, title, description, isAvailable, dPrice, owner, date);
+			MealUtil.init(meal, title, description, isAvailable, dPrice, owner);
 			return Servlet.ADD_SUCSEFULLY + "\n" + meal.toString();
 		}
 		return Servlet.ADD_ERROR; 
