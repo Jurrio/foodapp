@@ -28,4 +28,26 @@ public class MealBuilder {
 		this.available = available;
 		return this;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+	
+	
 }

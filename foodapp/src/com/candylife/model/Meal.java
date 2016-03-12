@@ -2,6 +2,8 @@ package com.candylife.model;
 
 import java.util.Date;
 
+import com.candylife.util.MealBuilder;
+
 public abstract class Meal {
 	private static int countId = 0;
 	
@@ -14,6 +16,15 @@ public abstract class Meal {
 	
 	public Meal() {
 		this.id = nextId();
+	}
+	
+	public Meal(MealBuilder builder) {
+		this();
+		this.title = builder.getTitle();
+		this.description = builder.getDescription();
+		this.available = builder.isAvailable();
+		this.price = builder.getPrice();
+		this.owner = builder.getOwner();
 	}
 
 	public int getId() {
