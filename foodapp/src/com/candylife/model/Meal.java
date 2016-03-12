@@ -1,7 +1,5 @@
 package com.candylife.model;
 
-import java.util.Date;
-
 import com.candylife.util.MealBuilder;
 
 public abstract class Meal {

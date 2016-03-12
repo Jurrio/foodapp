@@ -1,7 +1,5 @@
 package com.candylife.util;
 
-import java.util.Date;
-
 import com.candylife.constants.WebPage;
 import com.candylife.model.Desert;
 import com.candylife.model.MainCourse;

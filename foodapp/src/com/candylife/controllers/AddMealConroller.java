@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.candylife.constants.Servlet;
 import com.candylife.constants.WebPage;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
