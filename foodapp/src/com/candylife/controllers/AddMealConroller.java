@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.candylife.constants.ServletConstant;
 import com.candylife.builder.MealBuilder;
 import com.candylife.builder.MessageBuilder;
+import com.candylife.constants.ServletConstant;
 import com.candylife.constants.RequestParam;
 import com.candylife.enums.Type;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.Parser;
+import com.candylife.util.MealUtil;
 
 @WebServlet (name = "AddMealServlet", urlPatterns = "/addMeal")
 public class AddMealConroller extends HttpServlet {
@@ -31,7 +32,7 @@ public class AddMealConroller extends HttpServlet {
 		double price = Parser.parsePrice(req.getParameter(RequestParam.PRICE));
 		String owner = req.getParameter(RequestParam.OWNER);
 		
-		Meal meal = new Meal(new MealBuilder(title, type, price).available(available).owner(owner).description(description));
+		Meal meal = MealUtil.create((new MealBuilder(title, type, price).available(available).owner(owner).description(description)));
 
 		boolean isAdded = MealService.add(meal);
 		
