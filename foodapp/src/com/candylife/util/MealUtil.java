@@ -5,9 +5,8 @@ import com.candylife.model.Meal;
 
 public class MealUtil {
 
-	public static Meal create(MealBuilder mealBuilder) {
-		Meal meal = new Meal(mealBuilder);
-		return meal;
+	public static Meal create(MealBuilder mealBuilder) throws NullPointerException {
+		return new Meal(mealBuilder);
 	}
 	
 }

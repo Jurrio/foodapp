@@ -31,17 +31,20 @@ public class AddMealConroller extends HttpServlet {
 		boolean available = Parser.parseAvailable(req.getParameter(RequestParam.AVAILABLE));
 		double price = Parser.parsePrice(req.getParameter(RequestParam.PRICE));
 		String owner = req.getParameter(RequestParam.OWNER);
-		
-		Meal meal = MealUtil.create((new MealBuilder(title, type, price).available(available).owner(owner).description(description)));
 
-		boolean isAdded = MealService.add(meal);
-		
 		PrintWriter out = resp.getWriter();
 		
-		if (isAdded) {
-			out.println(MessageBuilder.buildStringFromMeal(meal));
-		} else {
+		try {
+			Meal meal = MealUtil.create((new MealBuilder(title, type, price).available(available).owner(owner).description(description)));
+
+			boolean isAdded = MealService.add(meal);
+			if (isAdded) {
+				out.println(MessageBuilder.buildStringFromMeal(meal));
+			} else {
+				out.println(ServletConstant.ADD_ERROR);
+			}
+		} catch (NullPointerException e) {
 			out.println(ServletConstant.ADD_ERROR);
-		}
+		} 
 	}	
 }
