@@ -1,19 +1,20 @@
 package com.candylife.util;
 
+import com.candylife.enums.Type;
+
 public class Parser {
 
-	public static double parsePrice(String price) {
-		double result;
-		try {
-			result = Double.parseDouble(price);
-		} catch (NumberFormatException e) {
-			result = 0.0;
-		}
+	public static double parsePrice(String price) throws NumberFormatException {
+		double result = Double.parseDouble(price);
 		return result;
 	}
 
 	public static boolean parseAvailable(String available) {
 		return available != null;
+	}
+
+	public static Type parseType(String parameter) {
+		return Type.valueOf(parameter);
 	}
 
 }
