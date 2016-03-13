@@ -1,16 +1,17 @@
 package com.candylife.builder;
 
 import com.candylife.constants.RequestParam;
+import com.candylife.enums.Type;
 
 public class MealBuilder {
 	private final String title;
 	private final double price;
-	private final String type; //TODO: change to enum
+	private final Type type; //TODO: change to enum
 	private String description = RequestParam.NO_DESCRIPTION;
 	private boolean available = false;
 	private String owner = RequestParam.NO_OWNER;
 	
-	public MealBuilder(String title, String type, double price) {
+	public MealBuilder(String title, Type type, double price) {
 		this.title = title;
 		this.type = type;
 		this.price = price;
@@ -35,7 +36,7 @@ public class MealBuilder {
 		return title;
 	}
 	
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 

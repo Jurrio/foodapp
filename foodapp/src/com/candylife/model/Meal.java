@@ -1,6 +1,7 @@
 package com.candylife.model;
 
 import com.candylife.builder.MealBuilder;
+import com.candylife.enums.Type;
 
 public class Meal {
 	private static int countId = 0;
@@ -8,7 +9,7 @@ public class Meal {
 	private int id;
 	private String title;
 	private String description;
-	private String type; //TODO: make enum for this field
+	private Type type;
 	private boolean available;
 	private double price;
 	private String owner; //TODO: change to class Person after create it.
@@ -16,6 +17,7 @@ public class Meal {
 	public Meal(MealBuilder builder) {
 		this.id = nextId();
 		this.title = builder.getTitle();
+		this.type = builder.getType();
 		this.description = builder.getDescription();
 		this.available = builder.isAvailable();
 		this.price = builder.getPrice();
@@ -34,7 +36,7 @@ public class Meal {
 		return description;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
@@ -58,7 +60,7 @@ public class Meal {
 		this.description = description;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 	
