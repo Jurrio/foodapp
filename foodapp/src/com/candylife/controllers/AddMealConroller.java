@@ -18,7 +18,7 @@ import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.Parser;
 
-@WebServlet (name = "AddMMealServlet", urlPatterns = "/addMeal")
+@WebServlet (name = "AddMealServlet", urlPatterns = "/addMeal")
 public class AddMealConroller extends HttpServlet {
 
 	@Override
