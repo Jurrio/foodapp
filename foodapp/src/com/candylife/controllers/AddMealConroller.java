@@ -32,14 +32,14 @@ public class AddMealConroller extends HttpServlet {
 		
 		Meal meal = new Meal(new MealBuilder(title, type, price).available(available).owner(owner).description(description));
 
-		boolean isAdd = MealService.add(meal);
+		boolean isAdded = MealService.add(meal);
 		
 		PrintWriter out = resp.getWriter();
 		
-		if (isAdd) {
+		if (isAdded) {
 			out.println(OutUtil.printMeal(meal));
 		} else {
-			out.println(ServletConstant.ADD_ERROR); //TODO: add error message
+			out.println(ServletConstant.ADD_ERROR);
 		}
 	}	
 }
