@@ -24,7 +24,7 @@ public class ListMealController extends HttpServlet {
 		List<Meal> allMeals = MealService.showAll();
 		
 		PrintWriter writer = resp.getWriter();
-		if (allMeals.isEmpty()) {
+		if (!allMeals.isEmpty()) {
 			writer.println(MessageBuilder.buildStringFromList(allMeals));
 		} else {
 			writer.println(ServletConstant.EMPTY_SET);
