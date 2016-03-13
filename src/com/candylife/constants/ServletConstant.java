@@ -10,6 +10,8 @@ public class ServletConstant {
 	public static final String UNKNOWN_EXCEPTION = "Unknown exception";
 	
 	public static final String SEARCH_RESPONSE = "List of meals on request \" %s \":\n";
+	public static final String SEARCH_TOO_MANY_WORD = "Please, input one word in the search field";
+	public static final String SEARCH_EMPTY_QUERY = "Please, fill the search field";
 	public static final String EMPTY_SET = "Empty set";
 	
 	public static final String LIST_OF_MEALS = "List of meals:";

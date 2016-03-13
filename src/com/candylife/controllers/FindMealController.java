@@ -11,25 +11,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.candylife.constants.ServletConstant;
+import com.candylife.exception.SearchEmptyException;
+import com.candylife.exception.SearchManyParamException;
 import com.candylife.builder.MessageBuilder;
 import com.candylife.constants.RequestParam;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
+import com.candylife.util.CheckUtil;
 
 @WebServlet(name = "FindMealServtet", urlPatterns = "/findMeal")
 public class FindMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String searchValue = req.getParameter(RequestParam.SEARCH);
-		
-		List<Meal> findResult = MealService.find(searchValue);
-		
 		PrintWriter out = resp.getWriter();
-		if (!findResult.isEmpty()) {
-			out.println(MessageBuilder.buildStringFromList(findResult));
-		} else {
-			out.println(ServletConstant.EMPTY_SET);
+		
+		try {
+			String searchValue = CheckUtil.checkSearchvalue(RequestParam.SEARCH);
+			List<Meal> findResult = MealService.find(searchValue);
+			
+			if (!findResult.isEmpty()) {
+				out.println(MessageBuilder.buildStringFromList(findResult));
+			} else {
+				out.println(ServletConstant.EMPTY_SET);
+			}
+
+		} catch (SearchManyParamException e) {
+			out.println(ServletConstant.SEARCH_TOO_MANY_WORD);
+		} catch (SearchEmptyException e) {
+			out.println(ServletConstant.SEARCH_EMPTY_QUERY);
 		}
+		
 	}
 }
