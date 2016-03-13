@@ -45,6 +45,10 @@ public class AddMealConroller extends HttpServlet {
 			}
 		} catch (NullPointerException e) {
 			out.println(ServletConstant.ADD_ERROR);
-		} 
+		} catch (IllegalArgumentException e) {
+			out.println(ServletConstant.TYPE_ERROR);
+		} catch (Exception e) {
+			out.println(ServletConstant.UNKNOWN_EXCEPTION);
+		}
 	}	
 }
