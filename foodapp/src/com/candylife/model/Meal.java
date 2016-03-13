@@ -1,6 +1,6 @@
 package com.candylife.model;
 
-import com.candylife.util.MealBuilder;
+import com.candylife.builder.MealBuilder;
 
 public class Meal {
 	private static int countId = 0;
