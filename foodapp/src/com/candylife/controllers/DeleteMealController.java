@@ -22,10 +22,10 @@ public class DeleteMealController extends HttpServlet {
 		
 		int id = ControllerUtil.checkId(req.getParameter(RequestParam.ID), RequestParam.NO_ID);
 		
-		boolean isDelete = MealService.delete(id);
+		boolean isDeleted = MealService.delete(id);
 		
 		PrintWriter out = resp.getWriter();
-		if (isDelete) {
+		if (isDeleted) {
 			out.println(ServletConstant.DELETE_SUCSEFULLY);
 		} else {
 			out.println(ServletConstant.DELETE_ERROR);
