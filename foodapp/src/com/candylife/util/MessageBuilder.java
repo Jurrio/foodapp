@@ -6,9 +6,9 @@ import com.candylife.constants.RequestParam;
 import com.candylife.constants.ServletConstant;
 import com.candylife.model.Meal;
 
-public class OutUtil {
+public class MessageBuilder {
 
-	public static String printList(List<Meal> listMeal) {
+	public static String buildStringFromList(List<Meal> listMeal) {
 		StringBuilder builder = new StringBuilder(ServletConstant.LIST_OF_MEALS);
 		for (Meal meal : listMeal) {
 			builder.append(meal.toString());
@@ -18,7 +18,7 @@ public class OutUtil {
 		return builder.toString();
 	}
 
-	public static String printMeal(Meal meal) {
+	public static String buildStringFromMeal(Meal meal) {
 		StringBuilder builder = new StringBuilder(ServletConstant.ADD_SUCSEFULLY + "\n");
 		builder.append(RequestParam.ID + ": " + meal.getId() + "\n");
 		builder.append(RequestParam.TITLE + ": " + meal.getTitle() + "\n");

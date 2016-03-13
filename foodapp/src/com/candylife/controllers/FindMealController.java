@@ -14,7 +14,7 @@ import com.candylife.constants.ServletConstant;
 import com.candylife.constants.RequestParam;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
-import com.candylife.util.OutUtil;
+import com.candylife.util.MessageBuilder;
 
 @WebServlet(name = "FindMealServtet", urlPatterns = "/findMeal")
 public class FindMealController extends HttpServlet {
@@ -27,7 +27,7 @@ public class FindMealController extends HttpServlet {
 		
 		PrintWriter out = resp.getWriter();
 		if (!findResult.isEmpty()) {
-			out.println(OutUtil.printList(findResult));
+			out.println(MessageBuilder.buildStringFromList(findResult));
 		} else {
 			out.println(ServletConstant.EMPTY_SET);
 		}

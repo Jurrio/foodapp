@@ -15,7 +15,7 @@ import com.candylife.constants.RequestParam;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
-import com.candylife.util.OutUtil;
+import com.candylife.util.MessageBuilder;
 
 @WebServlet (name = "AddMMealServlet", urlPatterns = "/addMeal")
 public class AddMealConroller extends HttpServlet {
@@ -37,7 +37,7 @@ public class AddMealConroller extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		
 		if (isAdded) {
-			out.println(OutUtil.printMeal(meal));
+			out.println(MessageBuilder.buildStringFromMeal(meal));
 		} else {
 			out.println(ServletConstant.ADD_ERROR);
 		}

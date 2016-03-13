@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.candylife.constants.ServletConstant;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
-import com.candylife.util.OutUtil;
+import com.candylife.util.MessageBuilder;
 
 @WebServlet (name = "ListMealServlet", urlPatterns = "/listMeal")
 public class ListMealController extends HttpServlet {
@@ -25,7 +25,7 @@ public class ListMealController extends HttpServlet {
 		
 		PrintWriter writer = resp.getWriter();
 		if (allMeals.isEmpty()) {
-			writer.println(OutUtil.printList(allMeals));
+			writer.println(MessageBuilder.buildStringFromList(allMeals));
 		} else {
 			writer.println(ServletConstant.EMPTY_SET);
 		}
