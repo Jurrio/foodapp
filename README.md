@@ -1,6 +1,6 @@
 # foodapp
 
-**What news**
+**What news (13/03/2016)**
 
 Front end:
 * [Removed css from html, rename files to css-style](https://github.com/Jurrio/foodapp/commit/3c6037a378692522419859638e2a0f7a9b3831da)
