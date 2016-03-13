@@ -20,21 +20,20 @@ import com.candylife.util.Parser;
 import com.candylife.util.MealUtil;
 
 @WebServlet (name = "AddMealServlet", urlPatterns = "/addMeal")
-public class AddMealConroller extends HttpServlet {
+public class AddMealController extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-				
-		String title = req.getParameter(RequestParam.TITLE);
-		String description = req.getParameter(RequestParam.DESCRIPTION);
-		Type type = Parser.parseType(req.getParameter(RequestParam.TYPE));
-		boolean available = Parser.parseAvailable(req.getParameter(RequestParam.AVAILABLE));
-		double price = Parser.parsePrice(req.getParameter(RequestParam.PRICE));
-		String owner = req.getParameter(RequestParam.OWNER);
-
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IllegalArgumentException {
 		PrintWriter out = resp.getWriter();
 		
 		try {
+			String title = req.getParameter(RequestParam.TITLE);
+			String description = req.getParameter(RequestParam.DESCRIPTION);
+			Type type = Parser.parseType(req.getParameter(RequestParam.TYPE));
+			boolean available = Parser.parseAvailable(req.getParameter(RequestParam.AVAILABLE));
+			double price = Parser.parsePrice(req.getParameter(RequestParam.PRICE));
+			String owner = req.getParameter(RequestParam.OWNER);
+
 			Meal meal = MealUtil.create((new MealBuilder(title, type, price).available(available).owner(owner).description(description)));
 
 			boolean isAdded = MealService.add(meal);

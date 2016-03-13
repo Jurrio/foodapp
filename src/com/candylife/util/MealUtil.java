@@ -5,7 +5,7 @@ import com.candylife.model.Meal;
 
 public class MealUtil {
 
-	public static Meal create(MealBuilder mealBuilder) throws NullPointerException {
+	public static Meal create(MealBuilder mealBuilder) throws NullPointerException, IllegalArgumentException {
 		return new Meal(mealBuilder);
 	}
 	
