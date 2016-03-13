@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.candylife.constants.Servlet;
+import com.candylife.constants.ServletConstant;
 import com.candylife.constants.RequestParam;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
@@ -29,7 +29,7 @@ public class FindMealController extends HttpServlet {
 		if (findResult.size() > 0) {
 			out.println(OutUtil.printList(findResult));
 		} else {
-			out.println(Servlet.EMPTY_SET);
+			out.println(ServletConstant.EMPTY_SET);
 		}
 	}
 }

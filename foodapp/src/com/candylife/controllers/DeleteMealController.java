@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.candylife.constants.Servlet;
+import com.candylife.constants.ServletConstant;
 import com.candylife.constants.RequestParam;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
@@ -26,9 +26,9 @@ public class DeleteMealController extends HttpServlet {
 		
 		PrintWriter out = resp.getWriter();
 		if (isDelete) {
-			out.println(Servlet.DELETE_SUCSEFULLY);
+			out.println(ServletConstant.DELETE_SUCSEFULLY);
 		} else {
-			out.println(Servlet.DELETE_ERROR);
+			out.println(ServletConstant.DELETE_ERROR);
 		}
 	}
 

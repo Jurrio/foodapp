@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.candylife.constants.Servlet;
+import com.candylife.constants.ServletConstant;
 import com.candylife.constants.RequestParam;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
@@ -39,7 +39,7 @@ public class AddMealConroller extends HttpServlet {
 		if (isAdd) {
 			out.println(OutUtil.printMeal(meal));
 		} else {
-			out.println(Servlet.ADD_ERROR); //TODO: add error message
+			out.println(ServletConstant.ADD_ERROR); //TODO: add error message
 		}
 	}	
 }
