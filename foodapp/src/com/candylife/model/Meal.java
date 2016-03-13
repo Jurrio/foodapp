@@ -76,7 +76,7 @@ public class Meal {
 
 	@Override
 	public String toString() {
-		return id + " " + title + " " + description + " " + price + " " + owner + " ";
+		return id + " " + title + " " + type + " " + description + " " + price + " " + owner + " ";
 	}
 	
 	private int nextId() {
