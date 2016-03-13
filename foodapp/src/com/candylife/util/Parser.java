@@ -14,6 +14,6 @@ public class Parser {
 	}
 
 	public static Type parseType(String parameter) {
-		return Type.valueOf(parameter);
+		return Type.valueOf(parameter.toUpperCase());
 	}
 }
