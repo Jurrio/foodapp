@@ -1,6 +1,6 @@
 package com.candylife.util;
 
-public class CheckUtil {
+public class Parser {
 
 	public static double parsePrice(String price) {
 		double result;
