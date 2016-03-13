@@ -26,7 +26,7 @@ public class FindMealController extends HttpServlet {
 		List<Meal> findResult = MealService.find(searchValue);
 		
 		PrintWriter out = resp.getWriter();
-		if (findResult.size() > 0) {
+		if (!findResult.isEmpty()) {
 			out.println(OutUtil.printList(findResult));
 		} else {
 			out.println(ServletConstant.EMPTY_SET);
