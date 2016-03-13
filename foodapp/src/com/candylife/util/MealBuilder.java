@@ -1,14 +1,14 @@
 package com.candylife.util;
 
-import com.candylife.constants.Fields;
+import com.candylife.constants.RequestParam;
 
 public class MealBuilder {
 	private final String title;
 	private final double price;
 	private final String type; //TODO: change to enum
-	private String description = Fields.NO_DESCRIPTION;
+	private String description = RequestParam.NO_DESCRIPTION;
 	private boolean available = false;
-	private String owner = Fields.NO_OWNER;
+	private String owner = RequestParam.NO_OWNER;
 	
 	public MealBuilder(String title, String type, double price) {
 		this.title = title;

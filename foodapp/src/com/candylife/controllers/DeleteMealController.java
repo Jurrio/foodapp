@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.candylife.constants.Servlet;
-import com.candylife.constants.Fields;
+import com.candylife.constants.RequestParam;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
 
@@ -20,7 +20,7 @@ public class DeleteMealController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int id = ControllerUtil.checkId(req.getParameter(Fields.ID), Fields.NO_ID);
+		int id = ControllerUtil.checkId(req.getParameter(RequestParam.ID), RequestParam.NO_ID);
 		
 		boolean isDelete = MealService.delete(id);
 		

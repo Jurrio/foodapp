@@ -1,6 +1,6 @@
 package com.candylife.constants;
 
-public class Fields {
+public class RequestParam {
 	public static final String ID = "id";
 	public static final String TITLE = "title";
 	public static final String DESCRIPTION = "description";

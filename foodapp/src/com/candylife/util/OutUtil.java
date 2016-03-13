@@ -2,7 +2,7 @@ package com.candylife.util;
 
 import java.util.List;
 
-import com.candylife.constants.Fields;
+import com.candylife.constants.RequestParam;
 import com.candylife.constants.Servlet;
 import com.candylife.model.Meal;
 
@@ -20,13 +20,13 @@ public class OutUtil {
 
 	public static String printMeal(Meal meal) {
 		StringBuilder builder = new StringBuilder(Servlet.ADD_SUCSEFULLY + "\n");
-		builder.append(Fields.ID + ": " + meal.getId() + "\n");
-		builder.append(Fields.TITLE + ": " + meal.getTitle() + "\n");
-		builder.append(Fields.DESCRIPTION + ": " + meal.getDescription() + "\n");
-		builder.append(Fields.TYPE + ": " + meal.getType() + "\n");
-		builder.append(Fields.AVAILABLE + ": " + meal.isAvailable() + "\n");
-		builder.append(Fields.PRICE + ": " + meal.getPrice() + "\n");
-		builder.append(Fields.OWNER + ": " + meal.getOwner() + "\n");
+		builder.append(RequestParam.ID + ": " + meal.getId() + "\n");
+		builder.append(RequestParam.TITLE + ": " + meal.getTitle() + "\n");
+		builder.append(RequestParam.DESCRIPTION + ": " + meal.getDescription() + "\n");
+		builder.append(RequestParam.TYPE + ": " + meal.getType() + "\n");
+		builder.append(RequestParam.AVAILABLE + ": " + meal.isAvailable() + "\n");
+		builder.append(RequestParam.PRICE + ": " + meal.getPrice() + "\n");
+		builder.append(RequestParam.OWNER + ": " + meal.getOwner() + "\n");
 		return builder.toString();
 	}
 
