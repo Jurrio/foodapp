@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.candylife.builder.MessageBuilder;
 import com.candylife.constants.ServletConstant;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
-import com.candylife.util.MessageBuilder;
 
 @WebServlet (name = "ListMealServlet", urlPatterns = "/listMeal")
 public class ListMealController extends HttpServlet {

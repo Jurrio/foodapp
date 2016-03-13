@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.candylife.constants.ServletConstant;
 import com.candylife.builder.MealBuilder;
+import com.candylife.builder.MessageBuilder;
 import com.candylife.constants.RequestParam;
 import com.candylife.enums.Type;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.Parser;
-import com.candylife.util.MessageBuilder;
 
 @WebServlet (name = "AddMMealServlet", urlPatterns = "/addMeal")
 public class AddMealConroller extends HttpServlet {

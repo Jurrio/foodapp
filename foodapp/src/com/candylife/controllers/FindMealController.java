@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.candylife.constants.ServletConstant;
+import com.candylife.builder.MessageBuilder;
 import com.candylife.constants.RequestParam;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
-import com.candylife.util.MessageBuilder;
 
 @WebServlet(name = "FindMealServtet", urlPatterns = "/findMeal")
 public class FindMealController extends HttpServlet {
