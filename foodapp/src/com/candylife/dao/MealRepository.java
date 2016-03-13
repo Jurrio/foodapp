@@ -3,39 +3,32 @@ package com.candylife.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.candylife.interfaces.MealCRUD;
 import com.candylife.model.Meal;
 
-public class MealRepository implements MealCRUD{
+public class MealRepository {
 	private static ArrayList<Meal> mealList = new ArrayList<>();
 
-	@Override
 	public boolean create(Meal meal) {
 		mealList.add(meal);
 		return true;
 	}
 
-	@Override
 	public Meal read(int id) {
 		return selectById(id);
 	}
 
-	@Override
 	public List<Meal> read() {
 		return mealList;
 	}
 	
-	@Override
 	public List<Meal> read(String search) {
 		return find(search);
 	}
 
-	@Override
 	public void update(int index, Meal meal) {
 		mealList.set(index, meal);		
 	}
 
-	@Override
 	public boolean delete(Meal meal) {
 		if (meal != null) {
 			mealList.remove(meal);
@@ -44,7 +37,6 @@ public class MealRepository implements MealCRUD{
 		return false;
 	}
 	
-	@Override
 	public boolean delete(int id) {
 		return delete(selectById(id));		
 	}
