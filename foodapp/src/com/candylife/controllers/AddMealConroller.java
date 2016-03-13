@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.candylife.constants.ServletConstant;
 import com.candylife.builder.MealBuilder;
 import com.candylife.constants.RequestParam;
+import com.candylife.enums.Type;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
@@ -25,7 +26,7 @@ public class AddMealConroller extends HttpServlet {
 				
 		String title = ControllerUtil.checkParam(req.getParameter(RequestParam.TITLE), RequestParam.NO_TITLE);
 		String description = ControllerUtil.checkParam(req.getParameter(RequestParam.DESCRIPTION), RequestParam.NO_DESCRIPTION);
-		String type = ControllerUtil.checkParam(req.getParameter(RequestParam.TYPE), RequestParam.NO_TYPE);
+		Type type = ControllerUtil.checkParam(req.getParameter(RequestParam.TYPE), RequestParam.NO_TYPE);
 		boolean available = ControllerUtil.checkParam(req.getParameter(RequestParam.AVAILABLE));
 		double price = ControllerUtil.checkParam(req.getParameter(RequestParam.PRICE), RequestParam.NO_PRICE);
 		String owner = ControllerUtil.checkParam(req.getParameter(RequestParam.OWNER), RequestParam.NO_OWNER);
