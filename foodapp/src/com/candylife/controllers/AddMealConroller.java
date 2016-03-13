@@ -27,9 +27,9 @@ public class AddMealConroller extends HttpServlet {
 		String title = req.getParameter(RequestParam.TITLE);
 		String description = req.getParameter(RequestParam.DESCRIPTION);
 		Type type = Parser.parseType(req.getParameter(RequestParam.TYPE));
-		boolean available = ControllerUtil.checkParam(req.getParameter(RequestParam.AVAILABLE));
-		double price = ControllerUtil.checkParam(req.getParameter(RequestParam.PRICE), RequestParam.NO_PRICE);
-		String owner = ControllerUtil.checkParam(req.getParameter(RequestParam.OWNER), RequestParam.NO_OWNER);
+		boolean available = Parser.parseAvailable(req.getParameter(RequestParam.AVAILABLE));
+		double price = Parser.parsePrice(req.getParameter(RequestParam.PRICE));
+		String owner = req.getParameter(RequestParam.OWNER);
 		
 		Meal meal = new Meal(new MealBuilder(title, type, price).available(available).owner(owner).description(description));
 
