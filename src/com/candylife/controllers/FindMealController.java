@@ -37,9 +37,9 @@ public class FindMealController extends HttpServlet {
 			}
 
 		} catch (SearchManyParamException e) {
-			out.println(ServletConstant.SEARCH_TOO_MANY_WORD);
+			out.println(e.getMessage());
 		} catch (SearchEmptyException e) {
-			out.println(ServletConstant.SEARCH_EMPTY_QUERY);
+			out.println(e.getMessage());
 		}
 		
 	}
