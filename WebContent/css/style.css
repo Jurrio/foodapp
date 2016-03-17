@@ -34,3 +34,31 @@ body {
 .search-input {
 	size: 50; 
 }
+
+.about {
+	width: 25%;
+}
+
+.main-food-img {
+	width: 50%;
+}
+
+.dash_table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 100%
+}
+
+.dash_table td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	height: 25px;
+    vertical-align: bottom;
+}
+
+.disabled {
+	background-color: #DEAE61;
+	border: none;
+	font-size: 14px;
+	color: black;
+}
