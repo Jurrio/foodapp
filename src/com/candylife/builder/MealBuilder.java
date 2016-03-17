@@ -2,6 +2,7 @@ package com.candylife.builder;
 
 import com.candylife.constants.RequestParam;
 import com.candylife.enums.Type;
+import com.candylife.model.Meal;
 
 public class MealBuilder {
 	private final String title;
@@ -54,6 +55,15 @@ public class MealBuilder {
 
 	public String getOwner() {
 		return owner;
+	}
+
+	public Meal build() {
+		Meal meal = new Meal(title, price);
+		meal.setType(type);
+		meal.setDescription(description);
+		meal.setAvailable(available);
+		meal.setOwner(owner);
+		return meal;
 	}
 	
 	
