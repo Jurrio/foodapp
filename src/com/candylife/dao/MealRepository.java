@@ -10,8 +10,7 @@ public class MealRepository {
 
 	public static boolean add(Meal meal) {
 		mealList.add(meal);
-		if (mealList.contains(meal)) return true;
-		return false;
+		return mealList.contains(meal);
 	}
 	
 	public static boolean delete(int id) {
