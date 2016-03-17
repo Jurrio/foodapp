@@ -23,6 +23,11 @@ public class Meal {
 		this.price = builder.getPrice();
 		this.owner = builder.getOwner();
 	}
+	
+	public Meal(String title, double price) {
+		this.title = title;
+		this.price = price;
+	}
 
 	public int getId() {
 		return id;
