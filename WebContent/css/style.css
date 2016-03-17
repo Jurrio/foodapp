@@ -43,13 +43,13 @@ body {
 	width: 50%;
 }
 
-.dash_table {
+.dash-table {
 	border: 1px solid black;
 	border-collapse: collapse;
 	width: 100%
 }
 
-.dash_table td {
+.dash-table td {
 	border: 1px solid black;
 	border-collapse: collapse;
 	height: 25px;
