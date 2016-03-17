@@ -34,7 +34,7 @@ public class AddMealController extends HttpServlet {
 			double price = Parser.parsePrice(req.getParameter(RequestParam.PRICE));
 			String owner = req.getParameter(RequestParam.OWNER);
 
-			Meal meal = MealUtil.create((new MealBuilder(title, type, price).available(available).owner(owner).description(description)));
+			Meal meal = new MealBuilder(title, type, price).available(available).owner(owner).description(description).build();
 
 			boolean isAdded = MealService.add(meal);
 			if (isAdded) {
