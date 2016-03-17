@@ -1,5 +1,18 @@
 # foodapp
 
+**What news (17/03/2016)**
+
+Front End: 
+* [code refactoring in html style]()
+
+Server side:
+* [removed using constructor Meal(MealBuilder)]()
+* [added messages in custom in custom exception]()
+* [small fix in CheckUtil]()
+
+DAO Layer:
+* [small fix in MealRepository]()
+
 **What news (13/03/2016)**
 
 Front end:
