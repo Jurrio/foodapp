@@ -14,6 +14,7 @@ public class Meal {
 	private double price;
 	private String owner; //TODO: change to class Person after create it.
 	
+	@Deprecated
 	public Meal(MealBuilder builder) {
 		this.id = nextId();
 		this.title = builder.getTitle();
