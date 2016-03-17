@@ -10,16 +10,16 @@ body {
     background-color: #333;
 }
 
-.header_menu_item {
+.header-menu-item {
     float: left;
 }
 
-.active_header_menu_item {
+.active-header-menu-item {
 	float: left;
 	background-color: #4CAF50;
 }
 
-.menu_link {
+.menu-link {
     display: block;
     color: white;
     text-align: center;
@@ -27,7 +27,7 @@ body {
     text-decoration: none;
 }
 
-.menu_link:hover {
+.menu-link:hover {
     background-color: #884192;
 }
 
