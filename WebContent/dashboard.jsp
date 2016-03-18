@@ -9,9 +9,9 @@
 	
 	<body>
 		<ul class="header">
-			<li class=header-menu-item><a href="index.html" class="menu-link">Home</a></li>
-			<li class=header-menu-item><a href="add.html" class="menu-link">Add</a></li>
-			<li class=active-header-menu-item><a href="dashboard.html" class="menu-link">Dashboard</a></li>
+			<li class=header-menu-item><a href="index.jsp" class="menu-link">Home</a></li>
+			<li class=header-menu-item><a href="add.jsp" class="menu-link">Add</a></li>
+			<li class=active-header-menu-item><a href="dashboard.jsp" class="menu-link">Dashboard</a></li>
 		</ul>
 		<br>
 		<form action="findMeal" method="get">
