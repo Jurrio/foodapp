@@ -34,11 +34,11 @@
 				<% for (Meal meal : MealService.showAll()) { %>
 				<tr>
 					<td>1</td>
-					<td><input class="disabled" name="title" type="text" value="<% meal.getTitle(); %>" disabled></td>
-					<td><input class="disabled" name="description" type="text" value="<%meal.getDescription(); %>" disabled></td>
-					<td><input class="disabled" name="available" type="text" value="<%meal.isAvailable(); %>" disabled></td>
-					<td><input class="disabled" name="price" type="text" value="<%meal.getPrice(); %>" disabled></td>
-					<td><input class="disabled" name="owner" type="text" value="<%meal.getOwner(); %>" disabled></td>
+					<td><input class="disabled" name="title" type="text" value="<% meal.getTitle(); %>" readonly></td>
+					<td><input class="disabled" name="description" type="text" value="<%meal.getDescription(); %>" readonly></td>
+					<td><input class="disabled" name="available" type="text" value="<%meal.isAvailable(); %>" readonly></td>
+					<td><input class="disabled" name="price" type="text" value="<%meal.getPrice(); %>" readonly></td>
+					<td><input class="disabled" name="owner" type="text" value="<%meal.getOwner(); %>" readonly></td>
 					<td><input type="submit" value="Delete"></td>
 				</tr>
 				<% } %>
