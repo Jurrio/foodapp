@@ -32,15 +32,15 @@
 					<td></td>
 				</tr>
 				<% for (Meal meal : MealService.showAll()) { %>
-				<tr>
-					<td><%= meal.getId() %></td>
-					<td><input class="disabled" name="title" type="text" value="<%= meal.getTitle() %>" readonly></td>
-					<td><input class="disabled" name="description" type="text" value="<%= meal.getDescription() %>" readonly></td>
-					<td><input class="disabled" name="available" type="text" value="<%= meal.isAvailable() %>" readonly></td>
-					<td><input class="disabled" name="price" type="text" value="<%= meal.getPrice() %>" readonly></td>
-					<td><input class="disabled" name="owner" type="text" value="<%= meal.getOwner() %>" readonly></td>
-					<td><input type="submit" value="Delete"></td>
-				</tr>
+					<tr>
+						<td><%= meal.getId() %></td>
+						<td><input class="disabled" name="title" type="text" value="<%= meal.getTitle() %>" readonly></td>
+						<td><input class="disabled" name="description" type="text" value="<%= meal.getDescription() %>" readonly></td>
+						<td><input class="disabled" name="available" type="text" value="<%= meal.isAvailable() %>" readonly></td>
+						<td><input class="disabled" name="price" type="text" value="<%= meal.getPrice() %>" readonly></td>
+						<td><input class="disabled" name="owner" type="text" value="<%= meal.getOwner() %>" readonly></td>
+						<td><form action="deleteMeal" method="get"><input type="hidden" name="id" value="<%= meal.getId() %>" ><input type="submit" value="Delete"></form></td>
+					</tr>
 				<% } %>
 			<!--	<tr>
 					<td>2</td>
