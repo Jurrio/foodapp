@@ -17,13 +17,12 @@ import com.candylife.enums.Type;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.Parser;
-import com.candylife.util.MealUtil;
 
 @WebServlet (name = "AddMealServlet", urlPatterns = "/addMeal")
 public class AddMealController extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IllegalArgumentException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IllegalArgumentException {
 		PrintWriter out = resp.getWriter();
 		
 		try {
