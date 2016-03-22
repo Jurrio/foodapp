@@ -13,7 +13,7 @@
 			<li class=header-menu-item><a href="dashboardPage" class="menu-link">Dashboard</a></li>
 		</ul>
 		<p>Please add the product</p>
-		<form action="addMeal" method="get">
+		<form action="addMeal" method="post">
 			<table class="add-form">
 				<tr><td>Title</td><td><input type="text" name="title" required></td>
 				<tr><td>Description</td><td><textarea name="description" required></textarea></td><!-- TODO: сделать выше -->
