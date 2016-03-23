@@ -3,6 +3,7 @@ package com.candylife.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +25,7 @@ public class AddMealController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IllegalArgumentException {
 		PrintWriter out = resp.getWriter();
-		
+		RequestDispatcher disp = req.getRequestDispatcher("addresult.jsp");
 		try {
 			String title = req.getParameter(RequestParam.TITLE);
 			String description = req.getParameter(RequestParam.DESCRIPTION);
@@ -37,16 +38,21 @@ public class AddMealController extends HttpServlet {
 
 			boolean isAdded = MealService.add(meal);
 			if (isAdded) {
-				out.println(MessageBuilder.buildStringFromMeal(meal));
+				req.setAttribute("message", ServletConstant.ADD_SUCSEFULLY);
+				disp.forward(req, resp);
 			} else {
-				out.println(ServletConstant.ADD_ERROR);
+				req.setAttribute("message", ServletConstant.ADD_ERROR);
+				disp.forward(req, resp);
 			}
 		} catch (NullPointerException e) {
-			out.println(ServletConstant.ADD_ERROR);
+			req.setAttribute("message", ServletConstant.ADD_ERROR);
+			disp.forward(req, resp);
 		} catch (IllegalArgumentException e) {
-			out.println(ServletConstant.TYPE_ERROR);
+			req.setAttribute("message", ServletConstant.TYPE_ERROR);
+			disp.forward(req, resp);
 		} catch (Exception e) {
-			out.println(ServletConstant.UNKNOWN_EXCEPTION);
+			req.setAttribute("message", ServletConstant.UNKNOWN_EXCEPTION);
+			disp.forward(req, resp);
 		}
 	}	
 }
