@@ -62,3 +62,11 @@ body {
 	font-size: 14px;
 	color: black;
 }
+
+.success {
+	color: green;
+}
+
+.fail {
+	color: red;
+}

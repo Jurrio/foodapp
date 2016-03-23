@@ -38,19 +38,24 @@ public class AddMealController extends HttpServlet {
 
 			boolean isAdded = MealService.add(meal);
 			if (isAdded) {
+				req.setAttribute("success", "yes");
 				req.setAttribute("message", ServletConstant.ADD_SUCSEFULLY);
 				disp.forward(req, resp);
 			} else {
+				req.setAttribute("success", "no");
 				req.setAttribute("message", ServletConstant.ADD_ERROR);
 				disp.forward(req, resp);
 			}
 		} catch (NullPointerException e) {
+			req.setAttribute("success", "no");
 			req.setAttribute("message", ServletConstant.ADD_ERROR);
 			disp.forward(req, resp);
 		} catch (IllegalArgumentException e) {
+			req.setAttribute("success", "no");
 			req.setAttribute("message", ServletConstant.TYPE_ERROR);
 			disp.forward(req, resp);
 		} catch (Exception e) {
+			req.setAttribute("success", "no");
 			req.setAttribute("message", ServletConstant.UNKNOWN_EXCEPTION);
 			disp.forward(req, resp);
 		}
