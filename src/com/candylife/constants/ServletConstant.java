@@ -2,10 +2,10 @@ package com.candylife.constants;
 
 public class ServletConstant {
 
-	public static final String ADD_SUCSEFULLY = "Meal has been added sucñefully!";
+	public static final String ADD_SUCCEFULLY = "Meal has been added sucñefully!";
 	public static final String ADD_ERROR = "Meal has not been added!";
 	
-	public static final String DELETE_SUCSEFULLY = "Meal has been deleted";
+	public static final String DELETE_SUCCEFULLY = "Meal has been deleted";
 	public static final String DELETE_ERROR = "Meal has not been deleted!";
 	public static final String UNKNOWN_EXCEPTION = "Unknown exception";
 	
