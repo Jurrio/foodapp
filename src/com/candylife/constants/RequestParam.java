@@ -21,4 +21,8 @@ public class RequestParam {
 	public static final double NO_PRICE = 0.0;
 	public static final String NO_OWNER = "no owner";
 	public static final String NO_TYPE = "no type";
+	
+	public static final String SUCCESS = "success";
+	public static final String MESSAGE = "message";
+	public static final String MEAL_ID = "meal-id";
 }

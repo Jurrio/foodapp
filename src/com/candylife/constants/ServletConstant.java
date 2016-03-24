@@ -18,7 +18,7 @@ public class ServletConstant {
 	public static final String SIZE_OF_LIST = "Total size of list: %d meals";
 	public static final String TYPE_ERROR = "Please, select the type!";
 	
-	public static final String SUCCESS = "success";
-	public static final String MESSAGE = "message";
+	public static final String YES = "yes";
+	public static final String NO = "no";
 
 }
