@@ -21,7 +21,7 @@
 					<select name="type" required>
 						<option value="#" disabled>Select a type</option>
 						<option value="soup">Soup</option>
-						<option value="main-course">Main Course</option>
+						<option value="main-course">Main_Course</option>
 						<option value="desert">Desert</option>
 					</select></td></tr>
 				<tr><td>Available</td><td><input type="checkbox" name="available"></td></tr>
