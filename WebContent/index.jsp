@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<c:set var="pageName" scope="page" value="index" />
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -8,11 +9,7 @@
 	</head>
 	
 	<body>
-		<ul class="header">
-			<li class=active-header-menu-item><a href="homePage" class="menu-link">Home</a></li>
-			<li class=header-menu-item><a href="addPage" class="menu-link">Add</a></li>
-			<li class=header-menu-item><a href="dashboardPage" class="menu-link">Dashboard</a></li>
-		</ul>
+		<%@ include file="header.jsp"%>
 		
 		<h2>Site under construction</h2>
 		<p>You can move to another web-pages or <a href="#about">read about us</a></p>

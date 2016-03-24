@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+<c:set var="pageName" scope="page" value="dashboard" />
 <%@page import="com.candylife.model.Meal"%>
 <%@page import="com.candylife.service.MealService"%>
+
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -10,11 +12,7 @@
 	</head>
 	
 	<body>
-		<ul class="header">
-			<li class=header-menu-item><a href="homePage" class="menu-link">Home</a></li>
-			<li class=header-menu-item><a href="addPage" class="menu-link">Add</a></li>
-			<li class=active-header-menu-item><a href="dashboardPage" class="menu-link">Dashboard</a></li>
-		</ul>
+		<%@ include file="header.jsp"%>
 		<br>
 		<form action="findMeal" method="get">
 			<input class="search-input" type="search" name="search" value="search field">
