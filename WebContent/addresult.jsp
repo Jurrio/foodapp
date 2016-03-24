@@ -15,12 +15,16 @@
 			<li class=active-header-menu-item><a href="addPage" class="menu-link">Add</a></li>
 			<li class=header-menu-item><a href="dashboardPage" class="menu-link">Dashboard</a></li>
 		</ul>
-			<%  %>
-			<% if (request.getAttribute("success").equals("yes")) { %>
+		
+		<% if (request.getAttribute("success").equals("yes")) { %>
 			<p class=success> Success! <br>
-			<% } else { %>
+		
+		<% } else { %>
 			<p class=fail> Fail! <br>
-			<% } %>
-			Result: <%= request.getAttribute("message") %> </p>			
+		<% } %>
+
+		Result: <%= request.getAttribute("message") %> 
+		<br> 
+		</p>			
 	</body>
 </html>
