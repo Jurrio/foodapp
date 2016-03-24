@@ -24,7 +24,6 @@ public class AddMealController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IllegalArgumentException {
-		PrintWriter out = resp.getWriter();
 		RequestDispatcher disp = req.getRequestDispatcher("addresult.jsp");
 		try {
 			String title = req.getParameter(RequestParam.TITLE);
@@ -38,26 +37,27 @@ public class AddMealController extends HttpServlet {
 
 			boolean isAdded = MealService.add(meal);
 			if (isAdded) {
-				req.setAttribute("success", "yes");
-				req.setAttribute("message", ServletConstant.ADD_SUCSEFULLY);
+				setAttributes(req, ServletConstant.YES, ServletConstant.ADD_SUCCEFULLY);
+				req.setAttribute(RequestParam.MEAL_ID, meal.getId());
 				disp.forward(req, resp);
 			} else {
-				req.setAttribute("success", "no");
-				req.setAttribute("message", ServletConstant.ADD_ERROR);
+				setAttributes(req, ServletConstant.NO, ServletConstant.ADD_ERROR);
 				disp.forward(req, resp);
 			}
 		} catch (NullPointerException e) {
-			req.setAttribute("success", "no");
-			req.setAttribute("message", ServletConstant.ADD_ERROR);
+			setAttributes(req, ServletConstant.NO, ServletConstant.ADD_ERROR);
 			disp.forward(req, resp);
 		} catch (IllegalArgumentException e) {
-			req.setAttribute("success", "no");
-			req.setAttribute("message", ServletConstant.TYPE_ERROR);
+			setAttributes(req, ServletConstant.NO, ServletConstant.TYPE_ERROR);
 			disp.forward(req, resp);
 		} catch (Exception e) {
-			req.setAttribute("success", "no");
-			req.setAttribute("message", ServletConstant.UNKNOWN_EXCEPTION);
+			setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
 			disp.forward(req, resp);
 		}
 	}	
+	
+	private void setAttributes(HttpServletRequest req, String attrOne, String attrTwo) {
+		req.setAttribute(RequestParam.SUCCESS, attrOne);
+		req.setAttribute(RequestParam.MESSAGE, attrTwo);
+	}
 }
