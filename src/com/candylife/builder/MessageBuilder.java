@@ -19,7 +19,7 @@ public class MessageBuilder {
 	}
 
 	public static String buildStringFromMeal(Meal meal) {
-		StringBuilder builder = new StringBuilder(ServletConstant.ADD_SUCSEFULLY + "\n");
+		StringBuilder builder = new StringBuilder(ServletConstant.ADD_SUCCEFULLY + "\n");
 		builder.append(RequestParam.ID + ": " + meal.getId() + "\n");
 		builder.append(RequestParam.TITLE + ": " + meal.getTitle() + "\n");
 		builder.append(RequestParam.DESCRIPTION + ": " + meal.getDescription() + "\n");

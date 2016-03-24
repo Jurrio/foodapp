@@ -28,7 +28,7 @@ public class DeleteMealController extends HttpServlet {
 			boolean isDeleted = MealService.delete(id);
 			
 			if (isDeleted) {
-				out.println(ServletConstant.DELETE_SUCSEFULLY);
+				out.println(ServletConstant.DELETE_SUCCEFULLY);
 			} else {
 				out.println(ServletConstant.DELETE_ERROR);
 			}
