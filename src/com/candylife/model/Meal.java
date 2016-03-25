@@ -1,10 +1,8 @@
 package com.candylife.model;
 
-import com.candylife.builder.MealBuilder;
 import com.candylife.enums.Type;
 
 public class Meal {
-	private static int countId = 0;
 	
 	private int id;
 	private String title;
@@ -13,17 +11,6 @@ public class Meal {
 	private boolean available;
 	private double price;
 	private String owner; //TODO: change to class Person after create it.
-	
-	@Deprecated
-	public Meal(MealBuilder builder) {
-		this.id = nextId();
-		this.title = builder.getTitle();
-		this.type = builder.getType();
-		this.description = builder.getDescription();
-		this.available = builder.isAvailable();
-		this.price = builder.getPrice();
-		this.owner = builder.getOwner();
-	}
 	
 	public Meal(String title, double price) {
 		this.title = title;
@@ -89,10 +76,6 @@ public class Meal {
 	@Override
 	public String toString() {
 		return id + " " + title + " " + type + " " + description + " " + price + " " + owner + " ";
-	}
-	
-	private int nextId() {
-		return countId++;
 	}
 	
 }
