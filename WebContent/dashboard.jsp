@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<c:set var="pageName" scope="page" value="dashboard" />
 <%@page import="com.candylife.model.Meal"%>
 <%@page import="com.candylife.service.MealService"%>
 
