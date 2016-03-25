@@ -4,7 +4,7 @@ import com.candylife.model.Meal;
 
 public class MealToStringArrayConverter {
 	
-	public static String[] mealToStringArray(Meal meal) {
+	public static String[] convert(Meal meal) {
 		String[] mealArray = new String[6];
 		mealArray[0] = String.valueOf(meal.getId());
 		mealArray[1] = meal.getTitle();
