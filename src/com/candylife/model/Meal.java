@@ -64,11 +64,11 @@ public class Meal {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder(id).append(" ")
-				.append(title).append(" ")
-				.append(description).append(" ")
-				.append(price).append(" ")
-				.append(owner);
+		StringBuilder sb = new StringBuilder(id)
+				.append(" ").append(title)
+				.append(" ").append(description)
+				.append(" ").append(price)
+				.append(" ").append(owner);
 		return sb.toString();
 	}
 	
