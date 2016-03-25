@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +19,15 @@ import com.candylife.service.MealService;
 @WebServlet (name = "ListMealServlet", urlPatterns = "/listMeal")
 public class ListMealController extends HttpServlet {
 
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
+		disp.forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		List<Meal> allMeals = MealService.showAll();
 		

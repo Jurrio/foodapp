@@ -14,7 +14,7 @@
 	<body>
 		<%@ include file="header.jsp"%>
 		<br>
-		<form action="findMeal" method="get">
+		<form action="findMeal" method="post">
 			<input class="search-input" type="search" name="search" value="search field">
 			<input class="search-button" type="submit" value="search">	
 		</form>

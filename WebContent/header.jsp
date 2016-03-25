@@ -28,6 +28,6 @@
 				%> class="header-menu-item" <% 
 			} %> >
 			
-			<a href="dashboardPage" class="menu-link">Dashboard</a>
+			<a href="listMeal" class="menu-link">Dashboard</a>
 		</li>
 	</ul>
