@@ -1,13 +1,10 @@
 package com.candylife.model;
 
-import com.candylife.enums.Type;
-
 public class Meal {
 	
 	private int id;
 	private String title;
 	private String description;
-	private Type type;
 	private boolean available;
 	private double price;
 	private String owner; //TODO: change to class Person after create it.
@@ -28,11 +25,7 @@ public class Meal {
 	public String getDescription() {
 		return description;
 	}
-
-	public Type getType() {
-		return type;
-	}
-
+	
 	public boolean isAvailable() {
 		return available;
 	}
@@ -57,10 +50,6 @@ public class Meal {
 		this.description = description;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
-	}
-	
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
@@ -75,7 +64,7 @@ public class Meal {
 
 	@Override
 	public String toString() {
-		return id + " " + title + " " + type + " " + description + " " + price + " " + owner + " ";
+		return id + " " + title + " " + " " + description + " " + price + " " + owner + " ";
 	}
 	
 }
