@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<c:set var="pageName" scope="page" value="index" />
 <html>
 	<head>
 		<meta charset="UTF-8">
