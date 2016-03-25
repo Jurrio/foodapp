@@ -1,7 +1,6 @@
 package com.candylife.controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.candylife.builder.MealBuilder;
-import com.candylife.builder.MessageBuilder;
 import com.candylife.constants.ServletConstant;
 import com.candylife.constants.RequestParam;
 import com.candylife.enums.Type;
@@ -28,12 +26,11 @@ public class AddMealController extends HttpServlet {
 		try {
 			String title = req.getParameter(RequestParam.TITLE);
 			String description = req.getParameter(RequestParam.DESCRIPTION);
-			Type type = Parser.parseType(req.getParameter(RequestParam.TYPE));
 			boolean available = Parser.parseAvailable(req.getParameter(RequestParam.AVAILABLE));
 			double price = Parser.parsePrice(req.getParameter(RequestParam.PRICE));
 			String owner = req.getParameter(RequestParam.OWNER);
 
-			Meal meal = new MealBuilder(title, type, price).available(available).owner(owner).description(description).build();
+			Meal meal = new MealBuilder(title, price).available(available).owner(owner).description(description).build();
 
 			boolean isAdded = MealService.add(meal);
 			if (isAdded) {
