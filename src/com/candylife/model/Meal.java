@@ -71,5 +71,20 @@ public class Meal {
 				.append(" ").append(owner);
 		return sb.toString();
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if(this.getClass() != obj.getClass()) return false;
+		Meal other = (Meal) obj;
+		return this.title.equals(other.title) && this.price == other.price 
+				&& this.owner.equals(other.owner) && this.description.equals(other.description);
+	}
+
+	@Override
+	public int hashCode() {
+		return title.hashCode() + owner.hashCode() + description.hashCode() + (int) price * 100;
+	}
 	
 }
