@@ -14,13 +14,13 @@
 			<table class="add-form">
 				<tr><td>Title</td><td><input type="text" name="title" required></td>
 				<tr><td>Description</td><td><textarea name="description" required></textarea></td><!-- TODO: сделать выше -->
-				<tr><td>Type</td><td>
+				<!-- <tr><td>Type</td><td>
 					<select name="type" required>
 						<option value="#" disabled>Select a type</option>
 						<option value="soup">Soup</option>
 						<option value="main_course">Main Course</option>
 						<option value="desert">Desert</option>
-					</select></td></tr>
+					</select></td></tr>  -->
 				<tr><td>Available</td><td><input type="checkbox" name="available"></td></tr>
 				<tr><td>Price</td><td><input type="number" name="price" min=0 step="0.01" required></td></tr>
 				<tr><td>Owner</td><td><input type="text" name="owner" required></td></tr>
