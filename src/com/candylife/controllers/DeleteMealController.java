@@ -28,6 +28,7 @@ public class DeleteMealController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher disp = req.getRequestDispatcher("listMeal");
 		
 		PrintWriter out = resp.getWriter();
 		
@@ -37,14 +38,18 @@ public class DeleteMealController extends HttpServlet {
 			boolean isDeleted = MealService.delete(id);
 			
 			if (isDeleted) {
-				out.println(ServletConstant.DELETE_SUCCEFULLY);
+				setAttributes(req, ServletConstant.YES, ServletConstant.DELETE_SUCCEFULLY);
+				disp.forward(req, resp);
 			} else {
-				out.println(ServletConstant.DELETE_ERROR);
+				setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
+				disp.forward(req, resp);
 			}
 		} catch (NumberFormatException e) {
-			out.println(ServletConstant.DELETE_ERROR);
+			setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
+			disp.forward(req, resp);
 		} catch (Exception e) {
-			out.println(ServletConstant.UNKNOWN_EXCEPTION);
+			setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
+			disp.forward(req, resp);
 		}
 	}
 	

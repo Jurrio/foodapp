@@ -36,7 +36,7 @@
 						<td><input class="disabled" name="available" type="text" value="<%= meal.isAvailable() %>" readonly></td>
 						<td><input class="disabled" name="price" type="text" value="<%= meal.getPrice() %>" readonly></td>
 						<td><input class="disabled" name="owner" type="text" value="<%= meal.getOwner() %>" readonly></td>
-						<td><form action="deleteMeal" method="get"><input type="hidden" name="id" value="<%= meal.getId() %>" ><input type="submit" value="Delete"></form></td>
+						<td><form action="deleteMeal" method="post"><input type="hidden" name="id" value="<%= meal.getId() %>" ><input type="submit" value="Delete"></form></td>
 					</tr>
 				<% } %>
 			<!--	<tr>
