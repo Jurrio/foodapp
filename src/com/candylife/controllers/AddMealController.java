@@ -21,8 +21,14 @@ import com.candylife.util.Parser;
 public class AddMealController extends HttpServlet {
 
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher disp = req.getRequestDispatcher("add.jsp");
+		disp.forward(req, resp);
+	}
+
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IllegalArgumentException {
-		RequestDispatcher disp = req.getRequestDispatcher("addresult.jsp");
+		RequestDispatcher disp = req.getRequestDispatcher("add.jsp");
 		try {
 			String title = req.getParameter(RequestParam.TITLE);
 			String description = req.getParameter(RequestParam.DESCRIPTION);
