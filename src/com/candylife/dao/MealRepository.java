@@ -7,8 +7,10 @@ import com.candylife.model.Meal;
 
 public class MealRepository {
 	private static List<Meal> mealList = new ArrayList<>();
+	private static int id = 0;
 
 	public static boolean add(Meal meal) {
+		meal.setId(nextId());
 		mealList.add(meal);
 		return mealList.contains(meal);
 	}
@@ -39,5 +41,9 @@ public class MealRepository {
 
 	public static List<Meal> getAll() {
 		return mealList;
+	}
+	
+	private static int nextId() {
+		return ++id;
 	}
 }
