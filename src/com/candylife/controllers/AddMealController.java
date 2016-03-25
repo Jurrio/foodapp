@@ -15,6 +15,7 @@ import com.candylife.constants.RequestParam;
 import com.candylife.enums.Type;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
+import com.candylife.util.ControllerUtil;
 import com.candylife.util.Parser;
 
 @WebServlet (name = "AddMealServlet", urlPatterns = "/addMeal")
@@ -23,7 +24,7 @@ public class AddMealController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher disp = req.getRequestDispatcher("add.jsp");
-		setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
+		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
 		disp.forward(req, resp);
 	}
 
@@ -41,25 +42,25 @@ public class AddMealController extends HttpServlet {
 
 			boolean isAdded = MealService.add(meal);
 			if (isAdded) {
-				setAttributes(req, ServletConstant.YES, ServletConstant.ADD_SUCCEFULLY);
+				ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.ADD_SUCCEFULLY);
 				req.setAttribute(RequestParam.MEAL_ID, meal.getId());
 				disp.forward(req, resp);
 			} else {
-				setAttributes(req, ServletConstant.NO, ServletConstant.ADD_ERROR);
+				ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.ADD_ERROR);
 				disp.forward(req, resp);
 			}
 		} catch (NullPointerException e) {
-			setAttributes(req, ServletConstant.NO, ServletConstant.ADD_ERROR);
+			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.ADD_ERROR);
 			disp.forward(req, resp);
 		} catch (IllegalArgumentException e) {
-			setAttributes(req, ServletConstant.NO, ServletConstant.TYPE_ERROR);
+			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.TYPE_ERROR);
 			disp.forward(req, resp);
 		} catch (Exception e) {
-			setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
+			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
 			disp.forward(req, resp);
 		}
 	}	
-	
+	@Deprecated
 	private void setAttributes(HttpServletRequest req, String attrOne, String attrTwo) {
 		req.setAttribute(RequestParam.SUCCESS, attrOne);
 		req.setAttribute(RequestParam.MESSAGE, attrTwo);

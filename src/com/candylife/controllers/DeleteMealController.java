@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.candylife.constants.ServletConstant;
 import com.candylife.constants.RequestParam;
 import com.candylife.service.MealService;
+import com.candylife.util.ControllerUtil;
 import com.candylife.util.Parser;
 
 @WebServlet(name = "DeleteMealServlet", urlPatterns = "/deleteMeal")
@@ -22,7 +23,7 @@ public class DeleteMealController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher disp = req.getRequestDispatcher("listMeal");
-		setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
+		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
 		disp.forward(req, resp);
 	}	
 	
@@ -38,21 +39,22 @@ public class DeleteMealController extends HttpServlet {
 			boolean isDeleted = MealService.delete(id);
 			
 			if (isDeleted) {
-				setAttributes(req, ServletConstant.YES, ServletConstant.DELETE_SUCCEFULLY);
+				ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.DELETE_SUCCEFULLY);
 				disp.forward(req, resp);
 			} else {
-				setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
+				ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
 				disp.forward(req, resp);
 			}
 		} catch (NumberFormatException e) {
-			setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
+			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
 			disp.forward(req, resp);
 		} catch (Exception e) {
-			setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
+			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
 			disp.forward(req, resp);
 		}
 	}
 	
+	@Deprecated
 	private void setAttributes(HttpServletRequest req, String attrOne, String attrTwo) {
 		req.setAttribute(RequestParam.SUCCESS, attrOne);
 		req.setAttribute(RequestParam.MESSAGE, attrTwo);
