@@ -64,7 +64,12 @@ public class Meal {
 
 	@Override
 	public String toString() {
-		return id + " " + title + " " + " " + description + " " + price + " " + owner + " ";
+		StringBuilder sb = new StringBuilder(id).append(" ")
+				.append(title).append(" ")
+				.append(description).append(" ")
+				.append(price).append(" ")
+				.append(owner);
+		return sb.toString();
 	}
 	
 }
