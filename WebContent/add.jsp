@@ -26,6 +26,15 @@
 				<tr><td>Owner</td><td><input type="text" name="owner" required></td></tr>
 			</table>
 			<input type="submit" value="Add meal" name="ok-button">
+			<% if (request.getAttribute("success").equals("yes")) { %>
+				<p class=success> Success! <br>
+			<% } else if (request.getAttribute("success").equals("no")){ %>
+				<p class=fail> Fail! <br>
+			<% } else { %>
+				<p>
+			<% } %>
+
+			<%= request.getAttribute("message") %> 
 		</form>	
 	</body>
 </html>

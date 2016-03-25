@@ -23,6 +23,7 @@ public class AddMealController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher disp = req.getRequestDispatcher("add.jsp");
+		setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
 		disp.forward(req, resp);
 	}
 
