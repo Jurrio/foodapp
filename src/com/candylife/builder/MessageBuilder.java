@@ -23,7 +23,6 @@ public class MessageBuilder {
 		builder.append(RequestParam.ID + ": " + meal.getId() + "\n");
 		builder.append(RequestParam.TITLE + ": " + meal.getTitle() + "\n");
 		builder.append(RequestParam.DESCRIPTION + ": " + meal.getDescription() + "\n");
-		builder.append(RequestParam.TYPE + ": " + meal.getType() + "\n");
 		builder.append(RequestParam.AVAILABLE + ": " + meal.isAvailable() + "\n");
 		builder.append(RequestParam.PRICE + ": " + meal.getPrice() + "\n");
 		builder.append(RequestParam.OWNER + ": " + meal.getOwner() + "\n");
