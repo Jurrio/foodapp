@@ -2,7 +2,7 @@ package com.candylife.constants;
 
 public class ServletConstant {
 
-	public static final String ADD_SUCCEFULLY = "Meal has been added sucñefully!";
+	public static final String ADD_SUCCEFULLY = "Meal has been added succefully!";
 	public static final String ADD_ERROR = "Meal has not been added!";
 	
 	public static final String DELETE_SUCCEFULLY = "Meal has been deleted";
