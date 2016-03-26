@@ -1,7 +1,6 @@
 package com.candylife.controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,7 +18,8 @@ import com.candylife.util.Parser;
 @WebServlet(name = "DeleteMealServlet", urlPatterns = "/deleteMeal")
 public class DeleteMealController extends HttpServlet {
 
-	
+	private static final long serialVersionUID = -407738805277662420L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher disp = req.getRequestDispatcher("listMeal");
@@ -30,9 +30,7 @@ public class DeleteMealController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher disp = req.getRequestDispatcher("listMeal");
-		
-		PrintWriter out = resp.getWriter();
-		
+			
 		try {
 			int id = Parser.parseId(req.getParameter(RequestParam.ID));
 		
@@ -53,11 +51,4 @@ public class DeleteMealController extends HttpServlet {
 			disp.forward(req, resp);
 		}
 	}
-	
-	@Deprecated
-	private void setAttributes(HttpServletRequest req, String attrOne, String attrTwo) {
-		req.setAttribute(RequestParam.SUCCESS, attrOne);
-		req.setAttribute(RequestParam.MESSAGE, attrTwo);
-	}
-
 }
