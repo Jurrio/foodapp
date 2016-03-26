@@ -22,6 +22,8 @@ import com.candylife.util.CheckUtil;
 @WebServlet(name = "FindMealServtet", urlPatterns = "/findMeal")
 public class FindMealController extends HttpServlet {
 
+	private static final long serialVersionUID = -2982563367087578687L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
