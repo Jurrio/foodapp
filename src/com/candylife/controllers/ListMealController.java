@@ -19,7 +19,8 @@ import com.candylife.service.MealService;
 @WebServlet (name = "ListMealServlet", urlPatterns = "/listMeal")
 public class ListMealController extends HttpServlet {
 
-	
+	private static final long serialVersionUID = 2027448965537193995L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
