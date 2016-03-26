@@ -3,6 +3,9 @@ package com.candylife.exception;
 import com.candylife.constants.ExceptionMessage;
 
 public class SearchManyParamException extends Exception {
+	
+	private static final long serialVersionUID = 8227890952823692877L;
+
 	public SearchManyParamException() {
 		super();
 	}
