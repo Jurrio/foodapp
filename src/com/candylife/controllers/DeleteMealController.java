@@ -22,14 +22,14 @@ public class DeleteMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher disp = req.getRequestDispatcher("listMeal");
+		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
 		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
 		disp.forward(req, resp);
 	}	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher disp = req.getRequestDispatcher("listMeal");
+		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
 			
 		try {
 			int id = Parser.parseId(req.getParameter(RequestParam.ID));
