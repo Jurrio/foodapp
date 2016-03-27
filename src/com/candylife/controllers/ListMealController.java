@@ -1,7 +1,6 @@
 package com.candylife.controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.candylife.builder.MessageBuilder;
 import com.candylife.constants.ServletConstant;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
+import com.candylife.util.ControllerUtil;
 
 @WebServlet (name = "ListMealServlet", urlPatterns = "/listMeal")
 public class ListMealController extends HttpServlet {
@@ -24,19 +23,24 @@ public class ListMealController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
+		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
 		disp.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
 		List<Meal> allMeals = MealService.showAll();
 		
-		PrintWriter writer = resp.getWriter();
+		req.setAttribute("meals", allMeals);
+		
 		if (!allMeals.isEmpty()) {
-			writer.println(MessageBuilder.buildStringFromList(allMeals));
+			ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.DISPLAY_ALL);
+			disp.forward(req, resp);
 		} else {
-			writer.println(ServletConstant.EMPTY_SET);
+			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.EMPTY_SET);
+			disp.forward(req, resp);
+//			writer.println(ServletConstant.EMPTY_SET);
 		}
 	}
 }
