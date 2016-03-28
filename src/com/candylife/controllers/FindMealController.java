@@ -38,7 +38,7 @@ public class FindMealController extends HttpServlet {
 		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
 		
 		try {
-			String searchValue = CheckUtil.checkSearchvalue(RequestParam.SEARCH);
+			String searchValue = CheckUtil.checkSearchvalue(req.getParameter(RequestParam.SEARCH));
 			List<Meal> findResult = MealService.find(searchValue);
 			
 			if (!findResult.isEmpty()) {
