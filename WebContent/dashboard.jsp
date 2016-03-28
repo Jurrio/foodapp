@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.candylife.constants.ServletConstant"%>
 <%@page import="com.candylife.model.Meal"%>
 <%@page import="com.candylife.service.MealService"%>
 
@@ -18,6 +19,16 @@
 			<input class="search-button" type="submit" value="search">	
 		</form>
 		<br>
+		<% if (request.getAttribute("success").equals(ServletConstant.YES)) { %>
+			<p class="success">
+		<% } else if (request.getAttribute("success").equals(ServletConstant.NO)) { %>
+			<p class="fail">
+		<% } else { %>
+			<p>
+		<% } %>
+		<br>
+		<%= request.getAttribute("message") %>
+		
 			<table class="dash-table">
 				<tr>
 					<td>#</td>
