@@ -1,7 +1,6 @@
 package com.candylife.controllers;
 
 import java.io.IOException;
-//import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -34,7 +33,6 @@ public class FindMealController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		PrintWriter out = resp.getWriter();
 		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
 		
 		try {
@@ -43,22 +41,19 @@ public class FindMealController extends HttpServlet {
 			
 			if (!findResult.isEmpty()) {
 				ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.SEARCH_RESPONSE);
+//				req.setAttribute(RequestParam.RESULT_LIST, findResult);
 				disp.forward(req, resp);
-//				out.println(MessageBuilder.buildStringFromList(findResult));
 			} else {
 				ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.EMPTY_SET);
 				disp.forward(req, resp);
-//				out.println(ServletConstant.EMPTY_SET);
 			}
 
 		} catch (SearchManyParamException e) {
 			ControllerUtil.setAttributes(req, ServletConstant.NO, e.getMessage());
 			disp.forward(req, resp);
-//			out.println(e.getMessage());
 		} catch (SearchEmptyException e) {
 			ControllerUtil.setAttributes(req, ServletConstant.NO, e.getMessage());
 			disp.forward(req, resp);
-//			out.println(e.getMessage());
 		}
 	}
 }
