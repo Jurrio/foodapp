@@ -25,7 +25,7 @@ public class FindMealController extends HttpServlet {
 	private static final long serialVersionUID = -2982563367087578687L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		
 		try {
@@ -33,15 +33,15 @@ public class FindMealController extends HttpServlet {
 			List<Meal> findResult = MealService.find(searchValue);
 			
 			if (!findResult.isEmpty()) {
-				out.println(MessageBuilder.buildStringFromList(findResult));
+//				out.println(MessageBuilder.buildStringFromList(findResult));
 			} else {
-				out.println(ServletConstant.EMPTY_SET);
+//				out.println(ServletConstant.EMPTY_SET);
 			}
 
 		} catch (SearchManyParamException e) {
-			out.println(e.getMessage());
+//			out.println(e.getMessage());
 		} catch (SearchEmptyException e) {
-			out.println(e.getMessage());
+//			out.println(e.getMessage());
 		}
 		
 	}
