@@ -9,14 +9,14 @@ import com.candylife.dao.MealRepository;
 import com.candylife.model.Meal;
 
 public class MealService {
-	
-	public static final Logger LOG = LogManager.getLogger(MealService.class.getName());
-	
-	public static boolean add(Meal meal){
+
+	private static final Logger LOG = LogManager.getLogger(MealService.class.getName());
+
+	public static boolean add(Meal meal) {
 		LOG.info("Call to MealRepository.add");
-		return MealRepository.add(meal); 
+		return MealRepository.add(meal);
 	}
-	
+
 	public static List<Meal> find(String search) {
 		LOG.info("Call to MealRepository.find");
 		return MealRepository.find(search);

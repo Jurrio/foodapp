@@ -12,8 +12,8 @@ public class MealRepository {
 	private static List<Meal> mealList = new ArrayList<>();
 	private static int id = 0;
 
-	public static final Logger LOG = LogManager.getLogger(MealRepository.class.getName());
-	
+	private static final Logger LOG = LogManager.getLogger(MealRepository.class.getName());
+
 	public static boolean add(Meal meal) {
 		if (mealList.contains(meal)) {
 			LOG.info("DB exists this meal already");
@@ -24,7 +24,7 @@ public class MealRepository {
 		LOG.info("in meallist added meal " + meal.getId());
 		return mealList.add(meal);
 	}
-	
+
 	public static boolean delete(int id) {
 		for (Meal meal : mealList) {
 			if (id == meal.getId()) {
@@ -36,7 +36,7 @@ public class MealRepository {
 		LOG.info("no meal with id " + id + " in database");
 		return false;
 	}
-	
+
 	public static List<Meal> find(String search) {
 		List<Meal> result = new ArrayList<>();
 		for (Meal meal : mealList) {
@@ -57,7 +57,7 @@ public class MealRepository {
 		LOG.info("get the whole list");
 		return mealList;
 	}
-	
+
 	private static int nextId() {
 		return ++id;
 	}
