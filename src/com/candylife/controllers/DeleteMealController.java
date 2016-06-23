@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.candylife.constants.ServletConstant;
 import com.candylife.constants.RequestParam;
 import com.candylife.service.MealService;
@@ -19,36 +21,36 @@ import com.candylife.util.Parser;
 public class DeleteMealController extends HttpServlet {
 
 	private static final long serialVersionUID = -407738805277662420L;
+	private static final Logger LOG = Logger.getLogger(DeleteMealController.class.getName());
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
 		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
-		disp.forward(req, resp);
-	}	
-	
+		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher disp = req.getRequestDispatcher("dashboard.jsp");
-			
+
 		try {
 			int id = Parser.parseId(req.getParameter(RequestParam.ID));
-		
+
 			boolean isDeleted = MealService.delete(id);
-			
+
 			if (isDeleted) {
+				LOG.info("meal deleted");
 				ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.DELETE_SUCCEFULLY);
-				disp.forward(req, resp);
 			} else {
+				LOG.warn("meal not deleted");
 				ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
-				disp.forward(req, resp);
 			}
 		} catch (NumberFormatException e) {
+			LOG.error(e.getMessage());
 			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
-			disp.forward(req, resp);
 		} catch (Exception e) {
+			LOG.error(e.getMessage());
 			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
-			disp.forward(req, resp);
 		}
+		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
 }
