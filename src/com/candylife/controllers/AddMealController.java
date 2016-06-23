@@ -2,7 +2,6 @@ package com.candylife.controllers;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,15 +27,13 @@ public class AddMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher disp = req.getRequestDispatcher("add.jsp");
 		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
-		disp.forward(req, resp);
+		req.getRequestDispatcher("add.jsp").forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException, IllegalArgumentException {
-		RequestDispatcher disp = req.getRequestDispatcher("add.jsp");
 		try {
 			String title = req.getParameter(RequestParam.TITLE);
 			String description = req.getParameter(RequestParam.DESCRIPTION);
@@ -56,16 +53,14 @@ public class AddMealController extends HttpServlet {
 				ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.ADD_SUCCEFULLY);
 				req.setAttribute(RequestParam.MEAL_ID, meal.getId());
 				LOG.debug("set attribute " + RequestParam.MEAL_ID + ": " + meal.getId());
-				disp.forward(req, resp);
 			} else {
 				LOG.warn("meal not added");
 				ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.ADD_ERROR);
-				disp.forward(req, resp);
 			}
 		} catch (Exception e) { //TODO: catch each exception
 			LOG.error(e.getMessage());
 			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
-			disp.forward(req, resp);
 		}
+		req.getRequestDispatcher("add.jsp").forward(req, resp);
 	}
 }
