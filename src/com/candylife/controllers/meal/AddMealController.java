@@ -12,8 +12,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.candylife.builder.MealBuilder;
-import com.candylife.constants.RequestParam;
-import com.candylife.constants.ServletConstant;
+import com.candylife.constants.Parameters;
+import com.candylife.constants.Messages;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
@@ -27,7 +27,7 @@ public class AddMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
+		ControllerUtil.setAttributes(req, Messages.VOID, Messages.VOID);
 		req.getRequestDispatcher("add.jsp").forward(req, resp);
 	}
 
@@ -35,11 +35,11 @@ public class AddMealController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException, IllegalArgumentException {
 		try {
-			String title = req.getParameter(RequestParam.TITLE);
-			String description = req.getParameter(RequestParam.DESCRIPTION);
-			boolean available = Parser.parseAvailable(req.getParameter(RequestParam.AVAILABLE));
-			double price = Parser.parsePrice(req.getParameter(RequestParam.PRICE));
-			String owner = req.getParameter(RequestParam.OWNER);
+			String title = req.getParameter(Parameters.TITLE);
+			String description = req.getParameter(Parameters.DESCRIPTION);
+			boolean available = Parser.parseAvailable(req.getParameter(Parameters.AVAILABLE));
+			double price = Parser.parsePrice(req.getParameter(Parameters.PRICE));
+			String owner = req.getParameter(Parameters.OWNER);
 			LOG.debug("{title: " + title + ", description: " + description + ", available: " + available + 
 					", price: " + price + ", owner: "  + owner + "}");
 
@@ -50,16 +50,16 @@ public class AddMealController extends HttpServlet {
 			boolean isAdded = MealService.add(meal);
 			if (isAdded) {
 				LOG.info("meal added");
-				ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.ADD_SUCCEFULLY);
-				req.setAttribute(RequestParam.MEAL_ID, meal.getId());
-				LOG.debug("set attribute " + RequestParam.MEAL_ID + ": " + meal.getId());
+				ControllerUtil.setAttributes(req, Messages.YES, Messages.ADD_SUCCEFULLY);
+				req.setAttribute(Parameters.MEAL_ID, meal.getId());
+				LOG.debug("set attribute " + Parameters.MEAL_ID + ": " + meal.getId());
 			} else {
 				LOG.warn("meal not added");
-				ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.ADD_ERROR);
+				ControllerUtil.setAttributes(req, Messages.NO, Messages.ADD_ERROR);
 			}
 		} catch (Exception e) { //TODO: catch each exception
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
+			ControllerUtil.setAttributes(req, Messages.NO, Messages.UNKNOWN_EXCEPTION);
 		}
 		req.getRequestDispatcher("add.jsp").forward(req, resp);
 	}

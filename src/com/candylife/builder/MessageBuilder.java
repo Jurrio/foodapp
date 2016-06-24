@@ -2,30 +2,30 @@ package com.candylife.builder;
 
 import java.util.List;
 
-import com.candylife.constants.RequestParam;
-import com.candylife.constants.ServletConstant;
+import com.candylife.constants.Parameters;
+import com.candylife.constants.Messages;
 import com.candylife.model.Meal;
 
 public class MessageBuilder {
 
 	public static String buildStringFromList(List<Meal> listMeal) {
-		StringBuilder builder = new StringBuilder(ServletConstant.LIST_OF_MEALS);
+		StringBuilder builder = new StringBuilder(Messages.LIST_OF_MEALS);
 		for (Meal meal : listMeal) {
 			builder.append(meal.toString());
 			builder.append("\n");
 		}
-		builder.append(String.format(ServletConstant.SIZE_OF_LIST, listMeal.size()));
+		builder.append(String.format(Messages.SIZE_OF_LIST, listMeal.size()));
 		return builder.toString();
 	}
 
 	public static String buildStringFromMeal(Meal meal) {
-		StringBuilder builder = new StringBuilder(ServletConstant.ADD_SUCCEFULLY + "\n");
-		builder.append(RequestParam.ID + ": " + meal.getId() + "\n");
-		builder.append(RequestParam.TITLE + ": " + meal.getTitle() + "\n");
-		builder.append(RequestParam.DESCRIPTION + ": " + meal.getDescription() + "\n");
-		builder.append(RequestParam.AVAILABLE + ": " + meal.isAvailable() + "\n");
-		builder.append(RequestParam.PRICE + ": " + meal.getPrice() + "\n");
-		builder.append(RequestParam.OWNER + ": " + meal.getOwner() + "\n");
+		StringBuilder builder = new StringBuilder(Messages.ADD_SUCCEFULLY + "\n");
+		builder.append(Parameters.ID + ": " + meal.getId() + "\n");
+		builder.append(Parameters.TITLE + ": " + meal.getTitle() + "\n");
+		builder.append(Parameters.DESCRIPTION + ": " + meal.getDescription() + "\n");
+		builder.append(Parameters.AVAILABLE + ": " + meal.isAvailable() + "\n");
+		builder.append(Parameters.PRICE + ": " + meal.getPrice() + "\n");
+		builder.append(Parameters.OWNER + ": " + meal.getOwner() + "\n");
 		return builder.toString();
 	}
 

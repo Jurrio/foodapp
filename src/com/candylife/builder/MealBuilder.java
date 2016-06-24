@@ -1,14 +1,14 @@
 package com.candylife.builder;
 
-import com.candylife.constants.RequestParam;
+import com.candylife.constants.Parameters;
 import com.candylife.model.Meal;
 
 public class MealBuilder {
 	private final String title;
 	private final double price;
-	private String description = RequestParam.NO_DESCRIPTION;
+	private String description = Parameters.NO_DESCRIPTION;
 	private boolean available = false;
-	private String owner = RequestParam.NO_OWNER;
+	private String owner = Parameters.NO_OWNER;
 	
 	public MealBuilder(String title, double price) {
 		this.title = title;

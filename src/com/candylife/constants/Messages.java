@@ -1,6 +1,6 @@
 package com.candylife.constants;
 
-public class ServletConstant {
+public class Messages {
 
 	public static final String ADD_SUCCEFULLY = "Meal has been added succefully!";
 	public static final String ADD_ERROR = "Meal has not been added!";

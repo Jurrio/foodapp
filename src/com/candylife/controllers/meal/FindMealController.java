@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.candylife.constants.ServletConstant;
+import com.candylife.constants.Messages;
 import com.candylife.exception.SearchEmptyException;
 import com.candylife.exception.SearchManyParamException;
-import com.candylife.constants.RequestParam;
+import com.candylife.constants.Parameters;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.CheckUtil;
@@ -28,30 +28,30 @@ public class FindMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
+		ControllerUtil.setAttributes(req, Messages.VOID, Messages.VOID);
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			String searchValue = CheckUtil.checkSearchvalue(req.getParameter(RequestParam.SEARCH));
+			String searchValue = CheckUtil.checkSearchvalue(req.getParameter(Parameters.SEARCH));
 			List<Meal> findResult = MealService.find(searchValue);
 			LOG.info("found meals: " + findResult.size());
 
 			if (!findResult.isEmpty()) {
-				ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.SEARCH_RESPONSE);
+				ControllerUtil.setAttributes(req, Messages.YES, Messages.SEARCH_RESPONSE);
 				// req.setAttribute(RequestParam.RESULT_LIST, findResult);
 			} else {
-				ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.EMPTY_SET);
+				ControllerUtil.setAttributes(req, Messages.NO, Messages.EMPTY_SET);
 			}
 
 		} catch (SearchManyParamException e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, ServletConstant.NO, e.getMessage());
+			ControllerUtil.setAttributes(req, Messages.NO, e.getMessage());
 		} catch (SearchEmptyException e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, ServletConstant.NO, e.getMessage());
+			ControllerUtil.setAttributes(req, Messages.NO, e.getMessage());
 		}
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}

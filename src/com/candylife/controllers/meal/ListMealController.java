@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.candylife.constants.ServletConstant;
+import com.candylife.constants.Messages;
 import com.candylife.model.Meal;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
@@ -24,7 +24,7 @@ public class ListMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
+		ControllerUtil.setAttributes(req, Messages.VOID, Messages.VOID);
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
 
@@ -35,9 +35,9 @@ public class ListMealController extends HttpServlet {
 		req.setAttribute("meals", allMeals);
 		LOG.debug("size of allMeals: " + allMeals.size());
 		if (!allMeals.isEmpty()) {
-			ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.DISPLAY_ALL);
+			ControllerUtil.setAttributes(req, Messages.YES, Messages.DISPLAY_ALL);
 		} else {
-			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.EMPTY_SET);
+			ControllerUtil.setAttributes(req, Messages.NO, Messages.EMPTY_SET);
 		}
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}

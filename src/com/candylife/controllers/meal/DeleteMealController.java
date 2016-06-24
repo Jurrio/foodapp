@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.candylife.constants.ServletConstant;
-import com.candylife.constants.RequestParam;
+import com.candylife.constants.Messages;
+import com.candylife.constants.Parameters;
 import com.candylife.service.MealService;
 import com.candylife.util.ControllerUtil;
 import com.candylife.util.Parser;
@@ -24,7 +24,7 @@ public class DeleteMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ControllerUtil.setAttributes(req, ServletConstant.VOID, ServletConstant.VOID);
+		ControllerUtil.setAttributes(req, Messages.VOID, Messages.VOID);
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
 
@@ -32,23 +32,23 @@ public class DeleteMealController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			int id = Parser.parseId(req.getParameter(RequestParam.ID));
+			int id = Parser.parseId(req.getParameter(Parameters.ID));
 
 			boolean isDeleted = MealService.delete(id);
 
 			if (isDeleted) {
 				LOG.info("meal deleted");
-				ControllerUtil.setAttributes(req, ServletConstant.YES, ServletConstant.DELETE_SUCCEFULLY);
+				ControllerUtil.setAttributes(req, Messages.YES, Messages.DELETE_SUCCEFULLY);
 			} else {
 				LOG.warn("meal not deleted");
-				ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
+				ControllerUtil.setAttributes(req, Messages.NO, Messages.DELETE_ERROR);
 			}
 		} catch (NumberFormatException e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.DELETE_ERROR);
+			ControllerUtil.setAttributes(req, Messages.NO, Messages.DELETE_ERROR);
 		} catch (Exception e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, ServletConstant.NO, ServletConstant.UNKNOWN_EXCEPTION);
+			ControllerUtil.setAttributes(req, Messages.NO, Messages.UNKNOWN_EXCEPTION);
 		}
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
