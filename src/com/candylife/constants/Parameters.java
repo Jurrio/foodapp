@@ -12,6 +12,7 @@ public class Parameters {
 	public static final String LAST_NAME = "lname";
 	public static final String EMAIL = "email";
 	public static final String PASSWORD = "password";
+	public static final String REPEAT_PASSWORD = "rep-password";
 	public static final String IS_CHEF = "is-chef";
 
 	public static final String SEARCH = "search";
