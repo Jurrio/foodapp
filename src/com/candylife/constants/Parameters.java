@@ -20,6 +20,7 @@ public class Parameters {
 	public static final String MESSAGE = "message";
 	public static final String MEAL_ID = "meal-id";
 	public static final String RESULT_LIST = "list";
+	public static final String PERSON_ID = "person-id";
 
 	public static final int NO_ID = -1;
 	public static final String NO_TITLE = "no title";
