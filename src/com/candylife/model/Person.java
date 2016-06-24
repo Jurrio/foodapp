@@ -5,9 +5,7 @@ public class Person {
 	private User user;
 	private String name;
 
-	public Person(User user, String name) {
-		this.user = user;
-		this.name = name;
+	public Person() {
 	}
 
 	public User getUser() {

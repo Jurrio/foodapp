@@ -5,12 +5,9 @@ public class User {
 	private int id;
 	private String email;
 	private String password;
-	private boolean isCook;
+	private boolean isChef;
 
-	public User(String email, String password, boolean isCook) {
-		this.email = email;
-		this.password = password;
-		this.isCook = isCook;
+	public User() {
 	}
 
 	public int getId() {
@@ -37,12 +34,12 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isCook() {
-		return isCook;
+	public boolean isChef() {
+		return isChef;
 	}
 
-	public void setCook(boolean isCook) {
-		this.isCook = isCook;
+	public void setChef(boolean isChef) {
+		this.isChef = isChef;
 	}
 
 }
