@@ -14,7 +14,7 @@ public class UserBuilder {
 		this.isChef = false;
 	}
 
-	public UserBuilder isChef(boolean isChef) {
+	public UserBuilder chef(boolean isChef) {
 		this.isChef = isChef;
 		return this;
 	}
