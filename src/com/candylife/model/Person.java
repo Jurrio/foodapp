@@ -32,4 +32,12 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	public void setId(int id) {
+		this.user.setId(id);
+	}
+
+	public int getId() {
+		return user.getId();
+	}
 }
