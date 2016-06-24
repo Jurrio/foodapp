@@ -30,26 +30,6 @@ public class MealBuilder {
 		return this;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public boolean isAvailable() {
-		return available;
-	}
-
-	public String getOwner() {
-		return owner;
-	}
-
 	public Meal build() {
 		Meal meal = new Meal(title, price);
 		meal.setDescription(description);
