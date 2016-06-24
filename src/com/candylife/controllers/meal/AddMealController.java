@@ -1,4 +1,4 @@
-package com.candylife.controllers;
+package com.candylife.controllers.meal;
 
 import java.io.IOException;
 
