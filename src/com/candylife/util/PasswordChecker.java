@@ -1,20 +1,20 @@
 package com.candylife.util;
 
 import com.candylife.constants.ExceptionMessage;
-import com.candylife.exception.PasswordException;
+import com.candylife.exception.PasswordsNotEqualException;
 
 public class PasswordChecker {
 	private static int minLen = 5;
 	private static int maxLen = 25;
 	
-	public boolean checkPasswords(String passwd, String repeat) throws PasswordException {
+	public boolean checkPasswords(String passwd, String repeat) throws PasswordsNotEqualException {
 		boolean result = (theSamePasswds(passwd, repeat) && lengthPasswd(passwd, minLen, maxLen));
 		return result;
 	}
 
-	private static boolean theSamePasswds(String passwd1, String passwd2) throws PasswordException {
+	private static boolean theSamePasswds(String passwd1, String passwd2) throws PasswordsNotEqualException{
 		if (!passwd1.equals(passwd2)) {
-			throw new PasswordException(ExceptionMessage.PASSWORDS_DO_NOT_MATCH);
+			throw new PasswordsNotEqualException(ExceptionMessage.PASSWORDS_DO_NOT_MATCH);
 		}
 		return passwd1.equals(passwd2);
 	}

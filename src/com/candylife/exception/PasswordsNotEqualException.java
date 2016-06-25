@@ -10,6 +10,10 @@ public class PasswordsNotEqualException extends Exception {
 		super();
 	}
 
+	public PasswordsNotEqualException(String message) {
+		super(message);
+	}
+
 	@Override
 	public String getMessage() {
 		return ExceptionMessage.PASSWORDS_DO_NOT_MATCH;
