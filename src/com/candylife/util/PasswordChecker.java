@@ -7,7 +7,7 @@ public class PasswordChecker {
 	private static int minLen = 5;
 	private static int maxLen = 25;
 	
-	public boolean checkPasswords(String passwd, String repeat) throws PasswordsNotEqualException {
+	public static boolean checkPasswords(String passwd, String repeat) throws PasswordsNotEqualException {
 		boolean result = (theSamePasswds(passwd, repeat) && lengthPasswd(passwd, minLen, maxLen));
 		return result;
 	}
@@ -19,7 +19,7 @@ public class PasswordChecker {
 		return passwd1.equals(passwd2);
 	}
 
-	private boolean lengthPasswd(String passwd, int minLen, int maxLen) {
+	private static boolean lengthPasswd(String passwd, int minLen, int maxLen) {
 		int passwdLen = passwd.length();
 		if (passwdLen < minLen || passwdLen > maxLen) {
 			return false;
