@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.candylife.constants.Parameters;
+import com.candylife.exception.EmailFormatException;
+import com.candylife.exception.PasswordLengthException;
 import com.candylife.exception.PasswordsNotEqualException;
 import com.candylife.model.Person;
 import com.candylife.model.User;
@@ -18,7 +20,9 @@ import com.candylife.builder.PersonBuilder;
 import com.candylife.builder.UserBuilder;
 import com.candylife.constants.Messages;
 import com.candylife.util.ControllerUtil;
+import com.candylife.util.EmailChecker;
 import com.candylife.util.Parser;
+import com.candylife.util.PasswordChecker;
 
 @WebServlet(name = "AddPersonServlet", urlPatterns = "/addPerson")
 public class AddPersonServlet extends HttpServlet {
@@ -42,16 +46,15 @@ public class AddPersonServlet extends HttpServlet {
 			String passwd = request.getParameter(Parameters.PASSWORD);
 			String repeat = request.getParameter(Parameters.REPEAT_PASSWORD);
 			boolean isChef = Parser.parseAvailable(request.getParameter(Parameters.IS_CHEF));
-			
-			if (!passwd.equals(repeat)) { //TODO: filters will be here
-				throw new PasswordsNotEqualException();
-			}
-			
-			User user = new UserBuilder(email, passwd).chef(isChef).build(); 
+
+			boolean checkPass = PasswordChecker.checkPasswords(passwd, repeat);
+			boolean checkEmail = EmailChecker.checkWithRegExp(email);
+
+			User user = new UserBuilder(email, passwd).chef(isChef).build();
 			Person person = new PersonBuilder().user(user).firstName(fName).lastName(lName).build();
-			
+
 			boolean isAdded = PersonService.add(person);
-			
+
 			if (isAdded) {
 				LOG.info("meal added");
 				ControllerUtil.setAttributes(request, Messages.YES, Messages.ADD_SUCCEFULLY);
@@ -65,7 +68,14 @@ public class AddPersonServlet extends HttpServlet {
 		} catch (PasswordsNotEqualException pne) {
 			LOG.error(pne.getMessage());
 			ControllerUtil.setAttributes(request, Messages.NO, pne.getMessage());
+		} catch (EmailFormatException e) {
+			LOG.error(e.getMessage());
+			ControllerUtil.setAttributes(request, Messages.NO, e.getMessage());
+		} catch (PasswordLengthException e) {
+			LOG.error(e.getMessage());
+			ControllerUtil.setAttributes(request, Messages.NO, e.getMessage());
 		}
+		request.getRequestDispatcher("registration.jsp").forward(request, response);
 	}
 
 }
