@@ -3,15 +3,24 @@ package com.candylife.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.candylife.exception.EmailFormatException;
+
 public class EmailChecker {
 
-	public static boolean checkWithRegExp(String userNameString) {
+	public static boolean checkWithRegExp(String email) throws EmailFormatException {
+		if (!checkEmail(email)) {
+			throw new EmailFormatException(email);
+		}
+		return true;
+	}
+	
+	private static boolean checkEmail(String userNameString) {
 		Pattern p = Pattern.compile("^[a-z0-9_\\.]{4,31}@[a-z]{1,}[a-z0-9]{0,}\\.[a-z]{2,3}$");
 		Matcher m = p.matcher(userNameString);
 		return m.matches();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws EmailFormatException {
 		System.out.println(checkWithRegExp("jurimik@yandex.ua"));
 		System.out.println(checkWithRegExp("380957952437@i.ua"));
 		System.out.println(checkWithRegExp("gasf_90@ji.com"));

@@ -1,13 +1,14 @@
 package com.candylife.util;
 
 import com.candylife.constants.ExceptionMessage;
+import com.candylife.exception.PasswordLengthException;
 import com.candylife.exception.PasswordsNotEqualException;
 
 public class PasswordChecker {
 	private static int minLen = 5;
 	private static int maxLen = 25;
 	
-	public static boolean checkPasswords(String passwd, String repeat) throws PasswordsNotEqualException {
+	public static boolean checkPasswords(String passwd, String repeat) throws PasswordsNotEqualException, PasswordLengthException {
 		boolean result = (theSamePasswds(passwd, repeat) && lengthPasswd(passwd, minLen, maxLen));
 		return result;
 	}
@@ -19,10 +20,11 @@ public class PasswordChecker {
 		return passwd1.equals(passwd2);
 	}
 
-	private static boolean lengthPasswd(String passwd, int minLen, int maxLen) {
+	private static boolean lengthPasswd(String passwd, int minLen, int maxLen) throws PasswordLengthException {
 		int passwdLen = passwd.length();
 		if (passwdLen < minLen || passwdLen > maxLen) {
-			return false;
+			throw new PasswordLengthException("Length of password '" + passwd.length() + "'. "
+					+ "Length should be from " + minLen + " to " + maxLen);
 		}
 		return true;
 	}
