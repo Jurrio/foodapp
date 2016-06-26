@@ -49,6 +49,8 @@
 			</fieldset>
 		</form>
 
+		${message}
+
 		<div class="switch-log">
 			<p>
 				Already have an account? <a href="login">Click here</a>

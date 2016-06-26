@@ -15,6 +15,8 @@
 		<p>Also you can see <a href="structure.html">structure of service</a></p>
 		<img class=under-image src="img/under-construction.png">
 		
+		<p><a href="addPerson">Join us now!</a> </p>
+		
 		<h2 id="about">About</h2>
 		<table>
 			<tr>
