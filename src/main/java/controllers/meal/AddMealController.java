@@ -23,7 +23,7 @@ import main.java.util.Parser;
 public class AddMealController extends HttpServlet {
 
 	private static final long serialVersionUID = 3016401691472518340L;
-	private static final Logger LOG = LogManager.getLogger(AddMealController.class.getName());
+	private static final Logger LOG = LogManager.getLogger(AddMealController.class);
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

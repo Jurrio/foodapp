@@ -10,7 +10,7 @@ import main.java.model.Meal;
 
 public class MealService {
 
-	private static final Logger LOG = LogManager.getLogger(MealService.class.getName());
+	private static final Logger LOG = LogManager.getLogger(MealService.class);
 
 	public static boolean add(Meal meal) {
 		LOG.info("Call to MealRepository.add");

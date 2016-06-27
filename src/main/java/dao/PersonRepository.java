@@ -15,7 +15,7 @@ public class PersonRepository {
 	private static List<Person> personList = new ArrayList<>();
 	private static int id = 0;
 
-	private static final Logger LOG = LogManager.getLogger(PersonRepository.class.getName());
+	private static final Logger LOG = LogManager.getLogger(PersonRepository.class);
 
 	public static boolean add(Person person) {
 		if (personList.contains(person)) {

@@ -12,7 +12,7 @@ public class MealRepository {
 	private static List<Meal> mealList = new ArrayList<>();
 	private static int id = 0;
 
-	private static final Logger LOG = LogManager.getLogger(MealRepository.class.getName());
+	private static final Logger LOG = LogManager.getLogger(MealRepository.class);
 
 	public static boolean add(Meal meal) {
 		if (mealList.contains(meal)) {

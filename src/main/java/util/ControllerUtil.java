@@ -8,7 +8,7 @@ import main.java.constants.Parameters;
 
 public class ControllerUtil {
 
-	private static final Logger LOG = Logger.getLogger(ControllerUtil.class.getName());
+	private static final Logger LOG = Logger.getLogger(ControllerUtil.class);
 
 	public static void setAttributes(HttpServletRequest req, String success, String message) {
 		req.setAttribute(Parameters.SUCCESS, success);

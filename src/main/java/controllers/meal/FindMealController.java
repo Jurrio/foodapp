@@ -24,7 +24,7 @@ import main.java.util.ControllerUtil;
 public class FindMealController extends HttpServlet {
 
 	private static final long serialVersionUID = -2982563367087578687L;
-	private static final Logger LOG = Logger.getLogger(FindMealController.class.getName());
+	private static final Logger LOG = Logger.getLogger(FindMealController.class);
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

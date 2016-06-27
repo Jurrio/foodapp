@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 public class Parser {
 
-	public static Logger LOG = Logger.getLogger(Parser.class.getName());
+	public static Logger LOG = Logger.getLogger(Parser.class);
 	
 	public static double parsePrice(String price) throws NumberFormatException {
 		LOG.debug("price: " + price);

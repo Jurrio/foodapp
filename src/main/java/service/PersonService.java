@@ -8,7 +8,7 @@ import main.java.model.Person;
 
 public class PersonService {
 
-	private static final Logger LOG = LogManager.getLogger(PersonService.class.getName());
+	private static final Logger LOG = LogManager.getLogger(PersonService.class);
 
 	public static boolean add(Person person) {
 		LOG.info("Call to PersonRepository.add");

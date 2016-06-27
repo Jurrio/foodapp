@@ -28,7 +28,7 @@ import main.java.util.PasswordChecker;
 public class AddPersonServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 641673800707374013L;
-	private static final Logger LOG = Logger.getLogger(AddPersonServlet.class.getName());
+	private static final Logger LOG = Logger.getLogger(AddPersonServlet.class);
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
