@@ -47,8 +47,12 @@ public class AddPersonServlet extends HttpServlet {
 			String repeat = request.getParameter(Parameters.REPEAT_PASSWORD);
 			boolean isChef = Parser.parseAvailable(request.getParameter(Parameters.IS_CHEF));
 
-			boolean checkPass = PasswordChecker.checkPasswords(passwd, repeat);
-			boolean checkEmail = EmailChecker.checkWithRegExp(email);
+			if (PasswordChecker.checkPasswords(passwd, repeat)) {
+				LOG.info("Password is OK");
+			}
+			if (EmailChecker.checkWithRegExp(email)) {
+				LOG.info("eamil is OK");
+			}
 
 			User user = new UserBuilder(email, passwd).chef(isChef).build();
 			Person person = new PersonBuilder().user(user).firstName(fName).lastName(lName).build();
@@ -68,10 +72,10 @@ public class AddPersonServlet extends HttpServlet {
 		} catch (PasswordsNotEqualException pne) {
 			LOG.error(pne.getMessage());
 			ControllerUtil.setAttributes(request, Messages.NO, pne.getMessage());
-		} catch (EmailFormatException e) {
+		} catch (PasswordLengthException e) {
 			LOG.error(e.getMessage());
 			ControllerUtil.setAttributes(request, Messages.NO, e.getMessage());
-		} catch (PasswordLengthException e) {
+		} catch (EmailFormatException e) {
 			LOG.error(e.getMessage());
 			ControllerUtil.setAttributes(request, Messages.NO, e.getMessage());
 		}
