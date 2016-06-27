@@ -22,5 +22,8 @@ public class Messages {
 	public static final String NO = "no";
 	public static final String VOID = "";
 	public static final String DISPLAY_ALL = "List of meals";
+	
+	public static final String AUTORIZED_OK = "Hello!";
+	public static final String AUTORIZED_FAIL = "Check the email/password and try again";
 
 }
