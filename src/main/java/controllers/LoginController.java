@@ -4,9 +4,11 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
@@ -34,33 +36,33 @@ public class LoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-			String login = request.getParameter(Parameters.EMAIL);
-			String password = request.getParameter(Parameters.PASSWORD);
+		int time = 2 * 60 * 60;
 
-			if (EmailChecker.checkWithRegExp(login)) { // else throw EmailFormatException
-				LOG.debug("Email is OK!");
-			}
-			boolean isAutorized = PersonService.get(login, password);
+		String login = request.getParameter(Parameters.EMAIL);
+		String password = request.getParameter(Parameters.PASSWORD);
 
-			if (isAutorized) {
-				LOG.debug("User autorized");
-				request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			} else {
-				LOG.debug("User autorized");
-				request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_FAIL);
-				request.getRequestDispatcher("login.jsp").forward(request, response);
-			}
+		boolean isAutorized = PersonService.get(login, password);
 
-		} catch (EmailFormatException e) {
-			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(request, Messages.NO, e.getMessage());
+		if (isAutorized) {
+			LOG.debug("User autorized");
+			HttpServletRequest httpRequest = (HttpServletRequest) request;
+			HttpServletResponse httpResponse = (HttpServletResponse) response;
+			HttpSession httpSession = httpRequest.getSession();
+			httpSession.setAttribute("user", login);
+			httpSession.setMaxInactiveInterval(time);
+			Cookie userName = new Cookie("user", login);
+			userName.setMaxAge(time);
+			httpResponse.addCookie(userName);
+
+			LOG.debug("set livetime for " + login + " " + time);
+
+			request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		} else {
+			LOG.debug("User not autorized");
+			request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_FAIL);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
-
-		/*
-		 * if (PersonService.login(login, password)) {
-		 * response.sendRedirect("homePage"); } else doGet(request, response);
-		 */ }
+	}
 
 }
