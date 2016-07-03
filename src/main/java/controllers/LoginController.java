@@ -48,9 +48,9 @@ public class LoginController extends HttpServlet {
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			HttpSession httpSession = httpRequest.getSession();
-			httpSession.setAttribute("user", login);
+			httpSession.setAttribute(Parameters.USER, login);
 			httpSession.setMaxInactiveInterval(time);
-			Cookie userName = new Cookie("user", login);
+			Cookie userName = new Cookie(Parameters.USER, login);
 			userName.setMaxAge(time);
 			httpResponse.addCookie(userName);
 
@@ -64,5 +64,4 @@ public class LoginController extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
-
 }
