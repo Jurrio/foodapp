@@ -44,7 +44,11 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return 31 * email.hashCode() + 7 * password.hashCode();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		return result;
 	}
 
 	@Override
@@ -53,14 +57,19 @@ public class User {
 			return true;
 		if (obj == null)
 			return false;
-		if (this.getClass() != obj.getClass())
+		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (!this.getEmail().equals(other.getEmail()))
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
 			return false;
-		if (!this.getPassword().equals(other.getPassword()))
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
 			return false;
 		return true;
 	}
-
 }
