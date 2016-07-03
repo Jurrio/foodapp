@@ -42,7 +42,7 @@
 		</tr>
 		<c:forEach items="${meals}" var="meal">
 			<tr>
-				<td>"${meal.id}"</td>
+				<td>${meal.id}</td>
 				<td><input class="disabled" name="title" type="text"
 					value="${meal.title}" readonly></td>
 				<td><input class="disabled" name="description" type="text"

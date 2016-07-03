@@ -16,7 +16,7 @@ import main.java.model.Meal;
 import main.java.service.MealService;
 import main.java.util.ControllerUtil;
 
-@WebServlet (name = "ListMealServlet", urlPatterns = "/listMeal")
+@WebServlet(name = "ListMealServlet", urlPatterns = "/listMeal")
 public class ListMealController extends HttpServlet {
 
 	private static final long serialVersionUID = 2027448965537193995L;
@@ -25,13 +25,14 @@ public class ListMealController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ControllerUtil.setAttributes(req, Messages.VOID, Messages.VOID);
+		req.setAttribute("meals", MealService.showAll());
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Meal> allMeals = MealService.showAll();
-		
+
 		req.setAttribute("meals", allMeals);
 		LOG.debug("size of allMeals: " + allMeals.size());
 		if (!allMeals.isEmpty()) {
