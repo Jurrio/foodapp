@@ -14,10 +14,8 @@ import org.apache.log4j.Logger;
 
 import main.java.constants.Messages;
 import main.java.constants.Parameters;
-import main.java.exception.EmailFormatException;
 import main.java.service.PersonService;
 import main.java.util.ControllerUtil;
-import main.java.util.EmailChecker;
 
 /**
  * Servlet implementation class LoginController
