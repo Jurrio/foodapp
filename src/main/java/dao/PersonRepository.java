@@ -39,6 +39,19 @@ public class PersonRepository {
 		LOG.info("no found user with email " + login + " and password " + password);
 		return false;
 	}
+	
+	public static boolean updatePassword(String login, String oldPassword, String newPassword) {
+		User usr = new UserBuilder(login, oldPassword).build();
+		for(Person p : personList) {
+			if (p.getUser().equals(usr)) {
+				usr.setPassword(newPassword);
+				LOG.info("password changed fo person (id " + p.getId());
+				return true;
+			}
+		}
+		LOG.info("no found user with email " + login + " and password " + oldPassword);
+		return false;
+	}
 
 	private static int nextId() {
 		return ++id;
