@@ -1,6 +1,6 @@
 package main.java.util;
 
-import main.java.constants.ExceptionMessage;
+import main.java.constant.ExceptionMessage;
 import main.java.exception.PasswordLengthException;
 import main.java.exception.PasswordsNotEqualException;
 

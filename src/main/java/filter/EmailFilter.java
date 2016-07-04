@@ -1,4 +1,4 @@
-package main.java.filters;
+package main.java.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 
 import org.apache.log4j.Logger;
 
-import main.java.constants.Parameters;
+import main.java.constant.Parameters;
 import main.java.exception.EmailFormatException;
 import main.java.util.EmailChecker;
 

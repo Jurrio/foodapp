@@ -1,4 +1,4 @@
-package main.java.controllers.person;
+package main.java.controller.person;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import main.java.constants.Parameters;
 import main.java.exception.EmailFormatException;
 import main.java.exception.PasswordLengthException;
 import main.java.exception.PasswordsNotEqualException;
@@ -18,7 +17,8 @@ import main.java.model.User;
 import main.java.service.PersonService;
 import main.java.builder.PersonBuilder;
 import main.java.builder.UserBuilder;
-import main.java.constants.Messages;
+import main.java.constant.Messages;
+import main.java.constant.Parameters;
 import main.java.util.ControllerUtil;
 import main.java.util.EmailChecker;
 import main.java.util.Parser;

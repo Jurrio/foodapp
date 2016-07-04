@@ -1,4 +1,4 @@
-package main.java.constants;
+package main.java.constant;
 
 public class ExceptionMessage {
 	public static final String SEARCH_MANY_PARAM_MESSAGE = "Unfortunally, our service is very lazy and does not seek more than one word.";

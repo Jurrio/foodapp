@@ -1,4 +1,4 @@
-package main.java.controllers;
+package main.java.controller;
 
 import java.io.IOException;
 
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import main.java.constants.Messages;
-import main.java.constants.Parameters;
+import main.java.constant.Messages;
+import main.java.constant.Parameters;
 import main.java.service.PersonService;
 import main.java.util.ControllerUtil;
 

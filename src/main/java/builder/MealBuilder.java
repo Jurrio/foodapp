@@ -1,6 +1,6 @@
 package main.java.builder;
 
-import main.java.constants.Parameters;
+import main.java.constant.Parameters;
 import main.java.model.Meal;
 
 public class MealBuilder {

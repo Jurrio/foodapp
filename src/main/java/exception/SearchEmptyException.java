@@ -1,6 +1,6 @@
 package main.java.exception;
 
-import main.java.constants.ExceptionMessage;
+import main.java.constant.ExceptionMessage;
 
 public class SearchEmptyException extends Exception {
 

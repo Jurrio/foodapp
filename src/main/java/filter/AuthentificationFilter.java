@@ -1,4 +1,4 @@
-package main.java.filters;
+package main.java.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
-import main.java.constants.Messages;
-import main.java.constants.Parameters;
+import main.java.constant.Messages;
+import main.java.constant.Parameters;
 
 @WebFilter(filterName = "AuthentificationFilter", servletNames = {"AddMealController", 
 		"DeleteMealController", "ListMealController"})

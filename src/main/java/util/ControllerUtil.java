@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
-import main.java.constants.Parameters;
+import main.java.constant.Parameters;
 
 public class ControllerUtil {
 

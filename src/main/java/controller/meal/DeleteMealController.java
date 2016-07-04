@@ -1,4 +1,4 @@
-package main.java.controllers.meal;
+package main.java.controller.meal;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import main.java.constants.Messages;
-import main.java.constants.Parameters;
+import main.java.constant.Messages;
+import main.java.constant.Parameters;
 import main.java.service.MealService;
 import main.java.util.ControllerUtil;
 import main.java.util.Parser;

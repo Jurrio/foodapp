@@ -2,8 +2,8 @@ package main.java.builder;
 
 import java.util.List;
 
-import main.java.constants.Parameters;
-import main.java.constants.Messages;
+import main.java.constant.Messages;
+import main.java.constant.Parameters;
 import main.java.model.Meal;
 
 public class MessageBuilder {

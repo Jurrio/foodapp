@@ -1,4 +1,4 @@
-package main.java.constants;
+package main.java.constant;
 
 public class Parameters {
 	public static final String ID = "id";
