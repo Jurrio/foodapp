@@ -32,7 +32,7 @@ public class SimpleTextFilePersonDAO implements AbstractPersonFileDAO {
 	}
 
 	@Override
-	public Person login(String login, String password)
+	public boolean login(String login, String password)
 			throws FileNotFoundException, IOException, StringFormatException, SignInException {
 		User usr = new UserBuilder(login, password).build();
 		Person person = null;
@@ -45,15 +45,16 @@ public class SimpleTextFilePersonDAO implements AbstractPersonFileDAO {
 					person = convertFromString(line);
 					if (usr.equals(person.getUser())) {
 						reader.close();
-						return person;
+						return true;
 					}
 				}
 			}
 		} finally {
 			reader.close();
 		}
+		return false;
 
-		throw new SignInException("You've entered an invalid email address / password combination.");
+//		throw new SignInException("You've entered an invalid email address / password combination.");
 	}
 
 	@Override
