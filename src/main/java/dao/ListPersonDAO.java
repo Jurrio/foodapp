@@ -10,12 +10,12 @@ import main.java.builder.UserBuilder;
 import main.java.model.Person;
 import main.java.model.User;
 
-public class PersonRepository implements AbstractPersonListDAO {
+public class ListPersonDAO implements AbstractPersonListDAO {
 	
 	private static List<Person> personList = new ArrayList<>();
 	private static int id = 0;
 
-	private static final Logger LOG = LogManager.getLogger(PersonRepository.class);
+	private static final Logger LOG = LogManager.getLogger(ListPersonDAO.class);
 
 	@Override
 	public boolean add(Person person) {
