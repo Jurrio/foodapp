@@ -9,10 +9,10 @@ import main.java.model.Person;
 
 public interface AbstractPersonDAO {
 	
-	public void add(Person person) throws FileNotFoundException, IOException;
+	public boolean add(Person person) throws FileNotFoundException, IOException;
 	public Person get(int id) throws FileNotFoundException, IOException, StringFormatException;
 	public Person login(String login, String password) throws FileNotFoundException, IOException, StringFormatException, SignInException;
-	public void update(int id, Person person);
+	public boolean update(int id, Person person);
 	public boolean delete(Person deletedPerson) throws FileNotFoundException, IOException, StringFormatException;
 	
 	

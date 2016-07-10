@@ -20,7 +20,7 @@ public class SimpleTextFilePersonDAO implements AbstractPersonFileDAO {
 	private static File storage;
 
 	@Override
-	public void add(Person person) throws FileNotFoundException, IOException {
+	public boolean add(Person person) throws FileNotFoundException, IOException {
 		storage = FileUtils.getFile("persons.txt");
 		BufferedWriter writer = new BufferedWriter(new FileWriter(storage));
 		try {
@@ -28,6 +28,7 @@ public class SimpleTextFilePersonDAO implements AbstractPersonFileDAO {
 		} finally {
 			writer.close();
 		}
+		return true; //TODO: temporary
 	}
 
 	@Override
@@ -74,7 +75,8 @@ public class SimpleTextFilePersonDAO implements AbstractPersonFileDAO {
 	}
 
 	@Override
-	public void update(int id, Person person) {
+	public boolean update(int id, Person person) {
+		return false;
 		// TODO not implemented method
 	}
 
