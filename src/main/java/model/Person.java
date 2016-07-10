@@ -1,5 +1,8 @@
 package main.java.model;
 
+import main.java.builder.PersonBuilder;
+import main.java.builder.UserBuilder;
+
 public class Person {
 
 	private User user;
@@ -39,5 +42,23 @@ public class Person {
 
 	public int getId() {
 		return user.getId();
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(firstName).append("#")
+			.append(lastName).append("#")
+			.append(user.getId()).append("#")
+			.append(user.getEmail()).append("#")
+			.append(user.getPassword()).append("#")
+			.append(user.isChef());
+		return sb.toString();
+	}
+	
+	public static void main(String[] args) {
+		User usr = new UserBuilder("alice@hotmail.com", "uyeaj%5").id(5).chef(false).build();
+		Person person = new PersonBuilder().firstName("Alice").lastName("Johnson").user(usr).build();
+		System.out.println(person.toString());
 	}
 }
