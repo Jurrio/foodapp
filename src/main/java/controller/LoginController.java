@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
 		String login = request.getParameter(Parameters.EMAIL);
 		String password = request.getParameter(Parameters.PASSWORD);
 
-		boolean isAutorized = PersonService.get(login, password);
+		boolean isAutorized = PersonService.login(login, password);
 
 		if (isAutorized) {
 			LOG.debug("User autorized");
