@@ -8,13 +8,14 @@ import org.apache.log4j.Logger;
 
 import main.java.model.Meal;
 
-public class MealRepository {
+public class ListMealDAO implements AbstractMealListDAO {
 	private static List<Meal> mealList = new ArrayList<>();
 	private static int id = 0;
 
-	private static final Logger LOG = LogManager.getLogger(MealRepository.class);
+	private static final Logger LOG = LogManager.getLogger(ListMealDAO.class);
 
-	public static boolean add(Meal meal) {
+	@Override
+	public boolean add(Meal meal) {
 		if (mealList.contains(meal)) {
 			LOG.info("DB exists this meal already");
 			return false;
@@ -25,7 +26,35 @@ public class MealRepository {
 		return mealList.add(meal);
 	}
 
-	public static boolean delete(int id) {
+	@Override
+	public Meal get(int id) {
+		for (Meal meal : mealList) {
+			if (meal.getId() == id) {
+				return meal;
+			}
+		}
+		return null; // TODO replace null for exception
+	}
+
+	@Override
+	public boolean update(int id, Meal meal) {
+		for (int i = 0; i < mealList.size(); i++) {
+			if (mealList.get(i).getId() == id) {
+				mealList.set(i, meal);
+				break;
+			}
+		}
+		return mealList.contains(meal);
+	}
+
+	@Override
+	public boolean delete(Meal deletedMeal) {
+		int id = deletedMeal.getId();
+		return delete(id);
+	}
+
+	@Override
+	public boolean delete(int id) {
 		for (Meal meal : mealList) {
 			if (id == meal.getId()) {
 				mealList.remove(meal);
@@ -37,7 +66,8 @@ public class MealRepository {
 		return false;
 	}
 
-	public static List<Meal> find(String search) {
+	@Override
+	public List<Meal> find(String search) {
 		List<Meal> result = new ArrayList<>();
 		for (Meal meal : mealList) {
 			String[] values = meal.toString().split(" ");
@@ -53,7 +83,8 @@ public class MealRepository {
 		return result;
 	}
 
-	public static List<Meal> getAll() {
+	@Override
+	public List<Meal> getAll() {
 		LOG.info("get the whole list");
 		return mealList;
 	}
@@ -61,4 +92,5 @@ public class MealRepository {
 	private static int nextId() {
 		return ++id;
 	}
+
 }
