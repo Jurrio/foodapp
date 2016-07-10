@@ -73,6 +73,7 @@ public class ListPersonDAO implements AbstractPersonListDAO {
 		return false;
 	}
 	
+	@Deprecated
 	public boolean updatePassword(Person person, String login, String oldPassword, String newPassword) {
 		User usr = new UserBuilder(login, oldPassword).build();
 		if (person.getUser().equals(usr)) {
