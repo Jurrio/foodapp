@@ -32,8 +32,28 @@ public class SimpleTextFilePersonDAO implements AbstractPersonFileDAO {
 	}
 
 	@Override
+	public Person get(int id) throws FileNotFoundException, IOException, StringFormatException {
+		storage = FileUtils.getFile("persons.txt");
+		BufferedReader reader = new BufferedReader(new FileReader(storage));
+		try {
+			String line;
+			while ((line = reader.readLine()) != null) {
+				Person person = convertFromString(line);
+				if (person.getId() == id) {
+					reader.close();
+					return person;
+				}
+			}
+		} finally {
+			reader.close();
+		}
+		return null;
+	}
+
+	@Override
 	public boolean login(String login, String password)
 			throws FileNotFoundException, IOException, StringFormatException, SignInException {
+		storage = FileUtils.getFile("persons.txt");
 		User usr = new UserBuilder(login, password).build();
 		Person person = null;
 
@@ -59,24 +79,6 @@ public class SimpleTextFilePersonDAO implements AbstractPersonFileDAO {
 	}
 
 	@Override
-	public Person get(int id) throws FileNotFoundException, IOException, StringFormatException {
-		BufferedReader reader = new BufferedReader(new FileReader(storage));
-		try {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				Person person = convertFromString(line);
-				if (person.getId() == id) {
-					reader.close();
-					return person;
-				}
-			}
-		} finally {
-			reader.close();
-		}
-		return null;
-	}
-
-	@Override
 	public boolean update(int id, Person person) {
 		return false;
 		// TODO not implemented method
@@ -85,6 +87,7 @@ public class SimpleTextFilePersonDAO implements AbstractPersonFileDAO {
 	@Override
 	public boolean delete(Person deletedPerson) throws FileNotFoundException, IOException, StringFormatException {
 		File tempFile = FileUtils.getFile("tempFile");
+		storage = FileUtils.getFile("persons.txt");
 
 		BufferedReader reader = new BufferedReader(new FileReader(storage));
 		BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
