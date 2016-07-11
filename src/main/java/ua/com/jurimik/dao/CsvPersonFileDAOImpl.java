@@ -5,8 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.exception.StringFormatException;
 import ua.com.jurimik.model.Person;
+import ua.com.jurimik.model.User;
 import ua.com.jurimik.util.FileUtils;
 import ua.com.jurimik.util.PersonUtil;
 
@@ -40,7 +42,6 @@ public class CsvPersonFileDAOImpl implements AbstractPersonFileDAO {
 			while (data != -1) {
 				c = (char) data;
 				sb.append(c);
-				data = fis.read();
 				if (c == '\n') {
 					person = convertFromString(sb.toString());
 					if (person.getId() == id) {
@@ -49,6 +50,7 @@ public class CsvPersonFileDAOImpl implements AbstractPersonFileDAO {
 					}
 					sb = new StringBuilder();
 				}
+				data = fis.read();
 			}
 		} finally {
 			fis.close();
@@ -57,8 +59,31 @@ public class CsvPersonFileDAOImpl implements AbstractPersonFileDAO {
 	}
 
 	@Override
-	public boolean login(String login, String password) {
-		// TODO Auto-generated method stub
+	public boolean login(String login, String password) throws IOException, StringFormatException {
+		storage = FileUtils.getFile("persons.csv");
+		User usr = new UserBuilder(login, password).build();
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(storage);
+			int data = fis.read();
+			char c;
+			StringBuilder sb = new StringBuilder();
+			while (data != -1) {
+				c = (char) data;
+				sb.append(c);
+				if (c == '\n') {
+					Person person = convertFromString(sb.toString());
+					if (usr.equals(person.getUser())) {
+						fis.close();
+						return true;
+					}
+					sb = new StringBuilder();
+				}
+				data = fis.read();
+			}
+		} finally {
+			fis.close();
+		}
 		return false;
 	}
 
@@ -69,9 +94,37 @@ public class CsvPersonFileDAOImpl implements AbstractPersonFileDAO {
 	}
 
 	@Override
-	public boolean delete(Person deletedPerson) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(Person deletedPerson) throws IOException, StringFormatException {
+		storage = FileUtils.getFile("persons.csv");
+		File tempFile = FileUtils.getFile("tempfile.csv");
+
+		FileOutputStream fos = null;
+		FileInputStream fis = null;
+		boolean isSuccessful;
+		try {
+			fos = new FileOutputStream(tempFile);
+			fis = new FileInputStream(storage);
+			int data = fis.read();
+			char c;
+			StringBuilder sb = new StringBuilder();
+			while (data != -1) {
+				c = (char) data;
+				sb.append(c);
+				if (c == '\n') {
+					Person person = convertFromString(sb.toString());
+					if (!deletedPerson.getUser().equals(person.getUser())) {
+						fos.write(sb.toString().getBytes());
+						sb = new StringBuilder();
+					}
+				}
+				data = fis.read();
+			}
+			isSuccessful = tempFile.renameTo(storage);
+		} finally {
+			fis.close();
+			fos.close();
+		}
+		return isSuccessful;
 	}
 
 	@Override
