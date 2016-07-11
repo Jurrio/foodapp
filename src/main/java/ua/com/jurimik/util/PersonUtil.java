@@ -21,17 +21,34 @@ public class PersonUtil {
 
 	}
 
-	private static boolean checkSimpleStringWithRegex(String simpleString) {
-		// not implemented
-		return true;
-	}
-
 	public static String parseToCsv(Person person) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(person.getId()).append(",").append(person.getFirstName()).append(",").append(person.getLastName())
 				.append(",").append(person.getUser().getEmail()).append(",").append(person.getUser().getPassword())
-				.append(",");
+				.append(",").append(person.getUser().isChef());
 		return sb.toString();
+	}
+
+	public static Person valueOfCsv(String csvString) throws StringFormatException {
+		if (!checkCsvStringWithRegex(csvString)) {
+			throw new StringFormatException("Bad CSV string");
+		}
+		String[] params = csvString.split(",");
+		int id = Integer.parseInt(params[0]);
+		boolean isChef = Boolean.parseBoolean(params[5]);
+		User usr = new UserBuilder(params[3], params[4]).id(id).chef(isChef).build();
+		Person person = new PersonBuilder().firstName(params[1]).lastName(params[2]).user(usr).build();
+		return person;
+	}
+
+	private static boolean checkCsvStringWithRegex(String csvString) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private static boolean checkSimpleStringWithRegex(String simpleString) {
+		// not implemented
+		return true;
 	}
 
 }
