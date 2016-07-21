@@ -46,6 +46,7 @@ public class AddPersonServlet extends HttpServlet {
 			String passwd = request.getParameter(Parameters.PASSWORD);
 			String repeat = request.getParameter(Parameters.REPEAT_PASSWORD);
 			boolean isChef = Parser.parseAvailable(request.getParameter(Parameters.IS_CHEF));
+			boolean isAdmin = Parser.parseAvailable(request.getParameter(Parameters.IS_ADMIN));
 
 			if (PasswordChecker.checkPasswords(passwd, repeat)) {
 				LOG.info("Password is OK");
@@ -54,7 +55,7 @@ public class AddPersonServlet extends HttpServlet {
 				LOG.info("eamil is OK");
 			}
 
-			User user = new UserBuilder(email, passwd).chef(isChef).build();
+			User user = new UserBuilder(email, passwd).chef(isChef).admin(isAdmin).build();
 			Person person = new PersonBuilder().user(user).firstName(fName).lastName(lName).build();
 
 			boolean isAdded = PersonService.add(person);

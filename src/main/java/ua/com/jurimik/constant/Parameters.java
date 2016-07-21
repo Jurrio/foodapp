@@ -14,6 +14,7 @@ public class Parameters {
 	public static final String PASSWORD = "password";
 	public static final String REPEAT_PASSWORD = "rep-password";
 	public static final String IS_CHEF = "is-chef";
+	public static final String IS_ADMIN = "is-admin";
 	public static final String USER = "user";
 
 	public static final String SEARCH = "search";
