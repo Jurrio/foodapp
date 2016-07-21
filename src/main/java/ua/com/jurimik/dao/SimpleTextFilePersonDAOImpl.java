@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.exception.SignInException;
 import ua.com.jurimik.exception.StringFormatException;
@@ -19,12 +21,15 @@ import ua.com.jurimik.util.PersonUtil;
 public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	private static File storage;
 
+	private static final Logger LOG = Logger.getLogger(SimpleTextFilePersonDAOImpl.class);
+
 	@Override
 	public boolean add(Person person) throws FileNotFoundException, IOException {
 		storage = FileUtils.getFile("persons.txt");
 		BufferedWriter writer = new BufferedWriter(new FileWriter(storage));
 		try {
 			writer.write(person.toString());
+			LOG.info("Add person to file. " + person.getId());
 		} finally {
 			writer.close();
 		}
@@ -35,14 +40,17 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	public Person get(int id) throws FileNotFoundException, IOException, StringFormatException {
 		storage = FileUtils.getFile("persons.txt");
 		BufferedReader reader = new BufferedReader(new FileReader(storage));
+		LOG.info("search person with id " + id);
 		try {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				Person person = convertFromString(line);
 				if (person.getId() == id) {
+					LOG.info("person was found");
 					reader.close();
 					return person;
 				}
+				LOG.info("person was not found");
 			}
 		} finally {
 			reader.close();
@@ -58,6 +66,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 		Person person = null;
 
 		BufferedReader reader = new BufferedReader(new FileReader(storage));
+		LOG.info("Login in system as " + login);
 		try {
 			String line;
 			while ((line = reader.readLine()) != null) {
@@ -65,6 +74,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 					person = convertFromString(line);
 					if (usr.equals(person.getUser())) {
 						reader.close();
+						LOG.info("login was successful");
 						return true;
 					}
 				}
@@ -72,6 +82,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 		} finally {
 			reader.close();
 		}
+		LOG.info("login was unsuccessful");
 		return false;
 
 		// throw new SignInException("You've entered an invalid email address or
@@ -91,6 +102,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 
 		BufferedReader reader = new BufferedReader(new FileReader(storage));
 		BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+		LOG.info("delete peson " + deletedPerson.getId());
 		boolean isSuccessful;
 		try {
 			String line;
@@ -100,6 +112,8 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 
 				if (!deletedPerson.getUser().equals(person.getUser())) {
 					writer.write(line + "\n");
+				} else {
+					LOG.info("person was delete");
 				}
 			}
 			isSuccessful = tempFile.renameTo(storage);
