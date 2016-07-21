@@ -6,6 +6,7 @@ public class User {
 	private String email;
 	private String password;
 	private boolean isChef;
+	private boolean isAdmin;
 
 	public User() {
 	}
@@ -40,6 +41,14 @@ public class User {
 
 	public void setChef(boolean isChef) {
 		this.isChef = isChef;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 	@Override
