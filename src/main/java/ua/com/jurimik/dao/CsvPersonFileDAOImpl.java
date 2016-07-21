@@ -12,7 +12,7 @@ import ua.com.jurimik.model.User;
 import ua.com.jurimik.util.FileUtils;
 import ua.com.jurimik.util.PersonUtil;
 
-public class CsvPersonFileDAOImpl implements AbstractPersonFileDAO {
+public class CsvPersonFileDAOImpl implements PersonFileDAO {
 
 	private File storage;
 

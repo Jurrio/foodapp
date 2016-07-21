@@ -1,10 +1,10 @@
 package ua.com.jurimik.dao;
 
-import ua.com.jurimik.dao.AbstractPersonDAO;
+import ua.com.jurimik.dao.PersonDAO;
 import ua.com.jurimik.exception.StringFormatException;
 import ua.com.jurimik.model.Person;
 
-public interface AbstractPersonFileDAO extends AbstractPersonDAO {
+public interface PersonFileDAO extends PersonDAO {
 
 	public String convertToString(Person person);
 

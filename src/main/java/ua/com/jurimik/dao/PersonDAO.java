@@ -7,7 +7,7 @@ import ua.com.jurimik.exception.SignInException;
 import ua.com.jurimik.exception.StringFormatException;
 import ua.com.jurimik.model.Person;
 
-public interface AbstractPersonDAO {
+public interface PersonDAO {
 
 	public boolean add(Person person) throws FileNotFoundException, IOException;
 

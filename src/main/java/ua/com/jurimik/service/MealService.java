@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import ua.com.jurimik.dao.ListMealDAO;
+import ua.com.jurimik.dao.ListMealDAOImpl;
 import ua.com.jurimik.model.Meal;
 
 public class MealService {
@@ -14,26 +14,26 @@ public class MealService {
 
 	public static boolean add(Meal meal) {
 		LOG.info("Call to MealRepository.add");
-		return new ListMealDAO().add(meal);
+		return new ListMealDAOImpl().add(meal);
 	}
 
 	public static List<Meal> find(String search) {
 		LOG.info("Call to MealRepository.find");
-		return new ListMealDAO().find(search);
+		return new ListMealDAOImpl().find(search);
 	}
 
 	public static boolean delete(Meal meal) {
 		LOG.info("Call to MealRepository.delete(id)");
-		return new ListMealDAO().delete(meal);
+		return new ListMealDAOImpl().delete(meal);
 	}
 
 	public static boolean delete(int id) {
 		LOG.info("Call to MealRepository.delete(id)");
-		return new ListMealDAO().delete(id);
+		return new ListMealDAOImpl().delete(id);
 	}
 
 	public static List<Meal> showAll() {
 		LOG.info("Call to MealRepository.getAll");
-		return new ListMealDAO().getAll();
+		return new ListMealDAOImpl().getAll();
 	}
 }

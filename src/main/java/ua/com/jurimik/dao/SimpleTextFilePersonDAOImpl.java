@@ -16,7 +16,7 @@ import ua.com.jurimik.model.User;
 import ua.com.jurimik.util.FileUtils;
 import ua.com.jurimik.util.PersonUtil;
 
-public class SimpleTextFilePersonDAO implements AbstractPersonFileDAO {
+public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	private static File storage;
 
 	@Override

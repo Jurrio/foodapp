@@ -8,11 +8,11 @@ import org.apache.log4j.Logger;
 
 import ua.com.jurimik.model.Meal;
 
-public class ListMealDAO implements MealListDAO {
+public class ListMealDAOImpl implements MealListDAO {
 	private static List<Meal> mealList = new ArrayList<>();
 	private static int id = 0;
 
-	private static final Logger LOG = LogManager.getLogger(ListMealDAO.class);
+	private static final Logger LOG = LogManager.getLogger(ListMealDAOImpl.class);
 
 	@Override
 	public boolean add(Meal meal) {

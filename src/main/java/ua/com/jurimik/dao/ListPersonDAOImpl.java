@@ -10,12 +10,12 @@ import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.model.Person;
 import ua.com.jurimik.model.User;
 
-public class ListPersonDAO implements AbstractPersonListDAO {
+public class ListPersonDAOImpl implements PersonListDAO {
 
 	private static List<Person> personList = new ArrayList<>();
 	private static int id = 0;
 
-	private static final Logger LOG = LogManager.getLogger(ListPersonDAO.class);
+	private static final Logger LOG = LogManager.getLogger(ListPersonDAOImpl.class);
 
 	@Override
 	public boolean add(Person person) {
