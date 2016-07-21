@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
@@ -27,21 +28,23 @@ public class PasswordFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		String passwd = request.getParameter(Parameters.PASSWORD);
-		String repeat = request.getParameter(Parameters.REPEAT_PASSWORD);
+		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+		if (httpServletRequest.getMethod().equalsIgnoreCase("POST")) {
+			String passwd = request.getParameter(Parameters.PASSWORD);
+			String repeat = request.getParameter(Parameters.REPEAT_PASSWORD);
 
-		try {
-			if (PasswordChecker.checkPasswords(passwd, repeat)) {
-				LOG.info("Password is OK");
+			try {
+				if (PasswordChecker.checkPasswords(passwd, repeat)) {
+					LOG.info("Password is OK");
+				}
+			} catch (PasswordLengthException e) {
+				request.setAttribute(Parameters.MESSAGE, e.getMessage());
+				request.getRequestDispatcher("registration.jsp").forward(request, response);
+			} catch (PasswordsNotEqualException e) {
+				request.setAttribute(Parameters.MESSAGE, e.getMessage());
+				request.getRequestDispatcher("registration.jsp").forward(request, response);
 			}
-		} catch (PasswordLengthException e) {
-			request.setAttribute(Parameters.MESSAGE, e.getMessage());
-			request.getRequestDispatcher("registration.jsp").forward(request, response);
-		} catch (PasswordsNotEqualException e) {
-			request.setAttribute(Parameters.MESSAGE, e.getMessage());
-			request.getRequestDispatcher("registration.jsp").forward(request, response);
 		}
-
 		chain.doFilter(request, response);
 	}
 

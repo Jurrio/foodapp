@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
@@ -26,15 +27,18 @@ public class EmailFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		String email = request.getParameter(Parameters.EMAIL);
+		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+		if (httpServletRequest.getMethod().equalsIgnoreCase("POST")) {
+			String email = request.getParameter(Parameters.EMAIL);
 
-		try {
-			if (EmailChecker.checkWithRegExp(email)) {
-				LOG.info("eamil is OK");
+			try {
+				if (EmailChecker.checkWithRegExp(email)) {
+					LOG.info("eamil is OK");
+				}
+			} catch (EmailFormatException e) {
+				request.setAttribute(Parameters.MESSAGE, e.getMessage());
+				request.getRequestDispatcher("registration.jsp").forward(request, response);
 			}
-		} catch (EmailFormatException e) {
-			request.setAttribute(Parameters.MESSAGE, e.getMessage());
-			request.getRequestDispatcher("registration.jsp").forward(request, response);
 		}
 
 		chain.doFilter(request, response);
