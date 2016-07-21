@@ -23,6 +23,16 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.16.v20140903</version>
+				<configuration>
+					<httpConnector>
+						<port>${jetty.port}</port>
+					</httpConnector>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -47,4 +57,18 @@
 			<version>1.2</version>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>mentor</id>
+			<properties>
+				<jetty.port>8181</jetty.port>
+			</properties>
+		</profile>
+		<profile>
+			<id>student</id>
+			<properties>
+				<jetty.port>8080</jetty.port>
+			</properties>
+		</profile>
+	</profiles>
 </project>
