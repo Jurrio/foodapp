@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.exception.StringFormatException;
 import ua.com.jurimik.model.Person;
@@ -14,19 +16,22 @@ import ua.com.jurimik.util.PersonUtil;
 
 public class CsvPersonFileDAOImpl implements PersonFileDAO {
 
+	private static final Logger LOG = Logger.getLogger(CsvPersonFileDAOImpl.class);
+	
 	private File storage;
 
 	@Override
 	public boolean add(Person person) throws IOException {
 		storage = FileUtils.getFile("persons.csv");
 		FileOutputStream fos = null;
+		LOG.info("Add person to file " + person.getId());
 		try {
 			fos = new FileOutputStream(storage);
 			fos.write(convertToString(person).getBytes());
 		} finally {
 			fos.close();
 		}
-		return false;
+		return true; //TODO: temporary
 	}
 
 	@Override
@@ -34,6 +39,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 		storage = FileUtils.getFile("persons.csv");
 		FileInputStream fis = null;
 		Person person = null;
+		LOG.info("get person with id " + id);
 		try {
 			fis = new FileInputStream(storage);
 			int data = fis.read();
@@ -45,6 +51,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 				if (c == '\n') {
 					person = convertFromString(sb.toString());
 					if (person.getId() == id) {
+						LOG.info("person was found");
 						fis.close();
 						return person;
 					}
@@ -55,6 +62,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 		} finally {
 			fis.close();
 		}
+		LOG.info("person was not found");
 		return null;
 	}
 
@@ -63,6 +71,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 		storage = FileUtils.getFile("persons.csv");
 		User usr = new UserBuilder(login, password).build();
 		FileInputStream fis = null;
+		LOG.info("Login in system as " + login);
 		try {
 			fis = new FileInputStream(storage);
 			int data = fis.read();
@@ -74,6 +83,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 				if (c == '\n') {
 					Person person = convertFromString(sb.toString());
 					if (usr.equals(person.getUser())) {
+						LOG.info("login was successful");
 						fis.close();
 						return true;
 					}
@@ -84,6 +94,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 		} finally {
 			fis.close();
 		}
+		LOG.info("login was unsuccessful");
 		return false;
 	}
 
@@ -101,6 +112,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 		FileOutputStream fos = null;
 		FileInputStream fis = null;
 		boolean isSuccessful;
+		LOG.info("delete peson " + deletedPerson.getId());
 		try {
 			fos = new FileOutputStream(tempFile);
 			fis = new FileInputStream(storage);
@@ -115,6 +127,8 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 					if (!deletedPerson.getUser().equals(person.getUser())) {
 						fos.write(sb.toString().getBytes());
 						sb = new StringBuilder();
+					} else {
+						LOG.info("person was delete");
 					}
 				}
 				data = fis.read();
