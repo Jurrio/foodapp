@@ -15,7 +15,8 @@ public class PersonUtil {
 		String[] params = simpleString.split("#");
 		int id = Integer.parseInt(params[2]);
 		boolean isChef = Boolean.parseBoolean(params[5]);
-		User usr = new UserBuilder(params[3], params[4]).id(id).chef(isChef).build();
+		boolean isAdmin = Boolean.parseBoolean(params[6]);
+		User usr = new UserBuilder(params[3], params[4]).id(id).chef(isChef).admin(isAdmin).build();
 		Person pers = new PersonBuilder().firstName(params[0]).lastName(params[1]).user(usr).build();
 		return pers;
 
@@ -25,7 +26,7 @@ public class PersonUtil {
 		StringBuilder sb = new StringBuilder();
 		sb.append(person.getId()).append(",").append(person.getFirstName()).append(",").append(person.getLastName())
 				.append(",").append(person.getUser().getEmail()).append(",").append(person.getUser().getPassword())
-				.append(",").append(person.getUser().isChef());
+				.append(",").append(person.getUser().isChef()).append(",").append(person.getUser().isAdmin());
 		return sb.toString();
 	}
 
@@ -36,7 +37,8 @@ public class PersonUtil {
 		String[] params = csvString.split(",");
 		int id = Integer.parseInt(params[0]);
 		boolean isChef = Boolean.parseBoolean(params[5]);
-		User usr = new UserBuilder(params[3], params[4]).id(id).chef(isChef).build();
+		boolean isAdmin = Boolean.parseBoolean(params[6]);
+		User usr = new UserBuilder(params[3], params[4]).id(id).chef(isChef).admin(isAdmin).build();
 		Person person = new PersonBuilder().firstName(params[1]).lastName(params[2]).user(usr).build();
 		return person;
 	}
