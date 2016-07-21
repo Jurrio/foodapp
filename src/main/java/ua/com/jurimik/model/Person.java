@@ -48,7 +48,8 @@ public class Person {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(firstName).append("#").append(lastName).append("#").append(user.getId()).append("#")
-				.append(user.getEmail()).append("#").append(user.getPassword()).append("#").append(user.isChef());
+				.append(user.getEmail()).append("#").append(user.getPassword()).append("#").append(user.isChef())
+				.append(user.isAdmin());
 		return sb.toString();
 	}
 
