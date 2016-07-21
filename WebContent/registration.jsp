@@ -17,12 +17,12 @@
 					<label for="fname">First Name</label> <input type="text" id="fname"
 						name="fname" placeholder="Ivan" required>
 				</div>
-				
+
 				<div class="field">
 					<label for="">Last Name</label> <input type="text" id="lname"
 						name="lname" placeholder="Melnik" required>
 				</div>
-				
+
 				<div class="field">
 					<label for="email">Email</label> <input type="text" id="email"
 						name="email" placeholder="test@gmail.com" required>
@@ -43,6 +43,11 @@
 				<div class="field">
 					<label for="is-chef">I'm chef!</label> <input type="checkbox"
 						id="is-chef" name="is-chef">
+				</div>
+
+				<div class="field">
+					<label for="is-admin">I'm admin!</label> <input type="checkbox"
+						id="is-admin" name="is-admin">
 				</div>
 
 				<button type="submit">Register!</button>
