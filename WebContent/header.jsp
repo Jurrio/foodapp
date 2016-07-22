@@ -30,4 +30,13 @@
 			
 			<a href="listMeal" class="menu-link">Dashboard</a>
 		</li>
+		
+		<li class="right-menu-item">
+			<a href="addPerson">Registration</a>
+
+		</li>
+		
+		<li class="right-menu-item">
+			<a href="LoginController">Sign in</a>
+		</li>
 	</ul>
