@@ -32,11 +32,11 @@
 		</li>
 		
 		<li class="right-menu-item">
-			<a href="addPerson">Registration</a>
+			<a href="addPerson" class="menu-link">Registration</a>
 
 		</li>
 		
 		<li class="right-menu-item">
-			<a href="LoginController">Sign in</a>
+			<a href="LoginController" class="menu-link">Sign in</a>
 		</li>
 	</ul>
