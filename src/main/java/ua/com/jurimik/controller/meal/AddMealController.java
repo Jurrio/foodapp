@@ -16,7 +16,6 @@ import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.model.Meal;
 import ua.com.jurimik.service.MealService;
-import ua.com.jurimik.util.ControllerUtil;
 import ua.com.jurimik.util.Parser;
 
 @WebServlet(name = "AddMealServlet", urlPatterns = "/addMeal")
@@ -27,7 +26,6 @@ public class AddMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ControllerUtil.setAttributes(req, Messages.VOID, Messages.VOID);
 		req.getRequestDispatcher("add.jsp").forward(req, resp);
 	}
 
@@ -50,16 +48,16 @@ public class AddMealController extends HttpServlet {
 			boolean isAdded = MealService.add(meal);
 			if (isAdded) {
 				LOG.info("meal added");
-				ControllerUtil.setAttributes(req, Messages.YES, Messages.ADD_SUCCEFULLY);
+				req.setAttribute(Parameters.MESSAGE, Messages.ADD_SUCCEFULLY);
 				req.setAttribute(Parameters.MEAL_ID, meal.getId());
 				LOG.debug("set attribute " + Parameters.MEAL_ID + ": " + meal.getId());
 			} else {
 				LOG.warn("meal not added");
-				ControllerUtil.setAttributes(req, Messages.NO, Messages.ADD_ERROR);
+				req.setAttribute(Parameters.ERROR, Messages.ADD_ERROR);
 			}
 		} catch (Exception e) { // TODO: catch each exception
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, Messages.NO, Messages.UNKNOWN_EXCEPTION);
+			req.setAttribute(Parameters.ERROR, Messages.UNKNOWN_EXCEPTION + " " + e.getMessage());
 		}
 		req.getRequestDispatcher("add.jsp").forward(req, resp);
 	}

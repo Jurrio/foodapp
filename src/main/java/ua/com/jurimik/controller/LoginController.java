@@ -15,7 +15,6 @@ import org.apache.log4j.Logger;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.service.PersonService;
-import ua.com.jurimik.util.ControllerUtil;
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
@@ -25,7 +24,6 @@ public class LoginController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ControllerUtil.setAttributes(request, Messages.VOID, Messages.VOID);
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 

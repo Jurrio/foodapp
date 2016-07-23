@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import ua.com.jurimik.constant.Messages;
+import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.model.Meal;
 import ua.com.jurimik.service.MealService;
-import ua.com.jurimik.util.ControllerUtil;
 
 @WebServlet(name = "ListMealServlet", urlPatterns = "/listMeal")
 public class ListMealController extends HttpServlet {
@@ -24,9 +24,7 @@ public class ListMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ControllerUtil.setAttributes(req, Messages.VOID, Messages.VOID);
-		req.setAttribute("meals", MealService.showAll());
-		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
+		doPost(req, resp);
 	}
 
 	@Override
@@ -36,9 +34,9 @@ public class ListMealController extends HttpServlet {
 		req.setAttribute("meals", allMeals);
 		LOG.debug("size of allMeals: " + allMeals.size());
 		if (!allMeals.isEmpty()) {
-			ControllerUtil.setAttributes(req, Messages.YES, Messages.DISPLAY_ALL);
+			req.setAttribute(Parameters.MESSAGE, Messages.DISPLAY_ALL);
 		} else {
-			ControllerUtil.setAttributes(req, Messages.NO, Messages.EMPTY_SET);
+			req.setAttribute(Parameters.ERROR, Messages.EMPTY_SET);
 		}
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}

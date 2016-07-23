@@ -18,7 +18,6 @@ import ua.com.jurimik.exception.SearchManyParamException;
 import ua.com.jurimik.model.Meal;
 import ua.com.jurimik.service.MealService;
 import ua.com.jurimik.util.CheckUtil;
-import ua.com.jurimik.util.ControllerUtil;
 
 @WebServlet(name = "FindMealServtet", urlPatterns = "/findMeal")
 public class FindMealController extends HttpServlet {
@@ -28,7 +27,6 @@ public class FindMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ControllerUtil.setAttributes(req, Messages.VOID, Messages.VOID);
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
 
@@ -40,18 +38,18 @@ public class FindMealController extends HttpServlet {
 			LOG.info("found meals: " + findResult.size());
 
 			if (!findResult.isEmpty()) {
-				ControllerUtil.setAttributes(req, Messages.YES, Messages.SEARCH_RESPONSE);
-				// req.setAttribute(RequestParam.RESULT_LIST, findResult);
+				req.setAttribute(Parameters.MESSAGE, Messages.SEARCH_RESPONSE);
+				req.setAttribute(Parameters.RESULT_LIST, findResult);
 			} else {
-				ControllerUtil.setAttributes(req, Messages.NO, Messages.EMPTY_SET);
+				req.setAttribute(Parameters.ERROR, Messages.EMPTY_SET);
 			}
 
 		} catch (SearchManyParamException e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, Messages.NO, e.getMessage());
+			req.setAttribute(Parameters.ERROR, e.getMessage());
 		} catch (SearchEmptyException e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, Messages.NO, e.getMessage());
+			req.setAttribute(Parameters.ERROR, e.getMessage());
 		}
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}

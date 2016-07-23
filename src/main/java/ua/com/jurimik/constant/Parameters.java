@@ -20,6 +20,7 @@ public class Parameters {
 	public static final String SEARCH = "search";
 	public static final String SUCCESS = "success";
 	public static final String MESSAGE = "message";
+	public static final String ERROR = "error";
 	public static final String MEAL_ID = "meal-id";
 	public static final String RESULT_LIST = "list";
 	public static final String PERSON_ID = "person-id";

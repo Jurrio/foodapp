@@ -19,7 +19,6 @@ import ua.com.jurimik.exception.PasswordsNotEqualException;
 import ua.com.jurimik.model.Person;
 import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.PersonService;
-import ua.com.jurimik.util.ControllerUtil;
 import ua.com.jurimik.util.EmailChecker;
 import ua.com.jurimik.util.Parser;
 import ua.com.jurimik.util.PasswordChecker;
@@ -32,7 +31,6 @@ public class AddPersonServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ControllerUtil.setAttributes(request, Messages.VOID, Messages.VOID);
 		LOG.debug("redirect to registration.jsp");
 		request.getRequestDispatcher("registration.jsp").forward(request, response);
 	}
@@ -62,23 +60,23 @@ public class AddPersonServlet extends HttpServlet {
 
 			if (isAdded) {
 				LOG.info("meal added");
-				ControllerUtil.setAttributes(request, Messages.YES, Messages.ADD_SUCCEFULLY);
+				request.setAttribute(Parameters.MESSAGE, Messages.ADD_SUCCEFULLY);
 				request.setAttribute(Parameters.PERSON_ID, person.getId());
 				LOG.debug("set attribute " + Parameters.MEAL_ID + ": " + person.getId());
 			} else {
 				LOG.warn("meal not added");
-				ControllerUtil.setAttributes(request, Messages.NO, Messages.ADD_ERROR);
+				request.setAttribute(Parameters.ERROR, Messages.ADD_ERROR);
 			}
 
 		} catch (PasswordsNotEqualException pne) {
 			LOG.error(pne.getMessage());
-			ControllerUtil.setAttributes(request, Messages.NO, pne.getMessage());
+			request.setAttribute(Parameters.ERROR, pne.getMessage());
 		} catch (PasswordLengthException e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(request, Messages.NO, e.getMessage());
+			request.setAttribute(Parameters.ERROR, e.getMessage());
 		} catch (EmailFormatException e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(request, Messages.NO, e.getMessage());
+			request.setAttribute(Parameters.ERROR, e.getMessage());
 		}
 		request.getRequestDispatcher("registration.jsp").forward(request, response);
 	}

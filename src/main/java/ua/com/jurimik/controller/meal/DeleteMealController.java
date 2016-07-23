@@ -13,7 +13,6 @@ import org.apache.log4j.Logger;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.service.MealService;
-import ua.com.jurimik.util.ControllerUtil;
 import ua.com.jurimik.util.Parser;
 
 @WebServlet(name = "DeleteMealServlet", urlPatterns = "/deleteMeal")
@@ -24,7 +23,6 @@ public class DeleteMealController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ControllerUtil.setAttributes(req, Messages.VOID, Messages.VOID);
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
 
@@ -38,17 +36,17 @@ public class DeleteMealController extends HttpServlet {
 
 			if (isDeleted) {
 				LOG.info("meal deleted");
-				ControllerUtil.setAttributes(req, Messages.YES, Messages.DELETE_SUCCEFULLY);
+				req.setAttribute(Parameters.MESSAGE, Messages.DELETE_SUCCEFULLY);
 			} else {
 				LOG.warn("meal not deleted");
-				ControllerUtil.setAttributes(req, Messages.NO, Messages.DELETE_ERROR);
+				req.setAttribute(Parameters.ERROR, Messages.DELETE_ERROR);
 			}
 		} catch (NumberFormatException e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, Messages.NO, Messages.DELETE_ERROR);
+			req.setAttribute(Parameters.ERROR, Messages.DELETE_ERROR);
 		} catch (Exception e) {
 			LOG.error(e.getMessage());
-			ControllerUtil.setAttributes(req, Messages.NO, Messages.UNKNOWN_EXCEPTION);
+			req.setAttribute(Parameters.ERROR, Messages.UNKNOWN_EXCEPTION + " " + e.getMessage());
 		}
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
