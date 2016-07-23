@@ -20,11 +20,8 @@
 				<tr><td>Owner</td><td><input type="text" name="owner" required></td></tr>
 			</table>
 			<input type="submit" value="Add meal" name="ok-button">
-			<c:choose>
-				<c:when test="${success eq 'yes'}"><p class=success> Success! ${message} </p></c:when>
-				<c:when test="${success eq 'no'}"> <p class=fail> Fail! ${message} </p> </c:when>
-				<c:otherwise> <p> ${message} </p> </c:otherwise>
-			</c:choose>
+			<p class=success>${message}</p>
+			<p class=fail>${error}</p>
 		</form>	
 	</body>
 </html>

@@ -19,17 +19,8 @@
 			type="submit" value="search">
 	</form>
 	<br>
-	<c:choose>
-		<c:when test="${success eq 'yes'}">
-			<p class="success">${message}</p>
-		</c:when>
-		<c:when test="${success eq 'no'}">
-			<p class="fail">${message}</p>
-		</c:when>
-		<c:otherwise>
-			<p>${message}</p>
-		</c:otherwise>
-	</c:choose>
+	<p class="success">${message}</p>
+	<p class="fail">${error}</p>
 	<table class="dash-table">
 		<tr>
 			<td>#</td>

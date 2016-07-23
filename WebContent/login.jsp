@@ -27,7 +27,8 @@
 			</fieldset>
 		</form>
 
-		${message}
+		<p class="success">${message}</p>
+		<p class="fail">${error}</p>
 
 		<div class="switch-log">
 			<p>
