@@ -24,13 +24,14 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.16.v20140903</version>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
 				<configuration>
-					<httpConnector>
-						<port>${jetty.port}</port>
-					</httpConnector>
+					<server>local-tomcat-7</server>
+					<path>/candylife</path>
+					<url>${tomcat.url}</url>
+					<!--<port>${tomcat.port}</port>-->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -61,13 +62,15 @@
 		<profile>
 			<id>mentor</id>
 			<properties>
-				<jetty.port>8181</jetty.port>
+				<tomcat.url>http://localhost:8181/manager/html</tomcat.url>
+				<!--<tomcat.port>8181</tomcat.port>-->
 			</properties>
 		</profile>
 		<profile>
 			<id>student</id>
 			<properties>
-				<jetty.port>8080</jetty.port>
+				<tomcat.url>http://localhost:8080/manager/html</tomcat.url>
+				<!--<tomcat.port>8080</tomcat.port>-->
 			</properties>
 		</profile>
 	</profiles>
