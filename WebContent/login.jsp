@@ -12,29 +12,36 @@
 	<%@ include file="header.jsp"%>
 	<div class=main-div>
 		<form action="login" method="post">
-			<fieldset class="reg-form">
+			<div class="reg-form">
+			
 				<div class="field">
-					<label for="email">Email</label> <input type="text" id="email"
-						name="email" placeholder="test@gmail.com" required>
+					<label for="email">Email</label> <input class="input" type="text"
+						id="email" name="email" placeholder="test@gmail.com" required>
 				</div>
 
 				<div class="field">
-					<label for="password">Password</label> <input type="password"
-						id="password" name="password" placeholder="for example: !asR5@ew"
-						required>
+					<label for="password">Password</label> <input class="input"
+						type="password" id="password" name="password"
+						placeholder="for example: !asR5@ew" required>
 				</div>
+			
 				<button type="submit">Sign in!</button>
-			</fieldset>
+			
+				<label for="remember"><input name="remember" type="checkbox"
+					value="" />Remember me!</label>
+			
+				<div class="switch-log">
+					<p>
+						Not registered? <a href="addPerson">Click here</a>
+					</p>
+				</div>
+			
+			</div>
 		</form>
 
 		<p class="success">${message}</p>
 		<p class="fail">${error}</p>
 
-		<div class="switch-log">
-			<p>
-				Not registered? <a href="addPerson">Click here</a>
-			</p>
-		</div>
 	</div>
 </body>
 </html>

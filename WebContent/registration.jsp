@@ -12,31 +12,31 @@
 	<%@ include file="header.jsp"%>
 	<div class=main-div>
 		<form action="addPerson" method="post">
-			<fieldset class="reg-form">
+			<div class="reg-form">
 				<div class="field">
-					<label for="fname">First Name</label> <input type="text" id="fname"
-						name="fname" placeholder="Ivan" required>
+					<label for="fname">First Name</label> <input class="input"
+						type="text" id="fname" name="fname" placeholder="Ivan" required>
 				</div>
 
 				<div class="field">
-					<label for="">Last Name</label> <input type="text" id="lname"
-						name="lname" placeholder="Melnik" required>
+					<label for="">Last Name</label> <input class="input" type="text"
+						id="lname" name="lname" placeholder="Melnik" required>
 				</div>
 
 				<div class="field">
-					<label for="email">Email</label> <input type="text" id="email"
-						name="email" placeholder="test@gmail.com" required>
+					<label for="email">Email</label> <input class="input" type="text"
+						id="email" name="email" placeholder="test@gmail.com" required>
 				</div>
 
 				<div class="field">
-					<label for="password">Password</label> <input type="password"
-						id="password" name="password" placeholder="for example: !asR5@ew"
-						required>
+					<label for="password">Password</label> <input class="input"
+						type="password" id="password" name="password"
+						placeholder="for example: !asR5@ew" required>
 				</div>
 
 				<div class="field">
-					<label for="rep-password">Repeat</label> <input type="password"
-						id="rep-password" name="rep-password"
+					<label for="rep-password">Repeat</label> <input class="input"
+						type="password" id="rep-password" name="rep-password"
 						placeholder="for example: !asR5@ew" required>
 				</div>
 
@@ -51,17 +51,19 @@
 				</div>
 
 				<button type="submit">Register!</button>
-			</fieldset>
+
+				<div class="switch-log">
+					<p>
+						Already have an account? <a href="login">Click here</a>
+					</p>
+				</div>
+
+			</div>
 		</form>
 
 		<p class="success">${message}</p>
 		<p class="fail">${error}</p>
 
-		<div class="switch-log">
-			<p>
-				Already have an account? <a href="login">Click here</a>
-			</p>
-		</div>
 	</div>
 </body>
 </html>
