@@ -15,8 +15,8 @@ import org.apache.log4j.Logger;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 
-@WebFilter(filterName = "AuthentificationFilter", servletNames = { "AddMealController", "DeleteMealController",
-		"ListMealController" })
+@WebFilter(filterName = "AuthentificationFilter", servletNames = { "AddMealServlet", "DeleteMealServlet",
+		"ListMealServlet" })
 public class AuthentificationFilter implements Filter {
 
 	private static final Logger LOG = Logger.getLogger(AuthentificationFilter.class);
