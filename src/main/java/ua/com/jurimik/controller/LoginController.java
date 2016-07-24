@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
 			request.getRequestDispatcher("log-success.jsp").forward(request, response);
 		} else {
 			LOG.debug("User not autorized");
-			request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_FAIL);
+			request.setAttribute(Parameters.ERROR, Messages.AUTORIZED_FAIL);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
