@@ -14,40 +14,40 @@
 		<form action="addPerson" method="post">
 			<div class="reg-form">
 				<div class="field">
-					<label for="fname">First Name</label> <input class="input"
-						type="text" id="fname" name="fname" placeholder="Ivan" required>
+					<p><label for="fname">First Name</label> <input class="input"
+						type="text" id="fname" name="fname" placeholder="Ivan" required></p>
 				</div>
 
 				<div class="field">
-					<label for="">Last Name</label> <input class="input" type="text"
-						id="lname" name="lname" placeholder="Melnik" required>
+					<p><label for="">Last Name</label> <input class="input" type="text"
+						id="lname" name="lname" placeholder="Melnik" required></p>
 				</div>
 
 				<div class="field">
-					<label for="email">Email</label> <input class="input" type="text"
-						id="email" name="email" placeholder="test@gmail.com" required>
+					<p><label for="email">Email</label> <input class="input" type="text"
+						id="email" name="email" placeholder="test@gmail.com" required></p>
 				</div>
 
 				<div class="field">
-					<label for="password">Password</label> <input class="input"
+					<p><label for="password">Password</label> <input class="input"
 						type="password" id="password" name="password"
-						placeholder="for example: !asR5@ew" required>
+						placeholder="for example: !asR5@ew" required></p>
 				</div>
 
 				<div class="field">
-					<label for="rep-password">Repeat</label> <input class="input"
+					<p><label for="rep-password">Repeat</label> <input class="input"
 						type="password" id="rep-password" name="rep-password"
-						placeholder="for example: !asR5@ew" required>
+						placeholder="for example: !asR5@ew" required></p>
 				</div>
 
 				<div class="field">
-					<label for="is-chef">I'm chef!</label> <input type="checkbox"
-						id="is-chef" name="is-chef">
+					<p><label for="is-chef">I'm chef!</label> <input type="checkbox"
+						id="is-chef" name="is-chef"></p>
 				</div>
 
 				<div class="field">
-					<label for="is-admin">I'm admin!</label> <input type="checkbox"
-						id="is-admin" name="is-admin">
+					<p><label for="is-admin">I'm admin!</label> <input type="checkbox"
+						id="is-admin" name="is-admin"></p>
 				</div>
 
 				<button type="submit">Register!</button>

@@ -11,24 +11,24 @@
 <body>
 	<%@ include file="header.jsp"%>
 	<div class=main-div>
-		<form action="login" method="post">
+		<form action="LoginController" method="post">
 			<div class="reg-form">
 			
 				<div class="field">
-					<label for="email">Email</label> <input class="input" type="text"
-						id="email" name="email" placeholder="test@gmail.com" required>
+					<p><label for="email">Email</label> <input class="input" type="text"
+						id="email" name="email" placeholder="test@gmail.com" required></p>
 				</div>
 
 				<div class="field">
-					<label for="password">Password</label> <input class="input"
+					<p><label for="password">Password</label> <input class="input"
 						type="password" id="password" name="password"
-						placeholder="for example: !asR5@ew" required>
+						placeholder="for example: !asR5@ew" required></p>
 				</div>
 			
 				<button type="submit">Sign in!</button>
 			
-				<label for="remember"><input name="remember" type="checkbox"
-					value="" />Remember me!</label>
+				<p><label for="remember"><input name="remember" type="checkbox"
+					value="" />Remember me!</label></p>
 			
 				<div class="switch-log">
 					<p>
