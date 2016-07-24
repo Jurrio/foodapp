@@ -50,7 +50,7 @@ public class LoginController extends HttpServlet {
 			LOG.debug("set livetime for " + login + " " + time);
 
 			request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("log-success.jsp").forward(request, response);
 		} else {
 			LOG.debug("User not autorized");
 			request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_FAIL);
