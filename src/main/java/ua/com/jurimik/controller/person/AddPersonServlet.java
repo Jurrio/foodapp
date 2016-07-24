@@ -47,10 +47,10 @@ public class AddPersonServlet extends HttpServlet {
 			boolean isAdmin = Parser.parseAvailable(request.getParameter(Parameters.IS_ADMIN));
 
 			if (PasswordChecker.checkPasswords(passwd, repeat)) {
-				LOG.info("Password is OK");
+				LOG.info("password is OK");
 			}
 			if (EmailChecker.checkWithRegExp(email)) {
-				LOG.info("eamil is OK");
+				LOG.info("email is OK");
 			}
 
 			User user = new UserBuilder(email, passwd).chef(isChef).admin(isAdmin).build();
@@ -59,13 +59,13 @@ public class AddPersonServlet extends HttpServlet {
 			boolean isAdded = PersonService.add(person);
 
 			if (isAdded) {
-				LOG.info("meal added");
-				request.setAttribute(Parameters.MESSAGE, Messages.ADD_SUCCEFULLY);
+				LOG.info("person added");
+				request.setAttribute(Parameters.MESSAGE, Messages.ADD_PERSON_SUCCEFULLY);
 				request.setAttribute(Parameters.PERSON_ID, person.getId());
-				LOG.debug("set attribute " + Parameters.MEAL_ID + ": " + person.getId());
+				LOG.debug("set attribute " + Parameters.PERSON_ID + ": " + person.getId());
 			} else {
-				LOG.warn("meal not added");
-				request.setAttribute(Parameters.ERROR, Messages.ADD_ERROR);
+				LOG.warn("person not added");
+				request.setAttribute(Parameters.ERROR, Messages.ADD_PERSON_ERROR);
 			}
 
 		} catch (PasswordsNotEqualException pne) {

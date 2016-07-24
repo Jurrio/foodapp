@@ -20,7 +20,7 @@ public class ListPersonDAOImpl implements PersonListDAO {
 	@Override
 	public boolean add(Person person) {
 		if (personList.contains(person)) {
-			LOG.info("DB exists this meal already");
+			LOG.info("DB exists this person already");
 			return false;
 		}
 		person.setId(nextId());
