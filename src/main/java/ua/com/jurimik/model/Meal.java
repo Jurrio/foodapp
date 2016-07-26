@@ -1,6 +1,10 @@
 package ua.com.jurimik.model;
 
-public class Meal {
+import java.io.Serializable;
+
+public class Meal implements Serializable{
+
+	private static final long serialVersionUID = -9138075113567884418L;
 
 	private int id;
 	private String title;
