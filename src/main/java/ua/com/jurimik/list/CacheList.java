@@ -20,8 +20,7 @@ public class CacheList<E> extends ArrayList<E> {
 	}
 
 	private void toFile() throws IOException {
-		FileOutputStream fos = new FileOutputStream(file);
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		for (int i = 0; i < size(); i++) {
 			oos.writeObject(get(i));
 			oos.flush();
@@ -30,10 +29,9 @@ public class CacheList<E> extends ArrayList<E> {
 	}
 
 	private List<E> fromFile() throws IOException, ClassNotFoundException {
-		FileInputStream fis = new FileInputStream(file);
-		ObjectInputStream ois = new ObjectInputStream(fis);
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 		List<E> result = new ArrayList<>();
-		while (ois.available() != 0) { // What I want do this?
+		while (ois.available() > 0) { // What I want do this?
 			E e = (E) ois.readObject();
 			result.add(e);
 		}
