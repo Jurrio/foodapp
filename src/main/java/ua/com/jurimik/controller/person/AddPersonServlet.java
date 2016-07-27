@@ -56,7 +56,7 @@ public class AddPersonServlet extends HttpServlet {
 			User user = new UserBuilder(email, passwd).chef(isChef).admin(isAdmin).build();
 			Person person = new PersonBuilder().user(user).firstName(fName).lastName(lName).build();
 
-			boolean isAdded = PersonService.add(person);
+			boolean isAdded = new PersonService().add(person);
 
 			if (isAdded) {
 				LOG.info("person added");

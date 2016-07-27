@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
+import ua.com.jurimik.model.Person;
+import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.PersonService;
 
 @WebServlet("/LoginController")
@@ -34,14 +36,15 @@ public class LoginController extends HttpServlet {
 		String login = request.getParameter(Parameters.EMAIL);
 		String password = request.getParameter(Parameters.PASSWORD);
 
-		boolean isAutorized = PersonService.login(login, password);
+		int autorized = new PersonService().login(login, password);
 
-		if (isAutorized) {
+		if (autorized > 0) {
 			LOG.debug("User autorized");
+			Person person = new PersonService().get(login, password);
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			HttpSession httpSession = httpRequest.getSession();
-			httpSession.setAttribute(Parameters.USER, login);
+			httpSession.setAttribute(Parameters.USER, person);
 			httpSession.setMaxInactiveInterval(time);
 			Cookie userName = new Cookie(Parameters.USER, login);
 			userName.setMaxAge(time);

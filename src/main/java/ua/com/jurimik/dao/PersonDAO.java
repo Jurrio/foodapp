@@ -13,7 +13,7 @@ public interface PersonDAO {
 
 	public Person get(int id) throws FileNotFoundException, IOException, StringFormatException;
 
-	public boolean login(String login, String password)
+	public int login(String login, String password)
 			throws FileNotFoundException, IOException, StringFormatException, SignInException;
 
 	public boolean update(int id, Person person);

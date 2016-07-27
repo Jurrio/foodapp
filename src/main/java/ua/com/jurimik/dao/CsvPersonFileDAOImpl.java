@@ -67,7 +67,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 	}
 
 	@Override
-	public boolean login(String login, String password) throws IOException, StringFormatException {
+	public int login(String login, String password) throws IOException, StringFormatException {
 		storage = FileUtils.getFile("persons.csv");
 		User usr = new UserBuilder(login, password).build();
 		FileInputStream fis = null;
@@ -85,7 +85,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 					if (usr.equals(person.getUser())) {
 						LOG.info("login was successful");
 						fis.close();
-						return true;
+						return person.getId();
 					}
 					sb = new StringBuilder();
 				}
@@ -95,7 +95,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 			fis.close();
 		}
 		LOG.info("login was unsuccessful");
-		return false;
+		return 0;
 	}
 
 	@Override

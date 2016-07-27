@@ -59,7 +59,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	}
 
 	@Override
-	public boolean login(String login, String password)
+	public int login(String login, String password)
 			throws FileNotFoundException, IOException, StringFormatException, SignInException {
 		storage = FileUtils.getFile("persons.txt");
 		User usr = new UserBuilder(login, password).build();
@@ -75,7 +75,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 					if (usr.equals(person.getUser())) {
 						reader.close();
 						LOG.info("login was successful");
-						return true;
+						return person.getId();
 					}
 				}
 			}
@@ -83,7 +83,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 			reader.close();
 		}
 		LOG.info("login was unsuccessful");
-		return false;
+		return 0;
 
 		// throw new SignInException("You've entered an invalid email address or
 		// password combination.");

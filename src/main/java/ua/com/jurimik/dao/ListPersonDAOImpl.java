@@ -40,16 +40,16 @@ public class ListPersonDAOImpl implements PersonListDAO {
 	}
 
 	@Override
-	public boolean login(String login, String password) {
+	public int login(String login, String password) {
 		User usr = new UserBuilder(login, password).build();
 		for (Person p : personList) {
 			if (p.getUser().equals(usr)) {
 				LOG.info("get person (id " + p.getId());
-				return true;
+				return p.getId();
 			}
 		}
 		LOG.info("no found user with email " + login + " and password " + password);
-		return false;
+		return 0;
 	}
 
 	@Override
