@@ -74,7 +74,6 @@ public class CacheList<E> extends ArrayList<E> {
 
 	@Override
 	public E remove(int index) {
-		// TODO Auto-generated method stub
 		E e = super.remove(index);
 		if (e == null) {
 			List<E> archive = null;
