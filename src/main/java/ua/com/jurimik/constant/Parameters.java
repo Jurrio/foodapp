@@ -16,6 +16,7 @@ public class Parameters {
 	public static final String IS_CHEF = "is-chef";
 	public static final String IS_ADMIN = "is-admin";
 	public static final String USER = "user";
+	public static final String MEALS = "meals";
 
 	public static final String SEARCH = "search";
 	public static final String SUCCESS = "success";

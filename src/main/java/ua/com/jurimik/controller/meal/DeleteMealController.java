@@ -48,6 +48,7 @@ public class DeleteMealController extends HttpServlet {
 			LOG.error(e.getMessage());
 			req.setAttribute(Parameters.ERROR, Messages.UNKNOWN_EXCEPTION + " " + e.getMessage());
 		}
+		req.setAttribute(Parameters.MEALS, MealService.showAll());
 		req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 	}
 }

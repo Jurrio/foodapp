@@ -31,7 +31,7 @@ public class ListMealController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Meal> allMeals = MealService.showAll();
 
-		req.setAttribute("meals", allMeals);
+		req.setAttribute(Parameters.MEALS, allMeals);
 		LOG.debug("size of allMeals: " + allMeals.size());
 		if (!allMeals.isEmpty()) {
 			req.setAttribute(Parameters.MESSAGE, Messages.DISPLAY_ALL);
