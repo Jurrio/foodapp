@@ -9,10 +9,13 @@
 </head>
 
 <body>
+	<script>
+		onload = function () {setTimeout ("document.location = 'homePage';", 3 * 1000)}
+	</script>
 	<div class="congrats">
 		<p>Hello, ${user}</p>
-		<p>
-			<a href="homePage">click here for redirect to start page</a>
+		<p>You will be regirected on main page in 3 seconds </p> 
+		<p> <a href="homePage">click here for redirect to start page now</a> </p>
 	</div>
 </body>
 </html>
