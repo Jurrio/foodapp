@@ -7,6 +7,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import ua.com.jurimik.constant.Parameters;
 
 @WebServlet(name = "LogoutServlet", urlPatterns = "/LogoutController")
 public class LogoutServlet extends HttpServlet {
@@ -30,7 +33,8 @@ public class LogoutServlet extends HttpServlet {
 
 			}
 		}
-		//удалить юзера из хттп-сессии
+		HttpSession session = request.getSession();
+		session.setAttribute(Parameters.USER, null);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
