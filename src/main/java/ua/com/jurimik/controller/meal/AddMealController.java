@@ -16,7 +16,7 @@ import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.model.Meal;
 import ua.com.jurimik.service.MealService;
-import ua.com.jurimik.util.Parser;
+import ua.com.jurimik.util.ParameterConverter;
 
 @WebServlet(name = "AddMealServlet", urlPatterns = "/addMeal")
 public class AddMealController extends HttpServlet {
@@ -35,8 +35,8 @@ public class AddMealController extends HttpServlet {
 		try {
 			String title = req.getParameter(Parameters.TITLE);
 			String description = req.getParameter(Parameters.DESCRIPTION);
-			boolean available = Parser.parseAvailable(req.getParameter(Parameters.AVAILABLE));
-			double price = Parser.parsePrice(req.getParameter(Parameters.PRICE));
+			boolean available = ParameterConverter.convertBoolean(req.getParameter(Parameters.AVAILABLE));
+			double price = ParameterConverter.convertDouble(req.getParameter(Parameters.PRICE));
 			String owner = req.getParameter(Parameters.OWNER);
 			LOG.debug("{title: " + title + ", description: " + description + ", available: " + available + ", price: "
 					+ price + ", owner: " + owner + "}");

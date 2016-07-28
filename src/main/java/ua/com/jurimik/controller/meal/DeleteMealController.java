@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.service.MealService;
-import ua.com.jurimik.util.Parser;
+import ua.com.jurimik.util.ParameterConverter;
 
 @WebServlet(name = "DeleteMealServlet", urlPatterns = "/deleteMeal")
 public class DeleteMealController extends HttpServlet {
@@ -30,7 +30,7 @@ public class DeleteMealController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			int id = Parser.parseId(req.getParameter(Parameters.ID));
+			int id = ParameterConverter.convertInteger(req.getParameter(Parameters.ID));
 
 			boolean isDeleted = MealService.delete(id);
 

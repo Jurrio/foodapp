@@ -20,7 +20,7 @@ import ua.com.jurimik.model.Person;
 import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.PersonService;
 import ua.com.jurimik.util.EmailChecker;
-import ua.com.jurimik.util.Parser;
+import ua.com.jurimik.util.ParameterConverter;
 import ua.com.jurimik.util.PasswordChecker;
 
 @WebServlet(name = "AddPersonServlet", urlPatterns = "/addPerson")
@@ -41,8 +41,8 @@ public class AddPersonServlet extends HttpServlet {
 		String lName = request.getParameter(Parameters.LAST_NAME);
 		String email = request.getParameter(Parameters.EMAIL);
 		String passwd = request.getParameter(Parameters.PASSWORD);
-		boolean isChef = Parser.parseAvailable(request.getParameter(Parameters.IS_CHEF));
-		boolean isAdmin = Parser.parseAvailable(request.getParameter(Parameters.IS_ADMIN));
+		boolean isChef = ParameterConverter.convertBoolean(request.getParameter(Parameters.IS_CHEF));
+		boolean isAdmin = ParameterConverter.convertBoolean(request.getParameter(Parameters.IS_ADMIN));
 
 		User user = new UserBuilder(email, passwd).chef(isChef).admin(isAdmin).build();
 		Person person = new PersonBuilder().user(user).firstName(fName).lastName(lName).build();
