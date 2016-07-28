@@ -14,9 +14,9 @@ public class EmailChecker {
 		return true;
 	}
 
-	private static boolean checkEmail(String userNameString) {
+	private static boolean checkEmail(String email) {
 		Pattern p = Pattern.compile("^[a-z0-9_\\.]{4,31}@[a-z]{1,}[a-z0-9]{0,}\\.[a-z]{2,3}$");
-		Matcher m = p.matcher(userNameString);
+		Matcher m = p.matcher(email);
 		return m.matches();
 	}
 	/*
