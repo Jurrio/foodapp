@@ -37,47 +37,28 @@ public class AddPersonServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-			String fName = request.getParameter(Parameters.FIRST_NAME);
-			String lName = request.getParameter(Parameters.LAST_NAME);
-			String email = request.getParameter(Parameters.EMAIL);
-			String passwd = request.getParameter(Parameters.PASSWORD);
-			String repeat = request.getParameter(Parameters.REPEAT_PASSWORD);
-			boolean isChef = Parser.parseAvailable(request.getParameter(Parameters.IS_CHEF));
-			boolean isAdmin = Parser.parseAvailable(request.getParameter(Parameters.IS_ADMIN));
+		String fName = request.getParameter(Parameters.FIRST_NAME);
+		String lName = request.getParameter(Parameters.LAST_NAME);
+		String email = request.getParameter(Parameters.EMAIL);
+		String passwd = request.getParameter(Parameters.PASSWORD);
+		boolean isChef = Parser.parseAvailable(request.getParameter(Parameters.IS_CHEF));
+		boolean isAdmin = Parser.parseAvailable(request.getParameter(Parameters.IS_ADMIN));
 
-			if (PasswordChecker.checkPasswords(passwd, repeat)) {
-				LOG.info("password is OK");
-			}
-			if (EmailChecker.checkWithRegExp(email)) {
-				LOG.info("email is OK");
-			}
+		User user = new UserBuilder(email, passwd).chef(isChef).admin(isAdmin).build();
+		Person person = new PersonBuilder().user(user).firstName(fName).lastName(lName).build();
 
-			User user = new UserBuilder(email, passwd).chef(isChef).admin(isAdmin).build();
-			Person person = new PersonBuilder().user(user).firstName(fName).lastName(lName).build();
+		boolean isAdded = new PersonService().add(person);
 
-			boolean isAdded = new PersonService().add(person);
-
-			if (isAdded) {
-				LOG.info("person added");
-				request.setAttribute(Parameters.MESSAGE, Messages.ADD_PERSON_SUCCEFULLY);
-				request.setAttribute(Parameters.PERSON_ID, person.getId());
-				LOG.debug("set attribute " + Parameters.PERSON_ID + ": " + person.getId());
-			} else {
-				LOG.warn("person not added");
-				request.setAttribute(Parameters.ERROR, Messages.ADD_PERSON_ERROR);
-			}
-
-		} catch (PasswordsNotEqualException pne) {
-			LOG.error(pne.getMessage());
-			request.setAttribute(Parameters.ERROR, pne.getMessage());
-		} catch (PasswordLengthException e) {
-			LOG.error(e.getMessage());
-			request.setAttribute(Parameters.ERROR, e.getMessage());
-		} catch (EmailFormatException e) {
-			LOG.error(e.getMessage());
-			request.setAttribute(Parameters.ERROR, e.getMessage());
+		if (isAdded) {
+			LOG.info("person added");
+			request.setAttribute(Parameters.MESSAGE, Messages.ADD_PERSON_SUCCEFULLY);
+			request.setAttribute(Parameters.PERSON_ID, person.getId());
+			LOG.debug("set attribute " + Parameters.PERSON_ID + ": " + person.getId());
+		} else {
+			LOG.warn("person not added");
+			request.setAttribute(Parameters.ERROR, Messages.ADD_PERSON_ERROR);
 		}
+
 		request.getRequestDispatcher("registration.jsp").forward(request, response);
 	}
 
