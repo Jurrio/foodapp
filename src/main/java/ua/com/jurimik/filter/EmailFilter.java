@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.exception.EmailFormatException;
-import ua.com.jurimik.util.EmailChecker;
+import ua.com.jurimik.util.EmailValidator;
 
 @WebFilter(filterName = "EmailFilter", servletNames = "AddPersonServlet")
 public class EmailFilter implements Filter {
@@ -33,7 +33,7 @@ public class EmailFilter implements Filter {
 			String email = request.getParameter(Parameters.EMAIL);
 
 			try {
-				if (!EmailChecker.checkWithRegExp(email)) {
+				if (!EmailValidator.validate(email)) {
 					request.setAttribute(Parameters.ERROR_EMAIL, Messages.ERROR_EMAIL);
 				}
 			} catch (EmailFormatException e) {

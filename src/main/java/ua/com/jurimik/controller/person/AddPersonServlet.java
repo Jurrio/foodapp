@@ -19,9 +19,9 @@ import ua.com.jurimik.exception.PasswordsNotEqualException;
 import ua.com.jurimik.model.Person;
 import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.PersonService;
-import ua.com.jurimik.util.EmailChecker;
+import ua.com.jurimik.util.EmailValidator;
 import ua.com.jurimik.util.ParameterConverter;
-import ua.com.jurimik.util.PasswordChecker;
+import ua.com.jurimik.util.PasswordValidator;
 
 @WebServlet(name = "AddPersonServlet", urlPatterns = "/addPerson")
 public class AddPersonServlet extends HttpServlet {

@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.exception.PasswordLengthException;
 import ua.com.jurimik.exception.PasswordsNotEqualException;
-import ua.com.jurimik.util.PasswordChecker;
+import ua.com.jurimik.util.PasswordValidator;
 
 @WebFilter(filterName = "PasswordFilter", servletNames = "AddPersonServlet")
 public class PasswordFilter implements Filter {
@@ -34,7 +34,7 @@ public class PasswordFilter implements Filter {
 			String repeat = request.getParameter(Parameters.REPEAT_PASSWORD);
 
 			try {
-				if (!PasswordChecker.checkPasswords(passwd, repeat)) {
+				if (!PasswordValidator.validate(passwd, repeat)) {
 					
 				}
 			} catch (PasswordLengthException e) {
