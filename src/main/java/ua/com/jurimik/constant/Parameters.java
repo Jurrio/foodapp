@@ -31,4 +31,8 @@ public class Parameters {
 	public static final String NO_DESCRIPTION = "no description";
 	public static final double NO_PRICE = 0.0;
 	public static final String NO_OWNER = "no owner";
+	
+	public static final String ERROR_EMAIL = "erroremail";
+	public static final String ERROR_PASSWORD = "errorpassword";
+	public static final String ERROR_REPEAT = "errorrepeat";
 }

@@ -27,6 +27,8 @@ public class Messages {
 	public static final String DISPLAY_ALL = "List of meals";
 
 	public static final String AUTORIZED_OK = "Hello!";
+	public static final String AUTORIZED_ERROR_ACCESS = "You need sign in for access to this page";
 	public static final String AUTORIZED_FAIL = "Check the email/password and try again";
+	public static final String ERROR_EMAIL = "Your email is not correct. Check the email and try again";
 
 }

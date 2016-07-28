@@ -31,7 +31,7 @@ public class AuthentificationFilter implements Filter {
 		if (httpRequest.getSession().getAttribute(Parameters.USER) == null) {
 
 			LOG.warn("Unauthorized user");
-			request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_FAIL);
+			request.setAttribute(Parameters.ERROR, Messages.AUTORIZED_ERROR_ACCESS);
 
 			request.getRequestDispatcher("/LoginController").forward(request, response);
 		} else {

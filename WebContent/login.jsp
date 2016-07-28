@@ -13,34 +13,40 @@
 	<div class=main-div>
 		<form action="LoginController" method="post">
 			<div class="reg-form">
-			
+
 				<div class="field">
-					<p><label for="email">Email</label> <input class="input" type="text"
-						id="email" name="email" placeholder="test@gmail.com" required></p>
+					<p>
+						<label for="email">Email</label> <input class="input" type="text"
+							id="email" name="email" placeholder="test@gmail.com" required>
+					</p>
 				</div>
 
 				<div class="field">
-					<p><label for="password">Password</label> <input class="input"
-						type="password" id="password" name="password"
-						placeholder="for example: !asR5@ew" required></p>
+					<p>
+						<label for="password">Password</label> <input class="input"
+							type="password" id="password" name="password"
+							placeholder="for example: !asR5@ew" required>
+					</p>
 				</div>
-			
+
 				<button type="submit">Sign in!</button>
-			
-				<p><label for="remember"><input name="remember" type="checkbox"
-					value="" />Remember me!</label></p>
-			
+
+				<p>
+					<label for="remember"><input name="remember"
+						type="checkbox" value="" />Remember me!</label>
+				</p>
+
+				<p class="success">${message}</p>
+				<p class="fail">${error}</p>
+
 				<div class="switch-log">
 					<p>
 						Not registered? <a href="addPerson">Click here</a>
 					</p>
 				</div>
-			
+
 			</div>
 		</form>
-
-		<p class="success">${message}</p>
-		<p class="fail">${error}</p>
 
 	</div>
 </body>

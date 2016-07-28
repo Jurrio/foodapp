@@ -34,14 +34,14 @@ public class PasswordFilter implements Filter {
 			String repeat = request.getParameter(Parameters.REPEAT_PASSWORD);
 
 			try {
-				if (PasswordChecker.checkPasswords(passwd, repeat)) {
-					LOG.info("Password is OK");
+				if (!PasswordChecker.checkPasswords(passwd, repeat)) {
+					
 				}
 			} catch (PasswordLengthException e) {
-				request.setAttribute(Parameters.MESSAGE, e.getMessage());
+				request.setAttribute(Parameters.ERROR_PASSWORD, e.getMessage());
 				request.getRequestDispatcher("registration.jsp").forward(request, response);
 			} catch (PasswordsNotEqualException e) {
-				request.setAttribute(Parameters.MESSAGE, e.getMessage());
+				request.setAttribute(Parameters.ERROR_REPEAT, e.getMessage());
 				request.getRequestDispatcher("registration.jsp").forward(request, response);
 			}
 		}

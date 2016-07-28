@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
+import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.exception.EmailFormatException;
 import ua.com.jurimik.util.EmailChecker;
@@ -32,11 +33,11 @@ public class EmailFilter implements Filter {
 			String email = request.getParameter(Parameters.EMAIL);
 
 			try {
-				if (EmailChecker.checkWithRegExp(email)) {
-					LOG.info("eamil is OK");
+				if (!EmailChecker.checkWithRegExp(email)) {
+					request.setAttribute(Parameters.ERROR_EMAIL, Messages.ERROR_EMAIL);
 				}
 			} catch (EmailFormatException e) {
-				request.setAttribute(Parameters.MESSAGE, e.getMessage());
+				request.setAttribute(Parameters.ERROR_EMAIL, e.getMessage());
 				request.getRequestDispatcher("registration.jsp").forward(request, response);
 			}
 		}
