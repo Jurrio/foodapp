@@ -1,6 +1,7 @@
 package ua.com.jurimik.controller.person;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,15 +14,10 @@ import ua.com.jurimik.builder.PersonBuilder;
 import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
-import ua.com.jurimik.exception.EmailFormatException;
-import ua.com.jurimik.exception.PasswordLengthException;
-import ua.com.jurimik.exception.PasswordsNotEqualException;
 import ua.com.jurimik.model.Person;
 import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.PersonService;
-import ua.com.jurimik.util.EmailValidator;
 import ua.com.jurimik.util.ParameterConverter;
-import ua.com.jurimik.util.PasswordValidator;
 
 @WebServlet(name = "AddPersonServlet", urlPatterns = "/addPerson")
 public class AddPersonServlet extends HttpServlet {

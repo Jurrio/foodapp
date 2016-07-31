@@ -32,32 +32,26 @@ public class AddMealController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException, IllegalArgumentException {
-		try {
-			String title = req.getParameter(Parameters.TITLE);
-			String description = req.getParameter(Parameters.DESCRIPTION);
-			boolean available = ParameterConverter.convertBoolean(req.getParameter(Parameters.AVAILABLE));
-			double price = ParameterConverter.convertDouble(req.getParameter(Parameters.PRICE));
-			String owner = req.getParameter(Parameters.OWNER);
-			LOG.debug("{title: " + title + ", description: " + description + ", available: " + available + ", price: "
-					+ price + ", owner: " + owner + "}");
+		String title = req.getParameter(Parameters.TITLE);
+		String description = req.getParameter(Parameters.DESCRIPTION);
+		boolean available = ParameterConverter.convertBoolean(req.getParameter(Parameters.AVAILABLE));
+		double price = ParameterConverter.convertDouble(req.getParameter(Parameters.PRICE));
+		String owner = req.getParameter(Parameters.OWNER);
+		LOG.debug("{title: " + title + ", description: " + description + ", available: " + available + ", price: "
+				+ price + ", owner: " + owner + "}");
 
-			Meal meal = new MealBuilder(title, price).available(available).owner(owner).description(description)
-					.build();
-			LOG.debug("create meal " + meal.toString());
+		Meal meal = new MealBuilder(title, price).available(available).owner(owner).description(description).build();
+		LOG.debug("create meal " + meal.toString());
 
-			boolean isAdded = MealService.add(meal);
-			if (isAdded) {
-				LOG.info("meal added");
-				req.setAttribute(Parameters.MESSAGE, Messages.ADD_SUCCEFULLY);
-				req.setAttribute(Parameters.MEAL_ID, meal.getId());
-				LOG.debug("set attribute " + Parameters.MEAL_ID + ": " + meal.getId());
-			} else {
-				LOG.warn("meal not added");
-				req.setAttribute(Parameters.ERROR, Messages.ADD_ERROR);
-			}
-		} catch (Exception e) { // TODO: catch each exception
-			LOG.error(e.getMessage());
-			req.setAttribute(Parameters.ERROR, Messages.UNKNOWN_EXCEPTION + " " + e.getMessage());
+		boolean isAdded = MealService.add(meal);
+		if (isAdded) {
+			LOG.info("meal added");
+			req.setAttribute(Parameters.MESSAGE, Messages.ADD_SUCCEFULLY);
+			req.setAttribute(Parameters.MEAL_ID, meal.getId());
+			LOG.debug("set attribute " + Parameters.MEAL_ID + ": " + meal.getId());
+		} else {
+			LOG.warn("meal not added");
+			req.setAttribute(Parameters.ERROR, Messages.ADD_ERROR);
 		}
 		req.getRequestDispatcher("add.jsp").forward(req, resp);
 	}
