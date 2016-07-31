@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
-import ua.com.jurimik.model.Person;
+import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.PersonService;
 
 @WebServlet("/LoginController")
@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
 
 		if (autorized > 0) {
 			LOG.debug("User autorized");
-			Person person = new PersonService().get(login, password);
+			User person = new PersonService().get(login, password);
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			HttpSession httpSession = httpRequest.getSession();

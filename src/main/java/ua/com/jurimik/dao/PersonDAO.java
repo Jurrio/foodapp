@@ -5,19 +5,19 @@ import java.io.IOException;
 
 import ua.com.jurimik.exception.SignInException;
 import ua.com.jurimik.exception.StringFormatException;
-import ua.com.jurimik.model.Person;
+import ua.com.jurimik.model.User;
 
 public interface PersonDAO {
 
-	public boolean add(Person person) throws FileNotFoundException, IOException;
+	public boolean add(User person) throws FileNotFoundException, IOException;
 
-	public Person get(int id) throws FileNotFoundException, IOException, StringFormatException;
+	public User get(int id) throws FileNotFoundException, IOException, StringFormatException;
 
 	public int login(String login, String password)
 			throws FileNotFoundException, IOException, StringFormatException, SignInException;
 
-	public boolean update(int id, Person person);
+	public boolean update(int id, User person);
 
-	public boolean delete(Person deletedPerson) throws FileNotFoundException, IOException, StringFormatException;
+	public boolean delete(User deletedPerson) throws FileNotFoundException, IOException, StringFormatException;
 
 }

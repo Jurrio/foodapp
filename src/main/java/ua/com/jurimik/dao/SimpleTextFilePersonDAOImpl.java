@@ -10,10 +10,10 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-import ua.com.jurimik.builder.PersonBuilder;
+import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.exception.SignInException;
 import ua.com.jurimik.exception.StringFormatException;
-import ua.com.jurimik.model.Person;
+import ua.com.jurimik.model.User;
 import ua.com.jurimik.util.FileUtils;
 import ua.com.jurimik.util.PersonUtil;
 
@@ -23,7 +23,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	private static final Logger LOG = Logger.getLogger(SimpleTextFilePersonDAOImpl.class);
 
 	@Override
-	public boolean add(Person person) throws FileNotFoundException, IOException {
+	public boolean add(User person) throws FileNotFoundException, IOException {
 		storage = FileUtils.getFile("persons.txt");
 		BufferedWriter writer = new BufferedWriter(new FileWriter(storage));
 		try {
@@ -36,14 +36,14 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	}
 
 	@Override
-	public Person get(int id) throws FileNotFoundException, IOException, StringFormatException {
+	public User get(int id) throws FileNotFoundException, IOException, StringFormatException {
 		storage = FileUtils.getFile("persons.txt");
 		BufferedReader reader = new BufferedReader(new FileReader(storage));
 		LOG.info("search person with id " + id);
 		try {
 			String line;
 			while ((line = reader.readLine()) != null) {
-				Person person = convertFromString(line);
+				User person = convertFromString(line);
 				if (person.getId() == id) {
 					LOG.info("person was found");
 					reader.close();
@@ -61,8 +61,8 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	public int login(String login, String password)
 			throws FileNotFoundException, IOException, StringFormatException, SignInException {
 		storage = FileUtils.getFile("persons.txt");
-		Person usr = new PersonBuilder().email(login).password(password).build();
-		Person person = null;
+		User usr = new UserBuilder().email(login).password(password).build();
+		User person = null;
 
 		BufferedReader reader = new BufferedReader(new FileReader(storage));
 		LOG.info("Login in system as " + login);
@@ -89,13 +89,13 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	}
 
 	@Override
-	public boolean update(int id, Person person) {
+	public boolean update(int id, User person) {
 		return false;
 		// TODO not implemented method
 	}
 
 	@Override
-	public boolean delete(Person deletedPerson) throws FileNotFoundException, IOException, StringFormatException {
+	public boolean delete(User deletedPerson) throws FileNotFoundException, IOException, StringFormatException {
 		File tempFile = FileUtils.getFile("tempFile");
 		storage = FileUtils.getFile("persons.txt");
 
@@ -107,7 +107,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 			String line;
 			while ((line = reader.readLine()) != null) {
 
-				Person person = convertFromString(line);
+				User person = convertFromString(line);
 
 				if (!deletedPerson.equals(person)) {
 					writer.write(line + "\n");
@@ -125,12 +125,12 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	}
 
 	@Override
-	public String convertToString(Person person) {
+	public String convertToString(User person) {
 		return person.toString();
 	}
 
 	@Override
-	public Person convertFromString(String string) throws StringFormatException {
+	public User convertFromString(String string) throws StringFormatException {
 		return PersonUtil.valueOfSimpleString(string);
 	}
 

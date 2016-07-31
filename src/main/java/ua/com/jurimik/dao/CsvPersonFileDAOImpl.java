@@ -7,9 +7,9 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-import ua.com.jurimik.builder.PersonBuilder;
+import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.exception.StringFormatException;
-import ua.com.jurimik.model.Person;
+import ua.com.jurimik.model.User;
 import ua.com.jurimik.util.FileUtils;
 import ua.com.jurimik.util.PersonUtil;
 
@@ -20,7 +20,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 	private File storage;
 
 	@Override
-	public boolean add(Person person) throws IOException {
+	public boolean add(User person) throws IOException {
 		storage = FileUtils.getFile("persons.csv");
 		FileOutputStream fos = null;
 		LOG.info("Add person to file " + person.getId());
@@ -34,10 +34,10 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 	}
 
 	@Override
-	public Person get(int id) throws IOException, StringFormatException {
+	public User get(int id) throws IOException, StringFormatException {
 		storage = FileUtils.getFile("persons.csv");
 		FileInputStream fis = null;
-		Person person = null;
+		User person = null;
 		LOG.info("get person with id " + id);
 		try {
 			fis = new FileInputStream(storage);
@@ -68,7 +68,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 	@Override
 	public int login(String login, String password) throws IOException, StringFormatException {
 		storage = FileUtils.getFile("persons.csv");
-		Person usr = new PersonBuilder().email(login).password(password).build();
+		User usr = new UserBuilder().email(login).password(password).build();
 		FileInputStream fis = null;
 		LOG.info("Login in system as " + login);
 		try {
@@ -80,7 +80,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 				c = (char) data;
 				sb.append(c);
 				if (c == '\n') {
-					Person person = convertFromString(sb.toString());
+					User person = convertFromString(sb.toString());
 					if (usr.equals(person)) {
 						LOG.info("login was successful");
 						fis.close();
@@ -98,13 +98,13 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 	}
 
 	@Override
-	public boolean update(int id, Person person) {
+	public boolean update(int id, User person) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(Person deletedPerson) throws IOException, StringFormatException {
+	public boolean delete(User deletedPerson) throws IOException, StringFormatException {
 		storage = FileUtils.getFile("persons.csv");
 		File tempFile = FileUtils.getFile("tempfile.csv");
 
@@ -122,7 +122,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 				c = (char) data;
 				sb.append(c);
 				if (c == '\n') {
-					Person person = convertFromString(sb.toString());
+					User person = convertFromString(sb.toString());
 					if (!deletedPerson.equals(person)) {
 						fos.write(sb.toString().getBytes());
 						sb = new StringBuilder();
@@ -141,12 +141,12 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 	}
 
 	@Override
-	public String convertToString(Person person) {
+	public String convertToString(User person) {
 		return PersonUtil.parseToCsv(person);
 	}
 
 	@Override
-	public Person convertFromString(String string) throws StringFormatException {
+	public User convertFromString(String string) throws StringFormatException {
 		return PersonUtil.valueOfCsv(string);
 	}
 

@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import ua.com.jurimik.builder.PersonBuilder;
+import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
-import ua.com.jurimik.model.Person;
+import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.PersonService;
 import ua.com.jurimik.util.ParameterConverter;
 
@@ -38,7 +38,7 @@ public class RegisterUserServlet extends HttpServlet {
 		boolean isChef = ParameterConverter.convertBoolean(request.getParameter(Parameters.IS_CHEF));
 		boolean isAdmin = ParameterConverter.convertBoolean(request.getParameter(Parameters.IS_ADMIN));
 
-		Person person = new PersonBuilder().email(email).password(passwd).firstName(fName).lastName(lName).chef(isChef)
+		User person = new UserBuilder().email(email).password(passwd).firstName(fName).lastName(lName).chef(isChef)
 				.admin(isAdmin).build();
 
 		boolean isAdded = new PersonService().add(person);

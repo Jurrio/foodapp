@@ -1,12 +1,12 @@
 package ua.com.jurimik.util;
 
-import ua.com.jurimik.builder.PersonBuilder;
+import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.exception.StringFormatException;
-import ua.com.jurimik.model.Person;
+import ua.com.jurimik.model.User;
 
 public class PersonUtil {
 
-	public static String createSimpleString(Person person) {
+	public static String createSimpleString(User person) {
 		StringBuilder sbld = new StringBuilder();
 		sbld.append(person.getId()).append("#")
 			.append(person.getFirstName()).append("#")
@@ -18,7 +18,7 @@ public class PersonUtil {
 		return sbld.toString();
 	}
 
-	public static Person valueOfSimpleString(String simpleString) throws StringFormatException {
+	public static User valueOfSimpleString(String simpleString) throws StringFormatException {
 		if (!checkSimpleStringWithRegex(simpleString)) {
 			throw new StringFormatException("Bad string");
 		}
@@ -26,13 +26,13 @@ public class PersonUtil {
 		int id = Integer.parseInt(params[0]);
 		boolean isChef = Boolean.parseBoolean(params[5]);
 		boolean isAdmin = Boolean.parseBoolean(params[6]);
-		Person pers = new PersonBuilder().firstName(params[1]).lastName(params[2]).email(params[3]).password(params[4])
+		User pers = new UserBuilder().firstName(params[1]).lastName(params[2]).email(params[3]).password(params[4])
 				.id(id).chef(isChef).admin(isAdmin).build();
 		return pers;
 
 	}
 
-	public static String parseToCsv(Person person) {
+	public static String parseToCsv(User person) {
 		StringBuilder sbld = new StringBuilder();
 		sbld.append(person.getId()).append(",")
 			.append(person.getFirstName()).append(",")
@@ -44,7 +44,7 @@ public class PersonUtil {
 		return sbld.toString();
 	}
 
-	public static Person valueOfCsv(String csvString) throws StringFormatException {
+	public static User valueOfCsv(String csvString) throws StringFormatException {
 		if (!checkCsvStringWithRegex(csvString)) {
 			throw new StringFormatException("Bad CSV string");
 		}
@@ -52,7 +52,7 @@ public class PersonUtil {
 		int id = Integer.parseInt(params[0]);
 		boolean isChef = Boolean.parseBoolean(params[5]);
 		boolean isAdmin = Boolean.parseBoolean(params[6]);
-		Person person = new PersonBuilder().id(id).firstName(params[1]).lastName(params[2]).email(params[3])
+		User person = new UserBuilder().id(id).firstName(params[1]).lastName(params[2]).email(params[3])
 				.password(params[4]).chef(isChef).admin(isAdmin).build();
 		return person;
 	}
