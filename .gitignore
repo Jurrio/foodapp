@@ -3,3 +3,4 @@
 /target/
 serialStorage
 startcmd.bat
+WebContent/META-INF/context.xml
