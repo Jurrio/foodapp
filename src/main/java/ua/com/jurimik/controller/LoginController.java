@@ -15,7 +15,6 @@ import org.apache.log4j.Logger;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.model.Person;
-import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.PersonService;
 
 @WebServlet("/LoginController")

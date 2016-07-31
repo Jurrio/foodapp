@@ -1,23 +1,24 @@
 package ua.com.jurimik.model;
 
-import ua.com.jurimik.builder.PersonBuilder;
-import ua.com.jurimik.builder.UserBuilder;
-
 public class Person {
 
-	private User user;
+	private int id;
 	private String firstName;
 	private String lastName;
+	private String email;
+	private String password;
+	private boolean isChef;
+	private boolean isAdmin;
 
 	public Person() {
 	}
 
-	public User getUser() {
-		return user;
+	public int getId() {
+		return id;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -36,26 +37,81 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-	public void setId(int id) {
-		this.user.setId(id);
+	public String getEmail() {
+		return email;
 	}
 
-	public int getId() {
-		return user.getId();
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean isChef() {
+		return isChef;
+	}
+
+	public void setChef(boolean isChef) {
+		this.isChef = isChef;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(firstName).append("#").append(lastName).append("#").append(user.getId()).append("#")
-				.append(user.getEmail()).append("#").append(user.getPassword()).append("#").append(user.isChef())
-				.append(user.isAdmin());
+		sb.append(id).append(" ").append(firstName).append(" ").append(lastName).append(" ")
+				.append(email).append(" ");
+		if (isChef) {
+			sb.append("User is chef ");
+		}
+		if (isAdmin) {
+			sb.append("User is admin");
+		}
 		return sb.toString();
 	}
 
-	public static void main(String[] args) {
-		User usr = new UserBuilder("alice@hotmail.com", "uyeaj%5").id(5).chef(false).build();
-		Person person = new PersonBuilder().firstName("Alice").lastName("Johnson").user(usr).build();
-		System.out.println(person.toString());
-	}
 }

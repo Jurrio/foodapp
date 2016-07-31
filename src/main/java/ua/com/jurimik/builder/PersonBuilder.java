@@ -1,19 +1,32 @@
 package ua.com.jurimik.builder;
 
 import ua.com.jurimik.model.Person;
-import ua.com.jurimik.model.User;
 
 public class PersonBuilder {
 
-	private User user;
+	private String email;
+	private String password;
+	private int id;
+	private boolean isChef;
+	private boolean isAdmin;
 	private String firstName;
 	private String lastName;
 
 	public PersonBuilder() {
 	}
 
-	public PersonBuilder user(User user) {
-		this.user = user;
+	public PersonBuilder password(String password) {
+		this.password = password;
+		return this;
+	}
+
+	public PersonBuilder email(String email) {
+		this.email = email;
+		return this;
+	}
+
+	public PersonBuilder id(int id) {
+		this.id = id;
 		return this;
 	}
 
@@ -27,11 +40,25 @@ public class PersonBuilder {
 		return this;
 	}
 
+	public PersonBuilder chef(boolean isChef) {
+		this.isChef = isChef;
+		return this;
+	}
+
+	public PersonBuilder admin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+		return this;
+	}
+
 	public Person build() {
 		Person person = new Person();
+		person.setEmail(email);
+		person.setPassword(password);
+		person.setId(id);
 		person.setFirstName(firstName);
 		person.setLastName(lastName);
-		person.setUser(user);
+		person.setChef(isChef);
+		person.setAdmin(isAdmin);
 		return person;
 	}
 

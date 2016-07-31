@@ -6,9 +6,8 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import ua.com.jurimik.builder.UserBuilder;
+import ua.com.jurimik.builder.PersonBuilder;
 import ua.com.jurimik.model.Person;
-import ua.com.jurimik.model.User;
 
 public class ListPersonDAOImpl implements PersonListDAO {
 
@@ -41,9 +40,9 @@ public class ListPersonDAOImpl implements PersonListDAO {
 
 	@Override
 	public int login(String login, String password) {
-		User usr = new UserBuilder(login, password).build();
+		Person usr = new PersonBuilder().email(login).password(password).build();
 		for (Person p : personList) {
-			if (p.getUser().equals(usr)) {
+			if (p.equals(usr)) {
 				LOG.info("get person (id " + p.getId());
 				return p.getId();
 			}
@@ -66,22 +65,10 @@ public class ListPersonDAOImpl implements PersonListDAO {
 	@Override
 	public boolean delete(Person deletedPerson) {
 		for (Person p : personList) {
-			if (p.getUser().equals(deletedPerson.getUser())) {
+			if (p.equals(deletedPerson)) {
 				return personList.remove(deletedPerson);
 			}
 		}
-		return false;
-	}
-
-	@Deprecated
-	public boolean updatePassword(Person person, String login, String oldPassword, String newPassword) {
-		User usr = new UserBuilder(login, oldPassword).build();
-		if (person.getUser().equals(usr)) {
-			usr.setPassword(newPassword);
-			LOG.info("password changed for person (id " + person.getId());
-			return true;
-		}
-		LOG.info("no found user with email " + login + " and password " + oldPassword);
 		return false;
 	}
 

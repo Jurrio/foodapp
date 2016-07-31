@@ -7,10 +7,9 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-import ua.com.jurimik.builder.UserBuilder;
+import ua.com.jurimik.builder.PersonBuilder;
 import ua.com.jurimik.exception.StringFormatException;
 import ua.com.jurimik.model.Person;
-import ua.com.jurimik.model.User;
 import ua.com.jurimik.util.FileUtils;
 import ua.com.jurimik.util.PersonUtil;
 
@@ -69,7 +68,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 	@Override
 	public int login(String login, String password) throws IOException, StringFormatException {
 		storage = FileUtils.getFile("persons.csv");
-		User usr = new UserBuilder(login, password).build();
+		Person usr = new PersonBuilder().email(login).password(password).build();
 		FileInputStream fis = null;
 		LOG.info("Login in system as " + login);
 		try {
@@ -82,7 +81,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 				sb.append(c);
 				if (c == '\n') {
 					Person person = convertFromString(sb.toString());
-					if (usr.equals(person.getUser())) {
+					if (usr.equals(person)) {
 						LOG.info("login was successful");
 						fis.close();
 						return person.getId();
@@ -124,7 +123,7 @@ public class CsvPersonFileDAOImpl implements PersonFileDAO {
 				sb.append(c);
 				if (c == '\n') {
 					Person person = convertFromString(sb.toString());
-					if (!deletedPerson.getUser().equals(person.getUser())) {
+					if (!deletedPerson.equals(person)) {
 						fos.write(sb.toString().getBytes());
 						sb = new StringBuilder();
 					} else {

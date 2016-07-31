@@ -10,11 +10,10 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-import ua.com.jurimik.builder.UserBuilder;
+import ua.com.jurimik.builder.PersonBuilder;
 import ua.com.jurimik.exception.SignInException;
 import ua.com.jurimik.exception.StringFormatException;
 import ua.com.jurimik.model.Person;
-import ua.com.jurimik.model.User;
 import ua.com.jurimik.util.FileUtils;
 import ua.com.jurimik.util.PersonUtil;
 
@@ -62,7 +61,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 	public int login(String login, String password)
 			throws FileNotFoundException, IOException, StringFormatException, SignInException {
 		storage = FileUtils.getFile("persons.txt");
-		User usr = new UserBuilder(login, password).build();
+		Person usr = new PersonBuilder().email(login).password(password).build();
 		Person person = null;
 
 		BufferedReader reader = new BufferedReader(new FileReader(storage));
@@ -72,7 +71,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 			while ((line = reader.readLine()) != null) {
 				if (line.contains(login) && line.contains(password)) {
 					person = convertFromString(line);
-					if (usr.equals(person.getUser())) {
+					if (usr.equals(person)) {
 						reader.close();
 						LOG.info("login was successful");
 						return person.getId();
@@ -110,7 +109,7 @@ public class SimpleTextFilePersonDAOImpl implements PersonFileDAO {
 
 				Person person = convertFromString(line);
 
-				if (!deletedPerson.getUser().equals(person.getUser())) {
+				if (!deletedPerson.equals(person)) {
 					writer.write(line + "\n");
 				} else {
 					LOG.info("person was delete");
