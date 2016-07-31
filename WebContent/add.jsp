@@ -9,6 +9,7 @@
 	</head>
 	
 	<body>
+		<c:set var="pageName" value="add"/>
 		<%@ include file="header.jsp"%>
 		<p>Please add the product</p>
 		<form action="addMeal" method="post">

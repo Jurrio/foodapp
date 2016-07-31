@@ -11,6 +11,7 @@
 </head>
 
 <body>
+	<c:set var="pageName" value="dashboard" />
 	<%@ include file="header.jsp"%>
 	<br>
 	<form action="findMeal" method="post">
