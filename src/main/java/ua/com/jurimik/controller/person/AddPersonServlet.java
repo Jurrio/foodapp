@@ -54,12 +54,12 @@ public class AddPersonServlet extends HttpServlet {
 			request.setAttribute(Parameters.MESSAGE, Messages.ADD_PERSON_SUCCEFULLY);
 			request.setAttribute(Parameters.PERSON_ID, person.getId());
 			LOG.debug("set attribute " + Parameters.PERSON_ID + ": " + person.getId());
+			request.getRequestDispatcher("reg-success.jsp").forward(request, response);
 		} else {
 			LOG.warn("person not added");
 			request.setAttribute(Parameters.ERROR, Messages.ADD_PERSON_ERROR);
+			request.getRequestDispatcher("registration.jsp").forward(request, response);
 		}
-
-		request.getRequestDispatcher("registration.jsp").forward(request, response);
 	}
 
 }
