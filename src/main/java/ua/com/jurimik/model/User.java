@@ -1,5 +1,7 @@
 package ua.com.jurimik.model;
 
+import ua.com.jurimik.util.UserPermissions;
+
 public class User {
 
 	private int id;
@@ -7,10 +9,10 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
-	private boolean isChef;
-	private boolean isAdmin;
+	private UserPermissions permissions;
 
 	public User() {
+		permissions = new UserPermissions();
 	}
 
 	public int getId() {
@@ -54,19 +56,23 @@ public class User {
 	}
 
 	public boolean isChef() {
-		return isChef;
+		return permissions.isChef();
 	}
 
 	public void setChef(boolean isChef) {
-		this.isChef = isChef;
+		this.permissions.setChefRole(isChef);
 	}
 
 	public boolean isAdmin() {
-		return isAdmin;
+		return permissions.isAdmin();
 	}
 
 	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+		this.permissions.setAdminRole(isAdmin);
+	}
+	
+	public UserPermissions getPermissions() {
+		return permissions;
 	}
 
 	@Override
@@ -105,10 +111,10 @@ public class User {
 		StringBuilder sb = new StringBuilder();
 		sb.append(id).append(" ").append(firstName).append(" ").append(lastName).append(" ")
 				.append(email).append(" ");
-		if (isChef) {
+		if (isChef()) {
 			sb.append("User is chef ");
 		}
-		if (isAdmin) {
+		if (isAdmin()) {
 			sb.append("User is admin");
 		}
 		return sb.toString();

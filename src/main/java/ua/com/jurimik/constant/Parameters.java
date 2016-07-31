@@ -35,4 +35,5 @@ public class Parameters {
 	public static final String ERROR_EMAIL = "erroremail";
 	public static final String ERROR_PASSWORD = "errorpassword";
 	public static final String ERROR_REPEAT = "errorrepeat";
+	public static final String ERROR_ACCESS = "erroraccess";
 }
