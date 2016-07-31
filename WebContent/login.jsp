@@ -43,7 +43,7 @@
 
 				<div class="switch-log">
 					<p>
-						Not registered? <a href="addPerson">Click here</a>
+						Not registered? <a href="registration">Click here</a>
 					</p>
 				</div>
 

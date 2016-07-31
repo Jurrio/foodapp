@@ -13,7 +13,7 @@
 	<c:set var="pageName" value="registration"/>
 	<%@ include file="header.jsp"%>
 	<div class=main-div>
-		<form action="addPerson" method="post">
+		<form action="registration" method="post">
 			<div class="reg-form">
 				<div class="field">
 					<p>

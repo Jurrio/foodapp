@@ -36,7 +36,7 @@
 	</c:choose>
 
 	<c:if test="${empty user}">
-		<li class="right-menu-item"><a href="addPerson" class="menu-link">Registration</a></li>
+		<li class="right-menu-item"><a href="registration" class="menu-link">Registration</a></li>
 
 		<li class="right-menu-item"><a href="LoginController"
 			class="menu-link">Sign in</a></li>
