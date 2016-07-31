@@ -14,7 +14,7 @@
 	</script>
 	<div class="congrats">
 		<p>Hello, ${user}</p>
-		<p>You will be regirected on main page in 3 seconds </p> 
+		<p>You will be redirected on main page in 3 seconds </p> 
 		<p> <a href="homePage">click here for redirect to start page now</a> </p>
 	</div>
 </body>
