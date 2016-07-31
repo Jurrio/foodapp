@@ -35,9 +35,11 @@ public class EmailFilter implements Filter {
 			try {
 				if (!EmailValidator.validate(email)) {
 					request.setAttribute(Parameters.ERROR_EMAIL, Messages.ERROR_EMAIL);
+					LOG.info("email not validate");
 				}
 			} catch (EmailFormatException e) {
 				request.setAttribute(Parameters.ERROR_EMAIL, e.getMessage());
+				LOG.info(e.getMessage());
 				request.getRequestDispatcher("registration.jsp").forward(request, response);
 			}
 		}

@@ -35,6 +35,7 @@ public class CacheList<E> extends ArrayList<E> {
 			E e = (E) ois.readObject();
 			result.add(e);
 		}
+		ois.close();
 		return result;
 
 	}

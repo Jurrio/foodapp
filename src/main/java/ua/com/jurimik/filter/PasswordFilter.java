@@ -35,13 +35,15 @@ public class PasswordFilter implements Filter {
 
 			try {
 				if (!PasswordValidator.validate(passwd, repeat)) {
-					
+					LOG.info("Password not validate");
 				}
 			} catch (PasswordLengthException e) {
 				request.setAttribute(Parameters.ERROR_PASSWORD, e.getMessage());
+				LOG.info(e.getMessage());
 				request.getRequestDispatcher("registration.jsp").forward(request, response);
 			} catch (PasswordsNotEqualException e) {
 				request.setAttribute(Parameters.ERROR_REPEAT, e.getMessage());
+				LOG.info(e.getMessage());
 				request.getRequestDispatcher("registration.jsp").forward(request, response);
 			}
 		}
