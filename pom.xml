@@ -31,7 +31,7 @@
 					<server>local-tomcat-7</server>
 					<path>/candylife</path>
 					<url>${tomcat.url}</url>
-					<!--<port>${tomcat.port}</port>-->
+					<!--<port>${tomcat.port}</port> -->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -57,20 +57,25 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
 	</dependencies>
 	<profiles>
 		<profile>
 			<id>mentor</id>
 			<properties>
 				<tomcat.url>http://localhost:8181/manager/html</tomcat.url>
-				<!--<tomcat.port>8181</tomcat.port>-->
+				<!--<tomcat.port>8181</tomcat.port> -->
 			</properties>
 		</profile>
 		<profile>
 			<id>student</id>
 			<properties>
 				<tomcat.url>http://localhost:8080/manager/html</tomcat.url>
-				<!--<tomcat.port>8080</tomcat.port>-->
+				<!--<tomcat.port>8080</tomcat.port> -->
 			</properties>
 		</profile>
 	</profiles>
