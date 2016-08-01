@@ -20,7 +20,7 @@ public class MealBuilder {
 		return this;
 	}
 
-	public MealBuilder owner(String owner) { // TODO: change to User
+	public MealBuilder owner(String owner) { // TODO: change to Person
 		this.owner = owner;
 		return this;
 	}

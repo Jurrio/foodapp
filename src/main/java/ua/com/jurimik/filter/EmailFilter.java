@@ -17,7 +17,7 @@ import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.exception.EmailFormatException;
 import ua.com.jurimik.util.EmailValidator;
 
-@WebFilter(filterName = "EmailFilter", servletNames = "/registration")
+@WebFilter(filterName = "EmailFilter", servletNames = "AddPersonServlet")
 public class EmailFilter implements Filter {
 
 	private static final Logger LOG = Logger.getLogger(EmailFilter.class);
@@ -36,7 +36,6 @@ public class EmailFilter implements Filter {
 				if (!EmailValidator.validate(email)) {
 					request.setAttribute(Parameters.ERROR_EMAIL, Messages.ERROR_EMAIL);
 					LOG.info("email not validate");
-					request.getRequestDispatcher("registration.jsp").forward(request, response);
 				}
 			} catch (EmailFormatException e) {
 				request.setAttribute(Parameters.ERROR_EMAIL, e.getMessage());

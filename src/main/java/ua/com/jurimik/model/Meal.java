@@ -11,7 +11,7 @@ public class Meal implements Serializable{
 	private String description;
 	private boolean available;
 	private double price;
-	private String owner; // TODO: change to class User after create it.
+	private String owner; // TODO: change to class Person after create it.
 
 	public Meal(String title, double price) {
 		this.title = title;
