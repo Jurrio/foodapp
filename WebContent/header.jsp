@@ -42,11 +42,14 @@
 			class="menu-link">Sign in</a></li>
 	</c:if>
 	<c:if test="${not empty user}">
-		<li class="right-menu-item"><a href="profileController"
-			class="menu-link">${user.firstName} ${user.lastName}</a></li>
+		<!--<li class="right-menu-item"><a href="profileController"
+			class="menu-link">${user.firstName} ${user.lastName}</a></li>-->
 		<li class="right-menu-item"><form action="LogoutController" method="post">
 			<button type="submit" name="logout" value="logout"
 				class="btn-link menu-link">Logout</button>
 		</form>
 	</c:if>
 </ul>
+<c:if test="${not empty user}">
+<p class="right-menu-item">Hello, ${user.firstName} ${user.lastName}</p>
+</c:if>
