@@ -16,7 +16,7 @@
 	<br>
 	<form action="findMeal" method="post">
 		<input class="search-input" type="search" name="search"
-			value="search field"> <input class="search-button"
+			placeholder="search field"> <input class="search-button"
 			type="submit" value="search">
 	</form>
 	<br>
