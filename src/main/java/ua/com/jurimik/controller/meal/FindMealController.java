@@ -38,7 +38,7 @@ public class FindMealController extends HttpServlet {
 			LOG.info("found meals: " + findResult.size());
 
 			if (!findResult.isEmpty()) {
-				req.setAttribute(Parameters.MESSAGE, Messages.SEARCH_RESPONSE);
+				req.setAttribute(Parameters.MESSAGE, Messages.SEARCH_RESPONSE + searchValue);
 				req.setAttribute(Parameters.MEALS, findResult);
 			} else {
 				req.setAttribute(Parameters.ERROR, Messages.EMPTY_SET);
