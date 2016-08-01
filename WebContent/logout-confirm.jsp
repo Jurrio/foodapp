@@ -9,9 +9,9 @@
 </head>
 
 <body>
-	<!-- <script>
+	<script>
 		onload = function () {setTimeout ("document.location = 'homePage';", 3 * 1000)}
-	</script> -->
+	</script>
 	<div class="congrats">
 		<p>Hello, ${user}</p>
 		<p>Thank you for your visit! Back to us!</p>
