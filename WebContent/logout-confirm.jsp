@@ -15,10 +15,7 @@
 	<div class="congrats">
 		<p>Hello, ${user}</p>
 		<p>Thank you for your visit! Back to us!</p>
-		<form action="LogoutController" method="post">
-			<button type="submit" name="your_name" value="your_value"
-				class="btn-link">click here for redirect to start page now</button>
-		</form>
+		<p> <a href="homePage">click here for redirect to start page now</a> </p>
 	</div>
 </body>
 </html>

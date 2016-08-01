@@ -17,7 +17,7 @@ public class LogoutServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("logout-confirm.jsp").forward(request, response);
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +35,7 @@ public class LogoutServlet extends HttpServlet {
 		}
 		HttpSession session = request.getSession();
 		session.setAttribute(Parameters.USER, null);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("logout-confirm.jsp").forward(request, response);
 	}
 
 }
