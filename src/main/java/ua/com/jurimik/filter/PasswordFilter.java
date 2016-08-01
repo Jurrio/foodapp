@@ -17,7 +17,7 @@ import ua.com.jurimik.exception.PasswordLengthException;
 import ua.com.jurimik.exception.PasswordsNotEqualException;
 import ua.com.jurimik.util.PasswordValidator;
 
-@WebFilter(filterName = "PasswordFilter", servletNames = "AddPersonServlet")
+@WebFilter(filterName = "PasswordFilter", servletNames = "/registration")
 public class PasswordFilter implements Filter {
 
 	private static final Logger LOG = Logger.getLogger(PasswordFilter.class);
