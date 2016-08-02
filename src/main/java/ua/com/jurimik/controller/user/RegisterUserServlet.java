@@ -1,4 +1,4 @@
-package ua.com.jurimik.controller.person;
+package ua.com.jurimik.controller.user;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import ua.com.jurimik.builder.UserBuilder;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.model.User;
-import ua.com.jurimik.service.PersonService;
+import ua.com.jurimik.service.UserService;
 import ua.com.jurimik.util.ParameterConverter;
 
 @WebServlet(name = "RegisterUserServlet", urlPatterns = "/registration")
@@ -38,20 +38,20 @@ public class RegisterUserServlet extends HttpServlet {
 		boolean isChef = ParameterConverter.convertBoolean(request.getParameter(Parameters.IS_CHEF));
 		boolean isAdmin = ParameterConverter.convertBoolean(request.getParameter(Parameters.IS_ADMIN));
 
-		User person = new UserBuilder().email(email).password(passwd).firstName(fName).lastName(lName).chef(isChef)
+		User usr = new UserBuilder().email(email).password(passwd).firstName(fName).lastName(lName).chef(isChef)
 				.admin(isAdmin).build();
 
-		boolean isAdded = new PersonService().add(person);
+		boolean isAdded = new UserService().add(usr);
 
 		if (isAdded) {
-			LOG.info("person added");
-			request.setAttribute(Parameters.MESSAGE, Messages.ADD_PERSON_SUCCEFULLY);
-			request.setAttribute(Parameters.PERSON_ID, person.getId());
-			LOG.debug("set attribute " + Parameters.PERSON_ID + ": " + person.getId());
+			LOG.info("user added");
+			request.setAttribute(Parameters.MESSAGE, Messages.ADD_USER_SUCCEFULLY);
+			request.setAttribute(Parameters.USER_ID, usr.getId());
+			LOG.debug("set attribute " + Parameters.USER_ID + ": " + usr.getId());
 			request.getRequestDispatcher("reg-success.jsp").forward(request, response);
 		} else {
-			LOG.warn("person not added");
-			request.setAttribute(Parameters.ERROR, Messages.ADD_PERSON_ERROR);
+			LOG.warn("user not added");
+			request.setAttribute(Parameters.ERROR, Messages.ADD_USER_ERROR);
 			request.getRequestDispatcher("registration.jsp").forward(request, response);
 		}
 	}

@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.model.User;
-import ua.com.jurimik.service.PersonService;
+import ua.com.jurimik.service.UserService;
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
@@ -32,24 +32,24 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException {
 		int time = 2 * 60 * 60;
 
-		String login = request.getParameter(Parameters.EMAIL);
+		String email = request.getParameter(Parameters.EMAIL);
 		String password = request.getParameter(Parameters.PASSWORD);
 
-		int autorized = new PersonService().login(login, password);
+		int autorized = new UserService().login(email, password);
 
 		if (autorized > 0) {
 			LOG.debug("User autorized");
-			User person = new PersonService().get(login, password);
+			User user = new UserService().get(email, password);
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			HttpSession httpSession = httpRequest.getSession();
-			httpSession.setAttribute(Parameters.USER, person);
+			httpSession.setAttribute(Parameters.USER, user);
 			httpSession.setMaxInactiveInterval(time);
-			Cookie userName = new Cookie(Parameters.USER, login);
+			Cookie userName = new Cookie(Parameters.USER, email);
 			userName.setMaxAge(time);
 			httpResponse.addCookie(userName);
 
-			LOG.debug("set livetime for " + login + " " + time);
+			LOG.debug("set livetime for " + email + " " + time);
 
 			request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
 			request.getRequestDispatcher("log-success.jsp").forward(request, response);

@@ -8,7 +8,7 @@ import ua.com.jurimik.exception.StringFormatException;
 import ua.com.jurimik.list.CacheList;
 import ua.com.jurimik.model.Meal;
 
-public class MealSerializationDAOImpl implements MealSerializationDAO {
+public class SerializationMealDAOImpl implements SerializationMealDAO {
 
 	private static File file = new File("serialStorage");
 	private List<Meal> cacheList = new CacheList<Meal>(file);

@@ -17,7 +17,7 @@ import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.exception.EmailFormatException;
 import ua.com.jurimik.util.EmailValidator;
 
-@WebFilter(filterName = "EmailFilter", servletNames = "AddPersonServlet")
+@WebFilter(filterName = "EmailFilter", servletNames = "/registration")
 public class EmailFilter implements Filter {
 
 	private static final Logger LOG = Logger.getLogger(EmailFilter.class);

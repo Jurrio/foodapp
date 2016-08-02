@@ -51,15 +51,15 @@ public class UserBuilder {
 	}
 
 	public User build() {
-		User person = new User();
-		person.setEmail(email);
-		person.setPassword(password);
-		person.setId(id);
-		person.setFirstName(firstName);
-		person.setLastName(lastName);
-		person.setChef(isChef);
-		person.setAdmin(isAdmin);
-		return person;
+		User user = new User();
+		user.setEmail(email);
+		user.setPassword(password);
+		user.setId(id);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setChef(isChef);
+		user.setAdmin(isAdmin);
+		return user;
 	}
 
 }

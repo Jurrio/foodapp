@@ -4,7 +4,7 @@ import ua.com.jurimik.model.Meal;
 import ua.com.jurimik.exception.NotImplementedMethodException;
 import ua.com.jurimik.exception.StringFormatException;
 
-public interface MealFileDAO extends MealDAO {
+public interface FileMealDAO extends MealDAO {
 
 	public String convertToString(Meal meal) throws NotImplementedMethodException;
 

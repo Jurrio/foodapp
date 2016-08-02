@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 
 import ua.com.jurimik.model.Meal;
 
-public class ListMealDAOImpl implements MealListDAO {
+public class ListMealDAOImpl implements ListMealDAO {
 	private static List<Meal> mealList = new ArrayList<>();
 	private static int id = 0;
 

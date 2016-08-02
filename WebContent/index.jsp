@@ -23,7 +23,7 @@
 	<img class=under-image src="img/under-construction.png">
 
 	<p>
-		<a href="addPerson">Join us now!</a>
+		<a href="registration">Join us now!</a>
 	</p>
 
 	<h2 id="about">About</h2>
