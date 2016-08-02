@@ -1,4 +1,4 @@
-package ua.com.jurimik.controller;
+package ua.com.jurimik.servlet.user;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

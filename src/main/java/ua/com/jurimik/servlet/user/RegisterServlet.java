@@ -1,4 +1,4 @@
-package ua.com.jurimik.controller.user;
+package ua.com.jurimik.servlet.user;
 
 import java.io.IOException;
 
@@ -18,10 +18,10 @@ import ua.com.jurimik.service.UserService;
 import ua.com.jurimik.util.ParameterConverter;
 
 @WebServlet(name = "RegisterUserServlet", urlPatterns = "/registration")
-public class RegisterUserServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 641673800707374013L;
-	private static final Logger LOG = Logger.getLogger(RegisterUserServlet.class);
+	private static final Logger LOG = Logger.getLogger(RegisterServlet.class);
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
