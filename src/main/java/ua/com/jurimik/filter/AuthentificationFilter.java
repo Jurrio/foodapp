@@ -36,7 +36,6 @@ public class AuthentificationFilter implements Filter {
 			request.getRequestDispatcher("/LoginController").forward(request, response);
 		} else {
 			LOG.debug("User is authorized");
-			chain.doFilter(request, response);
 		}
 		chain.doFilter(request, response);
 	}
