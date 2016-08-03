@@ -45,9 +45,9 @@ public class LoginServlet extends HttpServlet {
 			HttpSession httpSession = httpRequest.getSession();
 			httpSession.setAttribute(Parameters.USER, user);
 			httpSession.setMaxInactiveInterval(time);
-			Cookie userName = new Cookie(Parameters.USER, email);
-			userName.setMaxAge(time);
-			httpResponse.addCookie(userName);
+			Cookie userCookie = new Cookie(Parameters.USER_ID, String.valueOf(user.getId()));
+			userCookie.setMaxAge(time);
+			httpResponse.addCookie(userCookie);
 
 			LOG.debug("set livetime for " + email + " " + time);
 
@@ -57,6 +57,7 @@ public class LoginServlet extends HttpServlet {
 			LOG.debug("User not autorized");
 			request.setAttribute(Parameters.ERROR, Messages.AUTORIZED_FAIL);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
+			
 		}
 	}
 }
