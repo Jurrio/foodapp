@@ -66,15 +66,18 @@
 	<profiles>
 		<profile>
 			<id>mentor</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
-				<tomcat.url>http://localhost:8181/manager/html</tomcat.url>
+				<tomcat.url>http://localhost:8181/manager/text</tomcat.url>
 				<!--<tomcat.port>8181</tomcat.port> -->
 			</properties>
 		</profile>
 		<profile>
 			<id>student</id>
 			<properties>
-				<tomcat.url>http://localhost:8080/manager/html</tomcat.url>
+				<tomcat.url>http://localhost:8080/manager/text</tomcat.url>
 				<!--<tomcat.port>8080</tomcat.port> -->
 			</properties>
 		</profile>
