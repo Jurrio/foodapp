@@ -1,7 +1,9 @@
 package ua.com.jurimik.dao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -9,7 +11,7 @@ import org.apache.log4j.Logger;
 import ua.com.jurimik.model.Meal;
 
 public class ListMealDAOImpl implements ListMealDAO {
-	private static List<Meal> mealList = new ArrayList<>();
+	private static Set<Meal> mealList = new HashSet<>();
 	private static int id = 0;
 
 	private static final Logger LOG = LogManager.getLogger(ListMealDAOImpl.class);
@@ -37,14 +39,14 @@ public class ListMealDAOImpl implements ListMealDAO {
 	}
 
 	@Override
-	public boolean update(int id, Meal meal) {
-		for (int i = 0; i < mealList.size(); i++) {
-			if (mealList.get(i).getId() == id) {
-				mealList.set(i, meal);
-				break;
+	public boolean update(int id, Meal newMeal) { //TODO: remove parameter @id from method signature 
+		for (Meal meal : mealList) {
+			if (meal.getId() == newMeal.getId()) {
+				mealList.remove(meal);
+				mealList.add(newMeal);
 			}
 		}
-		return mealList.contains(meal);
+		return mealList.contains(newMeal);
 	}
 
 	@Override
@@ -86,9 +88,11 @@ public class ListMealDAOImpl implements ListMealDAO {
 	@Override
 	public List<Meal> getAll() {
 		LOG.info("get the whole list");
-		return mealList;
+		List<Meal> resultList = new ArrayList<>();
+		resultList.addAll(mealList);
+		return resultList;
 	}
-
+	
 	private static int nextId() {
 		return ++id;
 	}
