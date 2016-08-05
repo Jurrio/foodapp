@@ -15,15 +15,6 @@
 				class="menu-link">Home</a></li>
 		</c:otherwise>
 	</c:choose>
-<%-- 	<c:choose>
-		<c:when test="${pageName ne 'add'}">
-			<li class="header-menu-item"><a href="addMeal" class="menu-link">Add</a></li>
-		</c:when>
-		<c:otherwise>
-			<li class="active-header-menu-item"><a href="addMeal"
-				class="menu-link">Add</a></li>
-		</c:otherwise>
-	</c:choose> --%>
 	<c:choose>
 		<c:when test="${pageName ne 'add'}">
 			<li class="header-menu-item"><a href="addMeal"
