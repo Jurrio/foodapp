@@ -33,9 +33,7 @@ public class AuthentificationFilter implements Filter {
 
 		HttpSession session = httpRequest.getSession(false);
 
-		User usr = (User) session.getAttribute(Parameters.USER);
-
-		if (usr == null) {
+		if (session.getAttribute(Parameters.USER) == null) {
 			if (session.getAttribute(Parameters.USER_ID) != null) {
 				int userId = (int) session.getAttribute(Parameters.USER_ID);
 				LOG.debug("User autorized from session. Id: " + userId);
