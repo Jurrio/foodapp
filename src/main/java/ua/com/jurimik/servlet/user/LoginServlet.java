@@ -17,7 +17,7 @@ import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.UserService;
 
-@WebServlet("/LoginController")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

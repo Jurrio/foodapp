@@ -46,7 +46,7 @@ public class AuthentificationFilter implements Filter {
 			LOG.warn("Unauthorized user");
 			request.setAttribute(Parameters.ERROR, Messages.AUTORIZED_ERROR_ACCESS);
 
-			request.getRequestDispatcher("/LoginController").forward(request, response);
+			request.getRequestDispatcher("/login").forward(request, response);
 		} else {
 			LOG.debug("User is authorized");
 			chain.doFilter(request, response);

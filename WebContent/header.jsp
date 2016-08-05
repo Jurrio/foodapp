@@ -39,13 +39,13 @@
 	<c:if test="${empty user}">
 		<li class="right-menu-item"><a href="registration" class="menu-link">Registration</a></li>
 
-		<li class="right-menu-item"><a href="LoginController"
+		<li class="right-menu-item"><a href="login"
 			class="menu-link">Sign in</a></li>
 	</c:if>
 	<c:if test="${not empty user}">
 		<!--<li class="right-menu-item"><a href="profileController"
 			class="menu-link">${user.firstName} ${user.lastName}</a></li>-->
-		<li class="right-menu-item"><form action="LogoutController" method="post">
+		<li class="right-menu-item"><form action="logout" method="post">
 			<button type="submit" name="logout" value="logout"
 				class="btn-link menu-link">Logout</button>
 		</form>

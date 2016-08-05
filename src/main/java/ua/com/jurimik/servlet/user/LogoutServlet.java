@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import ua.com.jurimik.constant.Parameters;
 
-@WebServlet(name = "LogoutServlet", urlPatterns = "/LogoutController")
+@WebServlet(name = "LogoutServlet", urlPatterns = "/logout")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
