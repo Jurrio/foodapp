@@ -42,19 +42,17 @@ public class LoginServlet extends HttpServlet {
 		if (autorized > 0) {
 			LOG.debug("User autorized");
 			User user = new UserService().get(email, password);
+
+			HttpSession httpSession = request.getSession();
+			httpSession.setAttribute(Parameters.USER, user);
+			httpSession.setMaxInactiveInterval(time);
+
 			if (isRemember) {
 				LOG.debug("Remember this user");
 
-				HttpServletRequest httpRequest = (HttpServletRequest) request;
-				HttpServletResponse httpResponse = (HttpServletResponse) response;
-
-				HttpSession httpSession = httpRequest.getSession();
-				httpSession.setAttribute(Parameters.USER, user);
-				httpSession.setMaxInactiveInterval(time);
-
 				Cookie userCookie = new Cookie(Parameters.USER_ID, String.valueOf(user.getId()));
 				userCookie.setMaxAge(time);
-				httpResponse.addCookie(userCookie);
+				response.addCookie(userCookie);
 
 				LOG.debug("set livetime for " + email + " " + time);
 			}
