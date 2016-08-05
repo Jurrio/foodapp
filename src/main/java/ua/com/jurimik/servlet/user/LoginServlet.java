@@ -16,6 +16,7 @@ import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.UserService;
+import ua.com.jurimik.util.ParameterConverter;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -34,30 +35,36 @@ public class LoginServlet extends HttpServlet {
 
 		String email = request.getParameter(Parameters.EMAIL);
 		String password = request.getParameter(Parameters.PASSWORD);
+		boolean isRemember = ParameterConverter.convertBoolean(Parameters.REMEMBER);
 
 		int autorized = new UserService().login(email, password);
 
 		if (autorized > 0) {
 			LOG.debug("User autorized");
 			User user = new UserService().get(email, password);
-			HttpServletRequest httpRequest = (HttpServletRequest) request;
-			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			HttpSession httpSession = httpRequest.getSession();
-			httpSession.setAttribute(Parameters.USER, user);
-			httpSession.setMaxInactiveInterval(time);
-			Cookie userCookie = new Cookie(Parameters.USER_ID, String.valueOf(user.getId()));
-			userCookie.setMaxAge(time);
-			httpResponse.addCookie(userCookie);
+			if (isRemember) {
+				LOG.debug("Remember this user");
 
-			LOG.debug("set livetime for " + email + " " + time);
+				HttpServletRequest httpRequest = (HttpServletRequest) request;
+				HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-			//request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
+				HttpSession httpSession = httpRequest.getSession();
+				httpSession.setAttribute(Parameters.USER, user);
+				httpSession.setMaxInactiveInterval(time);
+
+				Cookie userCookie = new Cookie(Parameters.USER_ID, String.valueOf(user.getId()));
+				userCookie.setMaxAge(time);
+				httpResponse.addCookie(userCookie);
+
+				LOG.debug("set livetime for " + email + " " + time);
+			}
+			// request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
 			response.sendRedirect("homePage");
 		} else {
 			LOG.debug("User not autorized");
 			request.setAttribute(Parameters.ERROR, Messages.AUTORIZED_FAIL);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
-			
+
 		}
 	}
 }

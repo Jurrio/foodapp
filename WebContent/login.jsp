@@ -13,7 +13,7 @@
 	<c:set var="pageName" value="login"/>
 	<%@ include file="header.jsp"%>
 	<div class=main-div>
-		<form action="LoginController" method="post">
+		<form action="login" method="post">
 			<div class="reg-form">
 
 				<div class="field">

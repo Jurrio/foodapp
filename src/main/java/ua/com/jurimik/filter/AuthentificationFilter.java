@@ -30,18 +30,15 @@ public class AuthentificationFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		
-		Cookie[] cookies = httpRequest.getCookies(); 
-		if (cookies.length != 0) {
+
+		if (httpRequest.getSession().getAttribute(Parameters.USER) == null) {
+			Cookie[] cookies = httpRequest.getCookies();
 			for (Cookie c : cookies) {
 				if (c.getName().equals(Parameters.USER_ID)) {
 					HttpSession httpSession = httpRequest.getSession();
 					httpSession.setAttribute(Parameters.USER, new UserService().get(Integer.parseInt(c.getValue())));
 				}
 			}
-		}
-		
-		if (httpRequest.getSession().getAttribute(Parameters.USER) == null) {
 
 			LOG.warn("Unauthorized user");
 			request.setAttribute(Parameters.ERROR, Messages.AUTORIZED_ERROR_ACCESS);

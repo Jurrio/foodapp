@@ -7,17 +7,17 @@ public class ParameterConverter {
 	public static Logger LOG = Logger.getLogger(ParameterConverter.class);
 
 	public static double convertDouble(String price) throws NumberFormatException {
-		LOG.debug("price: " + price);
+		LOG.debug("convert double: " + price);
 		return Double.parseDouble(price);
 	}
 
 	public static boolean convertBoolean(String available) {
-		LOG.debug("available: " + available);
+		LOG.debug("convert boolean: " + available);
 		return available != null;
 	}
 
 	public static int convertInteger(String parameter) throws NumberFormatException {
-		LOG.debug("id: " + parameter);
+		LOG.debug("convert integer: " + parameter);
 		return Integer.parseInt(parameter);
 	}
 }
