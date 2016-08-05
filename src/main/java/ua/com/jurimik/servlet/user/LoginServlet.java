@@ -51,8 +51,8 @@ public class LoginServlet extends HttpServlet {
 
 			LOG.debug("set livetime for " + email + " " + time);
 
-			request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
-			request.getRequestDispatcher("log-success.jsp").forward(request, response);
+			//request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
+			response.sendRedirect("homePage");
 		} else {
 			LOG.debug("User not autorized");
 			request.setAttribute(Parameters.ERROR, Messages.AUTORIZED_FAIL);

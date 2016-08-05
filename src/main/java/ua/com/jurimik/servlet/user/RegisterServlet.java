@@ -48,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
 			request.setAttribute(Parameters.MESSAGE, Messages.ADD_USER_SUCCEFULLY);
 			request.setAttribute(Parameters.USER_ID, usr.getId());
 			LOG.debug("set attribute " + Parameters.USER_ID + ": " + usr.getId());
-			request.getRequestDispatcher("reg-success.jsp").forward(request, response);
+			response.sendRedirect("homePage");
 		} else {
 			LOG.warn("user not added");
 			request.setAttribute(Parameters.ERROR, Messages.ADD_USER_ERROR);
