@@ -33,10 +33,10 @@
 
 				<button type="submit">Sign in!</button>
 
-				<p>
+				<!-- <p>
 					<label for="remember"><input name="remember"
 						type="checkbox" value="" />Remember me!</label>
-				</p>
+				</p> -->
 
 				<p class="success">${message}</p>
 				<p class="fail">${error}</p>

@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +15,7 @@ import org.apache.log4j.Logger;
 
 import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
+import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.UserService;
 
 @WebFilter(filterName = "AuthentificationFilter", servletNames = { "AddMealServlet", "DeleteMealServlet",
@@ -31,19 +31,21 @@ public class AuthentificationFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 
-		if (httpRequest.getSession().getAttribute(Parameters.USER) == null) {
-			Cookie[] cookies = httpRequest.getCookies();
-			for (Cookie c : cookies) {
-				if (c.getName().equals(Parameters.USER_ID)) {
-					HttpSession httpSession = httpRequest.getSession();
-					httpSession.setAttribute(Parameters.USER, new UserService().get(Integer.parseInt(c.getValue())));
-				}
+		HttpSession session = httpRequest.getSession(false);
+
+		User usr = (User) session.getAttribute(Parameters.USER);
+
+		if (usr == null) {
+			if (session.getAttribute(Parameters.USER_ID) != null) {
+				int userId = (int) session.getAttribute(Parameters.USER_ID);
+				LOG.debug("User autorized from session. Id: " + userId);
+				session.setAttribute(Parameters.USER, new UserService().get(userId));
+			} else {
+				LOG.warn("Unauthorized user");
+				request.setAttribute(Parameters.ERROR, Messages.AUTORIZED_ERROR_ACCESS);
+
+				request.getRequestDispatcher("/login").forward(request, response);
 			}
-
-			LOG.warn("Unauthorized user");
-			request.setAttribute(Parameters.ERROR, Messages.AUTORIZED_ERROR_ACCESS);
-
-			request.getRequestDispatcher("/login").forward(request, response);
 		} else {
 			LOG.debug("User is authorized");
 			chain.doFilter(request, response);

@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,6 @@ import ua.com.jurimik.constant.Messages;
 import ua.com.jurimik.constant.Parameters;
 import ua.com.jurimik.model.User;
 import ua.com.jurimik.service.UserService;
-import ua.com.jurimik.util.ParameterConverter;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -35,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 
 		String email = request.getParameter(Parameters.EMAIL);
 		String password = request.getParameter(Parameters.PASSWORD);
-		boolean isRemember = ParameterConverter.convertBoolean(Parameters.REMEMBER);
+//		boolean isRemember = ParameterConverter.convertBoolean(Parameters.REMEMBER);
 
 		int autorized = new UserService().login(email, password);
 
@@ -47,16 +45,7 @@ public class LoginServlet extends HttpServlet {
 			httpSession.setAttribute(Parameters.USER, user);
 			httpSession.setMaxInactiveInterval(time);
 
-			if (isRemember) {
-				LOG.debug("Remember this user");
-
-				Cookie userCookie = new Cookie(Parameters.USER_ID, String.valueOf(user.getId()));
-				userCookie.setMaxAge(time);
-				response.addCookie(userCookie);
-
-				LOG.debug("set livetime for " + email + " " + time);
-			}
-			// request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
+			request.setAttribute(Parameters.MESSAGE, Messages.AUTORIZED_OK);
 			response.sendRedirect("homePage");
 		} else {
 			LOG.debug("User not autorized");
