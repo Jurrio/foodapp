@@ -1,6 +1,7 @@
-package ua.com.jurimik.dao;
+package ua.com.jurimik.dao.textfile;
 
 import ua.com.jurimik.model.Meal;
+import ua.com.jurimik.dao.MealDAO;
 import ua.com.jurimik.exception.NotImplementedMethodException;
 import ua.com.jurimik.exception.StringFormatException;
 

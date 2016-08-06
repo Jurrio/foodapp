@@ -1,4 +1,4 @@
-package ua.com.jurimik.dao;
+package ua.com.jurimik.dao.textfile;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

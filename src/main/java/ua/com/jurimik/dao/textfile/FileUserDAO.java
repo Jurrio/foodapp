@@ -1,4 +1,4 @@
-package ua.com.jurimik.dao;
+package ua.com.jurimik.dao.textfile;
 
 import ua.com.jurimik.dao.UserDAO;
 import ua.com.jurimik.exception.StringFormatException;

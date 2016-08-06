@@ -4,7 +4,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import ua.com.jurimik.builder.UserBuilder;
-import ua.com.jurimik.dao.ListUserDAOImpl;
+import ua.com.jurimik.dao.list.ListUserDAOImpl;
 import ua.com.jurimik.model.User;
 
 public class UserService {

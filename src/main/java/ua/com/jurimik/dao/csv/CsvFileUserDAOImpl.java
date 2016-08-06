@@ -1,4 +1,4 @@
-package ua.com.jurimik.dao;
+package ua.com.jurimik.dao.csv;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 
 import ua.com.jurimik.builder.UserBuilder;
+import ua.com.jurimik.dao.textfile.FileUserDAO;
 import ua.com.jurimik.exception.StringFormatException;
 import ua.com.jurimik.model.User;
 import ua.com.jurimik.util.FileUtils;

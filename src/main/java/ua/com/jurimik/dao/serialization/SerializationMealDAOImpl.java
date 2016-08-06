@@ -1,4 +1,4 @@
-package ua.com.jurimik.dao;
+package ua.com.jurimik.dao.serialization;
 
 import java.io.File;
 import java.util.List;

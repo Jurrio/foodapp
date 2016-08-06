@@ -1,7 +1,8 @@
-package ua.com.jurimik.dao;
+package ua.com.jurimik.dao.list;
 
 import java.util.List;
 
+import ua.com.jurimik.dao.MealDAO;
 import ua.com.jurimik.model.Meal;
 
 public interface ListMealDAO extends MealDAO {

@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import ua.com.jurimik.dao.ListMealDAOImpl;
+import ua.com.jurimik.dao.list.ListMealDAOImpl;
 import ua.com.jurimik.model.Meal;
 
 public class MealService {
