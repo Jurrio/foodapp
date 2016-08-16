@@ -75,4 +75,8 @@ public class ListUserDAOImpl implements ListUserDAO {
 	private static int nextId() {
 		return ++id;
 	}
+
+	public List<User> getAll() {
+		return userList;
+	}
 }

@@ -1,5 +1,7 @@
 package ua.com.jurimik.service;
 
+import java.util.List;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -36,6 +38,10 @@ public class UserService {
 		service.add(new UserBuilder().email("asas").firstName("asda").lastName("asa").build());
 		User user = service.get(1);
 		System.out.println(user);
+	}
+
+	public static List<User> getAll() {
+		return new ListUserDAOImpl().getAll();
 	}
 
 }
